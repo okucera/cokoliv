@@ -11,7 +11,6 @@ import cokoliv.modules.adm.IAdminModule;
 public class ChangeUserDetailFlow extends BasicFlow implements IFlow {
 
 	private IAdminModule admin = new AdminModule();
-	@Override
 	public void executeFlow(IFlowData flowData) {
 		ChangeUserDetailData data = (ChangeUserDetailData) flowData;
 		

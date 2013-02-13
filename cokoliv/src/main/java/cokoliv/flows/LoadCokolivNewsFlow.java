@@ -10,7 +10,6 @@ public class LoadCokolivNewsFlow extends BasicFlow implements IFlow{
 
 	NewsModule news = new NewsModule();
 	
-	@Override
 	public void executeFlow(IFlowData flowData) {
 		NewsFlowData data = (NewsFlowData)flowData;
 		try{

@@ -1,4 +1,4 @@
-﻿package cokoliv.components;
+package cokoliv.components;
 
 import java.io.IOException;
 

@@ -13,7 +13,6 @@ public class DeleteSelectedNewsFlow extends BasicFlow implements IFlow {
 
 	private INewsModule news = new NewsModule();
 	
-	@Override
 	public void executeFlow(IFlowData flowData) {
 		if(flowData instanceof DeleteNewsData){
 			DeleteNewsData data = (DeleteNewsData) flowData;

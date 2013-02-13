@@ -8,7 +8,6 @@ public abstract class CokolivAbstractItemRenderer implements ICokolivItemRendere
 
 	protected JspWriter out;
 
-	@Override
 	public void renderItems(Object[] items, JspWriter out) throws IOException {
 		this.out = out;
 		
