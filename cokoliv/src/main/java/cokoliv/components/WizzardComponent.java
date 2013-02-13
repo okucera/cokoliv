@@ -19,8 +19,10 @@ public class WizzardComponent extends TagSupport {
 	private int activeItemIndex = 0;
 	private LoggedUser loggedUser;
 	
-	private static final String ACTIVE_WIZZARD_ITEM_STYLE="activeWizzardItem";
-	private static final String INACTIVE_WIZZARD_ITEM_STYLE="inactiveWizzardItem";
+	private static final String ACTIVE_WIZZARD_ITEM_TITLE_STYLE="activeWizzardHeaderItem";
+	private static final String INACTIVE_WIZZARD_ITEM_TITLE_STYLE="inactiveWizzardHeaderItem";
+	private static final String ACTIVE_WIZZARD_ITEM_CONTENT_STYLE="activeWizzardContentItem";
+	private static final String INACTIVE_WIZZARD_ITEM_CONTENT_STYLE="inactiveWizzardContentItem";
 	
 	public int doStartTag(){
 		try{
@@ -78,16 +80,12 @@ public class WizzardComponent extends TagSupport {
 	private void drawWizzardItems(){
 		try {
 			if(this.loggedUser != null) {
-				out.println("<table class=\"wizzardHeader\">");
+				out.println("<table class=\"wizzardHeader\" align=\"center\">");
 				out.println("<tr>");
-				for(int itemIndex = 0; itemIndex < items.size(); itemIndex++){
-					EWizzardItems item = items.get(itemIndex);
-					if(itemIndex == activeItemIndex) {
-						drawActiveItem(item);
-					}else{
-						drawInactiveItem(item);
-					}
-				}
+				createWizzardHeaders();
+				out.println("</tr>");
+				out.println("<tr>");
+				createWizzardContents();
 				out.println("</tr>");
 				out.println("</table>");
 			}
@@ -97,15 +95,57 @@ public class WizzardComponent extends TagSupport {
 		}
 	}
 	
+	private void createWizzardHeaders() throws IOException{
+		for(int itemIndex = 0; itemIndex < items.size(); itemIndex++){
+			EWizzardItems item = items.get(itemIndex);
+			createHeader(item, itemIndex);
+		}
+	}
+	
+	private void createHeader(EWizzardItems item, int itemIndex) throws IOException{
+		if(itemIndex == activeItemIndex) {
+			drawActiveItem(item);
+		}else{
+			drawInactiveItem(item);
+		}
+	}
+	
+	private void createWizzardContents() throws IOException{
+		for(int itemIndex = 0; itemIndex < items.size(); itemIndex++){
+			EWizzardItems item = items.get(itemIndex);
+			createContent(item, itemIndex);
+		}
+	}
+	
+	private void createContent(EWizzardItems item, int itemIndex) throws IOException{
+		if(itemIndex == activeItemIndex) {
+			drawActiveContent(item);
+		}else{
+			drawInactiveContent(item);
+		}
+	}
+	
 	private void drawActiveItem(EWizzardItems item) throws IOException{
-		out.println("<td class=\""+ACTIVE_WIZZARD_ITEM_STYLE+"\">");
+		out.println("<td class=\""+ACTIVE_WIZZARD_ITEM_TITLE_STYLE+"\">");
 		out.println(item.getItemTitle());
 		out.println("</td>");
 	}
 	
 	private void drawInactiveItem(EWizzardItems item) throws IOException{
-		out.println("<td class=\""+INACTIVE_WIZZARD_ITEM_STYLE+"\">");
+		out.println("<td class=\""+INACTIVE_WIZZARD_ITEM_TITLE_STYLE+"\">");
 		out.println(item.getItemTitle());
+		out.println("</td>");
+	}
+	
+	private void drawActiveContent(EWizzardItems item) throws IOException{
+		out.println("<td class=\""+ACTIVE_WIZZARD_ITEM_CONTENT_STYLE+"\">");
+		out.println("Tokyo");
+		out.println("</td>");
+	}
+	
+	private void drawInactiveContent(EWizzardItems item) throws IOException{
+		out.println("<td class=\""+INACTIVE_WIZZARD_ITEM_CONTENT_STYLE+"\">");
+		out.println("Marui");
 		out.println("</td>");
 	}
 	

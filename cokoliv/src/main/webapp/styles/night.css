@@ -322,3 +322,38 @@ body {
 .leftColumn, .rightColumn {
 	width:50px;
 }
+
+.activeWizzardHeaderItem, .inactiveWizzardHeaderItem {
+	height: 30px;
+	min-width: 200px;
+	text-align: center;
+}
+
+.activeWizzardHeaderItem {
+	background-color:yellow;
+	color:black;
+}
+
+.inactiveWizzardHeaderItem {
+	background-color:orange;
+	color:black;
+}
+
+.activeWizzardContentItem, .inactiveWizzardContentItem {
+	height: 200px;
+	min-width: 200px;
+}
+
+.activeWizzardContentItem {
+	background-color:yellow;
+	color:black;
+}
+
+.inactiveWizzardContentItem {
+	background-color:orange;
+	color:black;
+}
+
+.wizzardHeader {
+	
+}
