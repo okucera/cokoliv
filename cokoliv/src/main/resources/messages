@@ -1,0 +1,16 @@
+HLA001=Seznam novinek není v současné chvíli dostupný. Zastavte se prosím později.
+
+#Hlasky pro SQL databazi
+HLA010 = Během zavádění databází nastala chyba.
+HLA011 = Chyba během uzavírání spojení s databází.
+HLA012 = Chyba během provádění dotazu.
+HLA013 = Chyba během navazování spojení s databází.
+HLA014 = Zkontrolujte přihlašovací údaje a url databáze.
+HLA015 = Uživatel, pod kterým se pokoušíš přihlásit, neexistuje. Zadej prosím existujícího uživatele.
+HLA016 = Pro přihlašovaného uživatele bylo zadáno nesprávné heslo. Zadej prosím správné heslo.
+HLA017 = Došlo k procesní chybě. Opakuj prosím akci později.
+HLA018 = Účet byl zablokován. Napište si prosím o odblokování účtu.
+HLA019 = Bylo zadáno nesprávné heslo. Zkontrolujte si prosím rozložení klávesnice, aktivní CapsLock mód a akci opakujte.
+HLA020 = Nebyl zadán jeden nebo více povinných parametrů. Vraťte se prosím na předchozí stránku a údaje opravte.
+HLA021 = Nastala neočekávaná chyba v aplikaci. Dejte mi prosím o této chybě vědít ;).
+HLA022 = Zadaná hesla se neshodují. Zadej prosím shodná hesla.

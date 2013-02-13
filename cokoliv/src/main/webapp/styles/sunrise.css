@@ -1,0 +1,422 @@
+@CHARSET "UTF-8";
+
+body {
+	background-color:black;
+	background-image:url("../img/sunrise/upLogoPanel.jpg");
+	background-repeat:no-repeat;
+	
+	border:0px;
+	margin:0 0 0 0;
+	padding:0 0 0 0;	
+	
+}
+
+.screen {
+	width:100%;
+	height:100%;
+	
+	border:0px;
+	margin:0 0 0 0;
+	padding:0 0 0 0;	
+}
+
+.logo{
+	height:	220px;
+	width: 100%;
+	background-image:url("../img/night/logo.png");
+	background-position:left top;
+	background-repeat:no-repeat;
+	vertical-align:top;
+}
+
+.main {
+	width:100%;
+}
+
+.outsideCorners {
+	background-color:black;
+	height:50px;
+	width:100%;
+	padding:0 0 0 0;
+	margin:0 0 0 0;
+}
+
+.leftUpOutsideCorner { 
+	width:50px;
+	height:50px;
+	background-image:url("../img/night/leftUpOutsideCorner.png");
+	background-repeat:no-repeat;
+}
+
+.rightUpOutsideCorner {
+	width:50px;
+	height:50px;
+	background-image:url("../img/night/rightUpOutsideCorner.png");
+	background-repeat:no-repeat;
+
+}
+
+.leftDownOutsideCorner { 
+	width:50px;
+	height:50px;
+	background-image:url("../img/night/leftDownOutsideCorner.png");
+	background-repeat:no-repeat;
+	
+}
+
+.rightDownOutsideCorner {
+	width:50px;
+	height:50px;
+	background-image:url("../img/night/rightDownOutsideCorner.png");
+	background-repeat:no-repeat;
+	background-position:2px;
+}
+
+.upLine{
+	vertical-align:bottom;
+}
+
+.hMenu td{
+	width:100px;
+	height:30px;
+	text-align:center;
+}
+
+.hMenu td a, .hMenu td a img{
+	color:yellow;
+	font-weight:bold;
+	text-decoration:none;
+	vertical-align:bottom;
+	border:0px;
+}
+
+.freeItem:hover, .freeItem a img:hover{ 
+	background-image:url("../img/night/hoverMenuItem.png");
+	background-repeat:no-repeat;
+}
+
+.activeItem{ 
+	background-image:url("../img/sunrise/activeMenuItem.png");
+	background-repeat:no-repeat;
+}
+
+.contentTable {
+	width:100%;
+	padding:0;
+	margin:0;
+}
+
+.complexContentTable {
+	width:100%;
+	height:100%;
+	padding:0;
+	margin:0;
+}
+
+.leftUpInsideCorner{
+	width:20px;
+	height:20px;
+	background-image:url("../img/sunrise/leftUpCornerMain.png");
+	background-repeat:no-repeat;
+	padding:0;
+	margin:0;
+}
+
+.rightUpInsideCorner{
+	width:20px;
+	height:20px;
+	background-image:url("../img/sunrise/rightUpCornerMain.png");
+	background-repeat:no-repeat;
+	padding:0;
+	margin:0;	
+}
+
+.leftDownInsideCorner{
+	width:20px;
+	height:20px;
+	background-image:url("../img/sunrise/leftDownCornerMain.png");
+	background-repeat:no-repeat;
+	padding:0;
+	margin:0;	
+}
+
+.rightDownInsideCorner{
+	width:20px;
+	height:20px;
+	background-image:url("../img/night/rightDownCornerMain.png");
+	background-repeat:no-repeat;
+	padding:0;
+	margin:0;	
+}
+
+.upLineInside{
+	height:20px;
+	background-image:url("../img/sunrise/upLineMain.png");
+	background-repeat:repeat-x;
+	padding:0;
+	margin:0;	
+}
+
+.downLineInside{
+	height:20px;
+	background-image:url("../img/night/downLineMain.png");
+	background-repeat:repeat-x;
+	padding:0;
+	margin:0;	
+}
+
+.leftInsideLine{
+	background-image:url('../img/sunrise/Vprechod.png');
+	background-repeat:repeat-x;
+	border-left:2px solid white;
+}
+
+.complexLeftInsideLine{
+	background-color:black;
+	background-image:url('../img/sunrise/vertMenuProuzek.png');
+	background-repeat:repeat-x;
+	border-left:2px solid white;
+}
+
+.rightInsideLine{
+	background-image:url('../img/sunrise/Vprechod.png');
+	background-repeat:repeat-x;
+	border-right:2px solid white;
+}
+
+.complexRightInsideLine{
+	background-image:url('../img/sunrise/Vprechod.png');
+	background-repeat:repeat-x;
+	border-right:2px solid white;
+}
+
+.content-window {
+	background-image:url('../img/sunrise/Vprechod.png');
+	background-repeat:repeat-x;
+	color:white;
+	text-align:justify;
+	border-left:1px solid white;
+	border-right:1px solid white;
+	height:10px;
+	padding-top:20px;
+	padding-left:20px;
+	padding-right:20px;
+	
+}
+
+.complexContent-window {
+	background-image:url('../img/sunrise/Vprechod.png');
+	background-repeat:repeat-x;
+	color:white;
+	text-align:justify;
+	vertical-align:top;
+	padding-top:20px;
+	padding-left:20px;
+	padding-right:20px;
+}
+
+.screen-width-max-limit {
+	width:750px;
+	border:0px;
+}
+
+.news_table {
+	width:100%;
+}
+
+.news_img {
+	width:100px;
+	text-align:center;
+	border-top:1px solid white;
+	border-bottom:1px solid white;
+	border-left:0px;
+	border-right:0px;
+	border-style:dotted;
+}
+
+.news_text {
+	text-align:justify;
+	vertical-align:top;
+	padding: 0 10 0 10;
+	border-top:1px solid white;
+	border-bottom:1px solid white;
+	border-left:0px;
+	border-right:0px;
+	border-style:dotted;
+}
+
+.title_news {
+	font-size:12pt;
+	font-weight:bold;
+	color:yellow;
+}
+
+.date_news{
+	font-size:10px;
+	color:red;
+}
+
+.admin_control{
+	border:1px solid white;
+	width:100%;
+}
+
+.admin_control th{
+	font-size:15px;
+	color:white;
+	font-weight:bold;
+	text-align:center;
+}
+
+.verticalMenu {
+	width:20%;
+	background-color:black;
+	background-image:url('../img/sunrise/vertMenuProuzek.png');
+	background-repeat:repeat-x;
+	vertical-align:top;
+}
+
+.verticalMenu_menu td{
+	text-align:center;
+}
+
+.verticalMenu_menu td a {
+	color:black;
+	font-size:15pt;
+	font-weight:bold;
+	text-decoration:none;
+}
+
+.verticalMenu_menu td a:hover {
+	color:black;
+	background-image:url('../img/night/vykricnik.png');
+	background-repeat:no-repeat;
+	font-size:15pt;
+	font-weight:bold;
+}
+
+.verticalMenu_menu td a:active {
+	color:yellow;
+}
+
+.newPersonTable{
+	
+}
+
+.newPersonTableVerticalSplitter{
+	border-right:1px solid white;
+	border-left:0px;
+	border-top:0px;
+	border-bottom:0px;
+	border-style:dashed;
+}
+
+.poznamka {
+	font-size:12px;
+	color:red;
+}
+
+.guestbookPersonInfoTitle {
+	font-size:12px;
+	font-weight:bold;
+	color:yellow;
+	vertical-align:top;
+}
+
+.guestbookPersonInfoTextField, .guestbookPersonInfoTextArea {
+	background-color:black;
+	color:yellow;
+	border:1px solid orange;
+}
+
+.guestbookPersonInfoSubmit {
+	background-color:orange;
+	color:black;
+	border:1px solid orange;
+	cursor:pointer;
+	
+}
+
+.guestbookSplitter{
+	width:90%;
+	height:1px;
+	border:1px solid orange;
+}
+
+.guestbookNick {
+	color:yellow;
+	font-weight:bold;
+	font-size:12px;
+}
+
+.guestbookDateTime{
+	color:red;
+	font-size:10px;	
+}
+
+.guestbookMsg {
+	color:white;
+	font-weight:bold;
+	font-size:12px;
+}
+
+
+.guestbookItem {
+	width:100%;
+	border-bottom:1px solid yellow;
+}
+
+.guestbookPageNumbers tr td a{
+	color:yellow;
+	font-weight:bold;
+	text-decoration:none;
+}
+
+.guestbookPageNumbers tr td a:hover{
+	color:blue;
+	text-decoration:none;
+}
+
+.guestbookPageNumbers tr td{
+	border-left:1px solid yellow;
+	border-right:1px solid yellow;
+	padding-left:5px;
+	padding-right:5px;
+	background-color:black;
+}
+
+.guestbookPageNumbers tr td:hover{
+	color:blue;
+	background-color:yellow;
+}
+
+.guestbookPageNumberActive{
+	color:lightblue;
+	font-weight:bold;
+}
+
+.log-in-table {
+	width:40%;
+}
+
+.log-in-table tr td{
+	color:yellow;
+	font-size:12px;
+	font-weight:bold;
+}
+
+.log-in-table tr th{
+	font-size:12px;
+	color:blue;
+	font-weight:bold;
+}
+
+.log-in-table tr td input{
+	background-color:black;
+	color:yellow;
+	border:1px dashed white;
+}
+
+.leftColumn, .rightColumn {
+	width:50px;
+}

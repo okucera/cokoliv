@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
+"http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+<taglib>
+	<tlibversion>1.0</tlibversion>
+    <jspversion>1.1</jspversion>
+    <shortname>CokolivTags</shortname>
+    <info>Custom tagy pro ofiko stranky nejlepsi kapely na svjete - Cokol!v</info>
+    
+    <tag>
+    	<name>Logo</name>
+    	<tagclass>cokoliv.components.Logo </tagclass>
+    	<bodycontent>empty</bodycontent>
+    	<info>
+        	Tag pro zobrazovani loga s prihlasovaci komponentou
+    	</info>
+    	<attribute>
+  			<name>nextFormId</name>
+  			<required>true</required>
+  			<rtexprvalue>true</rtexprvalue>    	
+    	</attribute>
+    	<attribute>
+    		<name>loggedUser</name>
+    		<required>true</required>
+    		<rtexprvalue>true</rtexprvalue>
+    	</attribute>
+  	</tag>
+  	
+  	<tag>
+  		<name>BasicPanel</name>
+  		<tagclass>cokoliv.components.BasicPanel</tagclass>
+  		<bodycontent>JSP</bodycontent>
+  		<info>
+  			Tag pro zobrazeni hlavniho panelu v zakladni verzi
+  		</info>
+  		<attribute>
+  			<name>title</name>
+  			<required>true</required>
+  			<rtexprvalue>false</rtexprvalue>
+  		</attribute>
+  		<attribute>
+  			<name>activeFormId</name>
+  			<required>true</required>
+  			<rtexprvalue>true</rtexprvalue>
+  		</attribute>
+  	</tag>
+  	
+  	<tag>
+  		<name>HorizontalMenu</name>
+  		<tagclass>cokoliv.components.HorizontalMenu</tagclass>
+  		<bodycontent>empty</bodycontent>
+  		<info>
+  			Tag pro zobrazeni hlavniho menu
+  		</info>
+  		<attribute>
+  			<name>activeFormId</name>
+  			<required>true</required>
+  			<rtexprvalue>true</rtexprvalue>
+  		</attribute>
+  	</tag>
+  	
+  	<tag>
+  		<name>News</name>
+  		<tagclass>cokoliv.components.News</tagclass>
+  		<bodycontent>empty</bodycontent>
+  		<info>
+  			Tag pro zobrazeni novinek
+  		</info>	
+  		<attribute>
+  			<name>loggedUser</name>
+  			<required>true</required>
+  			<rtexprvalue>true</rtexprvalue>
+  		</attribute>
+  	</tag>
+  	
+  	<tag>
+  		<name>ChangeUserDetailPanel</name>
+  		<tagclass>cokoliv.components.ChangeUserDetailPanel</tagclass>
+  		<bodycontent>empty</bodycontent>
+  		<attribute>
+  			<name>user</name>
+  			<required>true</required>
+  			<rtexprvalue>true</rtexprvalue>
+  		</attribute>
+  		<attribute>
+  			<name>msgCode</name>
+  			<required>false</required>
+  			<rtexprvalue>true</rtexprvalue>
+  		</attribute>
+  	</tag>
+  	
+  	<tag>
+  		<name>WizzardComponent</name>
+  		<tagclass>cokoliv.components.WizzardComponent</tagclass>
+  		<bodycontent>JSP</bodycontent>
+  		<info>
+  			Tag pro zobrazeni wizzardu
+  		</info>	
+  		<attribute>
+  			<name>loggedUser</name>
+  			<required>true</required>
+  			<rtexprvalue>true</rtexprvalue>
+  		</attribute>
+  	</tag>
+  	
+  	<tag>
+  		<name>ImageWizzardItem</name>
+  		<tagclass>cokoliv.components.wizzards.AddImageWizzardItem</tagclass>
+  		<bodycontent>empty</bodycontent>
+  		<info>
+  			Tag pro zobrazeni wizzard itemu pro load obrazku
+  		</info>	
+  	</tag>  
+  	<tag>
+  		<name>NewsTextWizzardItem</name>
+  		<tagclass>cokoliv.components.wizzards.AddNewsTextWizzardItem</tagclass>
+  		<bodycontent>empty</bodycontent>
+  		<info>
+  			Tag pro zobrazeni wizzard itemu pro vlozeni textu
+  		</info>	
+  	</tag>    	
+</taglib>
