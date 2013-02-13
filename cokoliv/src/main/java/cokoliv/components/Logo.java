@@ -14,6 +14,7 @@ public class Logo extends TagSupport {
 	/**
 	 * 
 	 */
+	
 	private static final long serialVersionUID = 8227898944354380741L;
 	private KeyManager keyManager = new KeyManager();
 	private JspWriter out;
