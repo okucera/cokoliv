@@ -34,6 +34,10 @@ public abstract class WizzardItem extends TagSupport implements IWizzardItem {
 		}	
 	}
 	
+	public EWizzardItems getType() {
+		return this.itemName;
+	}
+	
 	protected abstract void appendToStartTag();
 	protected abstract void appendToEndTag();
 

@@ -40,9 +40,10 @@ public class Constants {
 	public static final String FORM_USER_NEW_PWD_RETYPED = "retypedNewPAssword";
 	public static final String FORM_HIDDEN_ACTION_STRING = "action";
 	public static final String FORM_HIDDEN_ACTION_DEL_NEWS = "del_news";
-	public static final String FORM_ADD_FILE = "addNewFile";
+
 	
-	
+	//AddImageWizzardItem.java
+	public static final String FILE_INPUT_IMAGE_NAME = "fileInputImage";
 	
 	
 	

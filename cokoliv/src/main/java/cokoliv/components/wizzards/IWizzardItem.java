@@ -1,5 +1,10 @@
 package cokoliv.components.wizzards;
 
-public interface IWizzardItem {
+import java.io.IOException;
 
+import cokoliv.enumerate.EWizzardItems;
+
+public interface IWizzardItem {
+	public EWizzardItems getType();
+	public void drawContent() throws IOException;
 }

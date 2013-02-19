@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 
+import cokoliv.components.wizzards.IWizzardItem;
 import cokoliv.databobjects.LoggedUser;
 import cokoliv.enumerate.EWizzardItems;
+import cokoliv.support.StyleNames;
 
 public class WizzardComponent extends TagSupport {
 	/**
@@ -15,14 +17,9 @@ public class WizzardComponent extends TagSupport {
 	 */
 	private static final long serialVersionUID = 7960288566490944015L;
 	protected JspWriter out;
-	private ArrayList<EWizzardItems> items;
+	private ArrayList<IWizzardItem> items;
 	private int activeItemIndex = 0;
 	private LoggedUser loggedUser;
-	
-	private static final String ACTIVE_WIZZARD_ITEM_TITLE_STYLE="activeWizzardHeaderItem";
-	private static final String INACTIVE_WIZZARD_ITEM_TITLE_STYLE="inactiveWizzardHeaderItem";
-	private static final String ACTIVE_WIZZARD_ITEM_CONTENT_STYLE="activeWizzardContentItem";
-	private static final String INACTIVE_WIZZARD_ITEM_CONTENT_STYLE="inactiveWizzardContentItem";
 	
 	public int doStartTag(){
 		try{
@@ -43,15 +40,15 @@ public class WizzardComponent extends TagSupport {
 		}	
 	}
 	
-	public void addWizzardItem(EWizzardItems item){
+	public void addWizzardItem(IWizzardItem item){
 		if(items==null)
-			items = new ArrayList<EWizzardItems>();
+			items = new ArrayList<IWizzardItem>();
 		
 		items.add(item);
 	}
 	
 	private void clearWizzardItems(){
-		items = new ArrayList<EWizzardItems>();
+		items = new ArrayList<IWizzardItem>();
 	}
 	
 	public void setActiveItem(EWizzardItems item){
@@ -85,7 +82,7 @@ public class WizzardComponent extends TagSupport {
 				createWizzardHeaders();
 				out.println("</tr>");
 				out.println("<tr>");
-				createWizzardContents();
+				createWizzardContent();
 				out.println("</tr>");
 				out.println("</table>");
 			}
@@ -97,58 +94,41 @@ public class WizzardComponent extends TagSupport {
 	
 	private void createWizzardHeaders() throws IOException{
 		for(int itemIndex = 0; itemIndex < items.size(); itemIndex++){
-			EWizzardItems item = items.get(itemIndex);
+			IWizzardItem item = items.get(itemIndex);
 			createHeader(item, itemIndex);
 		}
 	}
 	
-	private void createHeader(EWizzardItems item, int itemIndex) throws IOException{
+	private void createHeader(IWizzardItem item, int itemIndex) throws IOException{
 		if(itemIndex == activeItemIndex) {
-			drawActiveItem(item);
+			drawActiveItemHeader(item);
 		}else{
-			drawInactiveItem(item);
+			drawInactiveItemHeader(item);
 		}
 	}
 	
-	private void createWizzardContents() throws IOException{
-		for(int itemIndex = 0; itemIndex < items.size(); itemIndex++){
-			EWizzardItems item = items.get(itemIndex);
-			createContent(item, itemIndex);
-		}
+	private void createWizzardContent() throws IOException{
+			IWizzardItem item = items.get(activeItemIndex);
+			createContent(item);
 	}
 	
-	private void createContent(EWizzardItems item, int itemIndex) throws IOException{
-		if(itemIndex == activeItemIndex) {
-			drawActiveContent(item);
-		}else{
-			drawInactiveContent(item);
-		}
-	}
-	
-	private void drawActiveItem(EWizzardItems item) throws IOException{
-		out.println("<td class=\""+ACTIVE_WIZZARD_ITEM_TITLE_STYLE+"\">");
-		out.println(item.getItemTitle());
+	private void createContent(IWizzardItem item) throws IOException{
+		out.println("<td class=\""+StyleNames.WIZZARD_ITEM_CONTENT_STYLE+"\" colspan=\""+items.size()+"\">");
+		item.drawContent();
 		out.println("</td>");
 	}
 	
-	private void drawInactiveItem(EWizzardItems item) throws IOException{
-		out.println("<td class=\""+INACTIVE_WIZZARD_ITEM_TITLE_STYLE+"\">");
-		out.println(item.getItemTitle());
+	private void drawActiveItemHeader(IWizzardItem item) throws IOException{
+		out.println("<td class=\""+StyleNames.ACTIVE_WIZZARD_ITEM_TITLE_STYLE+"\">");
+		out.println(item.getType().getItemTitle());
 		out.println("</td>");
 	}
 	
-	private void drawActiveContent(EWizzardItems item) throws IOException{
-		out.println("<td class=\""+ACTIVE_WIZZARD_ITEM_CONTENT_STYLE+"\">");
-		out.println("Tokyo");
+	private void drawInactiveItemHeader(IWizzardItem item) throws IOException{
+		out.println("<td class=\""+StyleNames.INACTIVE_WIZZARD_ITEM_TITLE_STYLE+"\">");
+		out.println(item.getType().getItemTitle());
 		out.println("</td>");
 	}
-	
-	private void drawInactiveContent(EWizzardItems item) throws IOException{
-		out.println("<td class=\""+INACTIVE_WIZZARD_ITEM_CONTENT_STYLE+"\">");
-		out.println("Marui");
-		out.println("</td>");
-	}
-	
 
 	public LoggedUser getLoggedUser() {
 		return loggedUser;

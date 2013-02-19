@@ -306,7 +306,7 @@ body {
 	
 }
 
-.newPersonTableVerticalSplitter{
+.verticalSplitter{
 	border-right:1px solid white;
 	border-left:0px;
 	border-top:0px;
@@ -327,33 +327,33 @@ body {
 	height: 30px;
 	min-width: 200px;
 	text-align: center;
+	padding-bottom: 20px;
 }
 
 .activeWizzardHeaderItem {
-	background-color:yellow;
-	color:black;
+	background-color:black;
+	background-image:url(../img/night/wizzardItemActive.png);
+	background-repeat: no-repeat;
+	color:red;
+	font-weight:bold;
+	
 }
 
 .inactiveWizzardHeaderItem {
-	background-color:orange;
-	color:black;
+	background-color:black;
+	background-image:url(../img/night/wizzardItemInactive.png);
+	background-repeat: no-repeat;
+	color:white;
 }
 
-.activeWizzardContentItem, .inactiveWizzardContentItem {
+.wizzardItemContent {
 	height: 200px;
 	min-width: 200px;
-}
-
-.activeWizzardContentItem {
-	background-color:yellow;
 	color:black;
 }
 
-.inactiveWizzardContentItem {
-	background-color:orange;
-	color:black;
+.inputFileStyle {
+	background-color:black;
+	color:white;
 }
 
-.wizzardHeader {
-	
-}

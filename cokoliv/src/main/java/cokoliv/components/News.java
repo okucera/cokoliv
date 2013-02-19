@@ -51,35 +51,7 @@ public class News extends CokolivTag {
 	}
 	
 	private void renderNewItemForm() throws IOException{
-		out.println("<table class=\"news_table\">");
-		out.println("	<tr>");
-		out.println("		<td>");
-		out.println("			<form action=\"\" method=");
-		out.println("			<input type=file name=\""+Constants.FORM_ADD_FILE+"\" value=\"\" class=\"newItemButton\"/>");
-		out.println("");
-		out.println("		</td>");
-		out.println("		<td>");
-		out.println("");
-		out.println("");
-		out.println("");
-		out.println("");
-		out.println("");
-		out.println("");
-		out.println("");
-		out.println("");
-		out.println("");
-		out.println("");
-		out.println("");
-		out.println("");
-		out.println("");
-		out.println("");
-		out.println("");
-		out.println("");
-		out.println("");
-		out.println("");
-		out.println("");
-		out.println("");
-		out.println("</table>");
+
 	}
 	
 	private void setItemRendererByUserRights(){
