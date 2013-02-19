@@ -1,0 +1,9 @@
+*.class
+cokoliv/target/*
+cokoliv/.settings/*
+.classpath
+.project
+*.log
+*.log.*
+*.lck
+
