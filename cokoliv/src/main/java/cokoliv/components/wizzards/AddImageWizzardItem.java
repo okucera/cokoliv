@@ -1,5 +1,6 @@
 package cokoliv.components.wizzards;
 
+import java.io.File;
 import java.io.IOException;
 
 import cokoliv.components.WizzardComponent;
@@ -13,6 +14,7 @@ public class AddImageWizzardItem extends WizzardItem{
 	 * 
 	 */
 	private static final long serialVersionUID = 7904878216687345947L;
+	private static final String DEFAULT_IMAGE_FILENAME = "img/defaultImg.jpg";
 
 	@Override
 	protected void appendToStartTag() {
@@ -35,10 +37,11 @@ public class AddImageWizzardItem extends WizzardItem{
 		out.println("	<tr>");
 		out.println("		<td class=\"verticalSplitter\" width=\"220\">");
 		//Image
-		out.println("			<img src=\"img/defaultImg.jpg\"/>");
+		out.println("			<img src=\""+DEFAULT_IMAGE_FILENAME+"\"/>");
 		out.println("		</td>");
 		out.println("		<td>");
 		//Image info
+		getImageInfo();
 		out.println("		</td>");
 		out.println("	</tr>");
 		out.println("	<tr>");
@@ -61,6 +64,29 @@ public class AddImageWizzardItem extends WizzardItem{
 
 		out.println("</table>");
 		out.println("			</form>");
+	}
+	
+	private void getImageInfo() throws IOException {
+		File file = new File(DEFAULT_IMAGE_FILENAME);
+		out.println("<table style=\"color:white\">");
+		out.println("<tr>");
+		out.println("<td>");
+		out.println("Nazev souboru: ");
+		out.println("</td>");
+		out.println("<td>");
+		out.println(file.getName());
+		out.println("</td>");
+		out.println("<tr>");
+		out.println("<tr>");
+		out.println("<td>");
+		out.println("Velikost: ");
+		out.println("</td>");
+		out.println("<td>");
+		out.println(file.length());
+		out.println("</td>");
+		out.println("<tr>");
+		out.println("</table>");
+
 	}
 
 }
