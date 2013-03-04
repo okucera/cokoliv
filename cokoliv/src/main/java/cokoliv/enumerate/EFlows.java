@@ -7,7 +7,8 @@ public enum EFlows {
 	FL001("FL001", new LoadCokolivNewsFlow()),
 	FL002("FL002", new LoginUserFlow()),
 	FL003("FL003", new ChangeUserDetailFlow()),
-	FL004("FL004", new DeleteSelectedNewsFlow());
+	FL004("FL004", new DeleteSelectedNewsFlow()),
+	FL005("FL005", new UploadFileFlow());
 	
 	private IFlow flow;
 	

@@ -5,12 +5,8 @@
 <%@page import="cokoliv.enumerate.Forms"%>
 <%@page import="cokoliv.flowdata.*" %>
 <%@page import="cokoliv.support.Constants" %>
-<%@page import="cokoliv.databobjects.LoggedUser" %>
 <%
-	Forms formId = Forms.FRM001;
-	Object objUser = session.getAttribute(Constants.LOGGED_USER_KEY);
-	LoggedUser user = objUser==null ? null : (LoggedUser) objUser;
-	
+	Forms formId = Forms.FRM001;	
 %>
 <html>
 	<head>
@@ -29,11 +25,11 @@
 	  			<td class="main">
 	  				<CokolivTags:HorizontalMenu activeFormId="<%= formId %>"/>					
 					<CokolivTags:BasicPanel title="Nov!nky" activeFormId="<%= formId %>">
-						<CokolivTags:WizzardComponent loggedUser="<%= user %>">
+						<CokolivTags:WizzardComponent>
 							<CokolivTags:ImageWizzardItem/>
 							<CokolivTags:NewsTextWizzardItem/>
 						</CokolivTags:WizzardComponent>
-						<CokolivTags:News loggedUser="<%= user %>"/>
+						<CokolivTags:News/>
 					</CokolivTags:BasicPanel>				
 	  			</td>
 	  		</tr>

@@ -9,6 +9,7 @@ import javax.servlet.jsp.tagext.TagSupport;
 import cokoliv.components.wizzards.IWizzardItem;
 import cokoliv.databobjects.LoggedUser;
 import cokoliv.enumerate.EWizzardItems;
+import cokoliv.support.CokolivContext;
 import cokoliv.support.StyleNames;
 
 public class WizzardComponent extends TagSupport {
@@ -23,6 +24,7 @@ public class WizzardComponent extends TagSupport {
 	
 	public int doStartTag(){
 		try{
+			this.loggedUser = CokolivContext.getContext().getLoggedUser();
 			out = pageContext.getOut();
 			clearWizzardItems();
 			return EVAL_BODY_INCLUDE;
@@ -128,13 +130,5 @@ public class WizzardComponent extends TagSupport {
 		out.println("<td class=\""+StyleNames.INACTIVE_WIZZARD_ITEM_TITLE_STYLE+"\">");
 		out.println(item.getType().getItemTitle());
 		out.println("</td>");
-	}
-
-	public LoggedUser getLoggedUser() {
-		return loggedUser;
-	}
-
-	public void setLoggedUser(LoggedUser loggedUser) {
-		this.loggedUser = loggedUser;
 	}
 }

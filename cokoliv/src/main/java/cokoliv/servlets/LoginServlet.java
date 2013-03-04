@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cokoliv.databobjects.LoggedUser;
 import cokoliv.enumerate.EFlows;
 import cokoliv.enumerate.Forms;
 import cokoliv.enumerate.MessageCodes;
@@ -60,7 +59,7 @@ public class LoginServlet extends BasicAbstractServlet {
 			flowData.setNextFormId(formId);
 			executeFlow(EFlows.FL002, flowData);
 			if(flowData.getErrorMessage()==null){
-				setLoggedUserSession(flowData.getUser());
+				//setLoggedUserSession(flowData.getUser());
 				redirectToForm(flowData.getNextFormId());
 			}else{
 				redirectToError(flowData.getErrorMessage());
@@ -70,7 +69,9 @@ public class LoginServlet extends BasicAbstractServlet {
 		}
 	}
 	
+	/*
 	private void setLoggedUserSession(LoggedUser user){
 		this.session.setAttribute(Constants.LOGGED_USER_KEY, user);
 	}
+	*/
 }

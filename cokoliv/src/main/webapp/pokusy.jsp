@@ -7,6 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<script>
+		function fileChangedHandler() {
+			alert('necuum');
+			document.uploadForm.submit();
+		} 
+	</script>
 	<img src="UploadImageServlet?image=null"/>
+	<form name="uploadForm" action="FileUploadServlet" method="post" enctype="multipart/form-data">
+		<input type="file" name="newsImageFile" size=50 onChange="servlet: fileChangedHandler()"/>
+	</form>
 </body>
 </html>

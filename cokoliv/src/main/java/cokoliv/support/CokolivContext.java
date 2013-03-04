@@ -1,6 +1,8 @@
 package cokoliv.support;
 
+
 import cokoliv.dao.MenuDAO;
+import cokoliv.databobjects.LoggedUser;
 import cokoliv.databobjects.MenuItem;
 import cokoliv.databobjects.NewItem;
 
@@ -13,7 +15,10 @@ public class CokolivContext {
 	//Polozky novinek
 	private NewItem[] newItems;
 	
-	private CokolivContext(){
+	//Prihlaseny uzivatel
+	private LoggedUser loggedUser;
+		
+	private CokolivContext(){		
 		if(menuItems==null){
 			MenuDAO dao = new MenuDAO();
 			this.menuItems = dao.getMenuItems();			
@@ -42,5 +47,13 @@ public class CokolivContext {
 
 	public void setNewItems(NewItem[] newItems) {
 		this.newItems = newItems;
+	}
+
+	public LoggedUser getLoggedUser() {
+		return loggedUser;
+	}
+
+	public void setLoggedUser(LoggedUser loggedUser) {
+		this.loggedUser = loggedUser;
 	}
 }

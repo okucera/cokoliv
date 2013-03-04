@@ -31,7 +31,7 @@ public class LoginUserFlow extends BasicFlow implements IFlow {
 				//DE-credential match
 				if(match){
 					//ADM010: Get logged user info
-					data.setUser(admin.getLoggedUserInfo(user));
+					this.cokoliv.setLoggedUser(admin.getLoggedUserInfo(user));
 					
 					//ADM012 - Get parameter "first time login"
 					boolean firstTimeLogin = admin.getFirstTimeLoginParametr(user);
@@ -40,7 +40,7 @@ public class LoginUserFlow extends BasicFlow implements IFlow {
 						data.setNextFormId(Forms.FRM002);
 					}else{
 						//ADM009: Clear login counter (set it to 0);
-						admin.clearLoginCounter(data.getUser().getUserId());
+						admin.clearLoginCounter(this.cokoliv.getLoggedUser().getUserId());
 					}
 				}else{
 					//ADM008 - increment login counter

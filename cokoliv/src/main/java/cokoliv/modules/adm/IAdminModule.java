@@ -1,14 +1,23 @@
 package cokoliv.modules.adm;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.fileupload.FileItem;
+
 import cokoliv.databobjects.LoggedUser;
 import cokoliv.databobjects.User;
+import cokoliv.enumerate.UploadRepositories;
 import cokoliv.exceptions.CokolivApplicationException;
 import cokoliv.flowdata.ChangeUserDetailData;
+import cokoliv.flowdata.UploadFileData;
 
 public interface IAdminModule {
 	//ADM001: Over admin prava uzivatele
 	public boolean checkAdminUserRights(LoggedUser user);
 	//ADM002: Uload souboru
+	public UploadFileData uploadFileFromForm(HttpServletRequest request, UploadRepositories repository, int maxMemSize, int maxFileSize);
 	//ADM003: Ziskej seznam oznacenych ppolozek v novinkach
 	
 	//ADM004: Ziskej nasledujici akci

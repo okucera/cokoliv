@@ -1,19 +1,8 @@
 package cokoliv.flowdata;
 
-import cokoliv.databobjects.LoggedUser;
-
 public class LoginUserFlowData extends FlowData {
-	private LoggedUser user = null;
 	private String username = null;
 	private String password64 = null;
-
-	public LoggedUser getUser() {
-		return user;
-	}
-
-	public void setUser(LoggedUser user) {
-		this.user = user;
-	}
 
 	public String getUsername() {
 		return username;

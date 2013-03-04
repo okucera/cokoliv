@@ -11,12 +11,9 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
+
+    
+    <!-- Standard jsp api -->
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>servlet-api</artifactId>
@@ -36,6 +33,29 @@
       <scope>runtime</scope>
     </dependency>
     
+    <!-- Upload of files -->
+    <dependency>
+		<groupId>commons-fileupload</groupId>
+		<artifactId>commons-fileupload</artifactId>
+		<version>1.2</version>
+	</dependency>
+    <dependency>
+		<groupId>commons-io</groupId>
+		<artifactId>commons-io</artifactId>
+		<version>1.3</version>
+	</dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.2</version>
+      <scope>test</scope>
+    </dependency>		
+    <dependency>
+		<groupId>portlet-api</groupId>
+		<artifactId>portlet-api</artifactId>
+		<version>1.0</version>
+	</dependency>	
+		
 	<!-- MySQL database driver -->
 	<dependency>
 		<groupId>mysql</groupId>

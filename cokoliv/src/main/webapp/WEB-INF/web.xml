@@ -1,9 +1,12 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <context-param>
+  	<param-name>newsImageUpload</param-name>
+  	<param-value>E:\SW\Development\repo\cokoliv\cokoliv\src\main\webapp\img\upload\news\</param-value>
+  	<description>Adresar pro upload obrazku</description>
+  </context-param>
   <servlet>
   	<servlet-name>LoginServlet</servlet-name>
   	<display-name>UserServlet</display-name>
@@ -31,6 +34,12 @@
   	<description>Servlet pro upload obrazku na server</description>
   	<servlet-class>cokoliv.servlets.UploadImageServlet</servlet-class>
   </servlet>
+    <servlet>
+        <servlet-name>FileUploadServlet</servlet-name>
+        <display-name>FileUploadServlet</display-name>
+        <description>Servlet pro upload souboru</description>
+        <servlet-class>cokoliv.servlets.FileUploadServlet</servlet-class>
+    </servlet>
   <servlet-mapping>
   	<servlet-name>LoginServlet</servlet-name>
   	<url-pattern>/LoginServlet</url-pattern>
@@ -50,7 +59,11 @@
   <servlet-mapping>
   	<servlet-name>UploadImageServlet</servlet-name>
   	<url-pattern>/UploadImageServlet</url-pattern>
-  </servlet-mapping>  
+  </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FileUploadServlet</servlet-name>
+        <url-pattern>/FileUploadServlet</url-pattern>
+    </servlet-mapping>  
 
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
@@ -59,5 +72,5 @@
 		<welcome-file>default.html</welcome-file>
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
-	</welcome-file-list>  
+	</welcome-file-list>
 </web-app>

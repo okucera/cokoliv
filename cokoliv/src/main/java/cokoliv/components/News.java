@@ -7,7 +7,7 @@ import cokoliv.enumerate.EFlows;
 import cokoliv.flowdata.NewsFlowData;
 import cokoliv.renderers.CokolivAdminNewsRenderer;
 import cokoliv.renderers.CokolivNewsItemRenderer;
-import cokoliv.support.Constants;
+import cokoliv.support.CokolivContext;
 import cokoliv.support.UserHelper;
 
 
@@ -22,6 +22,7 @@ public class News extends CokolivTag {
 	public int doStartTag(){
 		try {
 			this.out = pageContext.getOut();
+			loggedUser = CokolivContext.getContext().getLoggedUser();
 			getContent();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -60,15 +61,5 @@ public class News extends CokolivTag {
 		}else{
 			itemRenderer = new CokolivNewsItemRenderer();
 		}
-	}
-	
-	
-
-	public LoggedUser getLoggedUser() {
-		return loggedUser;
-	}
-
-	public void setLoggedUser(LoggedUser loggedUser) {
-		this.loggedUser = loggedUser;
 	}
 }

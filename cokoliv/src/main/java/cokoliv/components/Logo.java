@@ -7,6 +7,7 @@ import javax.servlet.jsp.tagext.TagSupport;
 
 import cokoliv.databobjects.LoggedUser;
 import cokoliv.enumerate.Forms;
+import cokoliv.support.CokolivContext;
 import cokoliv.support.Constants;
 import cokoliv.support.KeyManager;
 
@@ -22,6 +23,7 @@ public class Logo extends TagSupport {
 	private LoggedUser loggedUser;
 	
 	public int doStartTag(){
+		this.loggedUser = CokolivContext.getContext().getLoggedUser();
 		try{
 			out = pageContext.getOut();
 			out.println("<table class=\"screen-width-max-limit\" align=\"right\">");
