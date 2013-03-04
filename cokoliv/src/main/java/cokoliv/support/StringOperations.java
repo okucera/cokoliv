@@ -38,7 +38,8 @@ public class StringOperations {
 	
 	public String base64DecodedString(String text){
 		String decoded="";
-		BASE64Decoder decode = new BASE64Decoder();
+		BASE64Decoder base64Decoder = new BASE64Decoder();
+		BASE64Decoder decode = base64Decoder;
 		try{
 			decoded = new String(decode.decodeBuffer(text));
 		}catch(IOException e){

@@ -70,6 +70,8 @@ public class Constants {
 	public static final String SQL_LOG_FILE = "SQL_LOG_FILE";
 	public static final String SERVLET_LOG_FILE = "SERVLET_LOG_FILE";
 	public static final String ERROR_LOG_FILE = "ERROR_LOG_FILE";
+	public static final String IMG_DIR = "IMG_DIR";
+	public static final String DEFAULT_UPLOAD_IMG_FILE = "DEFAULT_UPLOAD_IMG_FILE";
 	
 	public static final String UPLOAD_DIR = "UPLOAD_DIR";
 	public static final String UPLOAD_HOME = "UPLOAD_HOME";
