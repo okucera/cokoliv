@@ -6,4 +6,7 @@ cokoliv/.settings/*
 *.log
 *.log.*
 *.lck
+.settings/*
+src/*
+target/*
 
