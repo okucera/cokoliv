@@ -50,10 +50,10 @@ public class UserOperationServlet extends BasicAbstractServlet {
 		String[] params = {firstName, lastName, nick, newPwd, retypedNewPwd};
 		if(!strOp.isArrayNullOrEmpty(params)){
 			
-			Object loggedUserObj = this.session.getAttribute(Constants.LOGGED_USER_KEY);
+			//Object loggedUserObj = this.session.getAttribute(Constants.LOGGED_USER_KEY);
 			String newPwd64 = strOp.base64EncodedString(newPwd);
 			String retypedNewPwd64 = strOp.base64EncodedString(retypedNewPwd);
-			LoggedUser loggedUser = loggedUserObj == null ? null : (LoggedUser) loggedUserObj;
+			LoggedUser loggedUser = context.getLoggedUser();
 			
 			if(loggedUser!=null){
 				loggedUser.setFirstName(firstName);

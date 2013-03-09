@@ -9,6 +9,8 @@ import javax.servlet.jsp.tagext.TagSupport;
 import cokoliv.components.wizzards.IWizzardItem;
 import cokoliv.databobjects.LoggedUser;
 import cokoliv.enumerate.EWizzardItems;
+import cokoliv.enumerate.Forms;
+import cokoliv.enumerate.WizzardActionEnum;
 import cokoliv.support.CokolivContext;
 import cokoliv.support.StyleNames;
 
@@ -21,6 +23,8 @@ public class WizzardComponent extends TagSupport {
 	private ArrayList<IWizzardItem> items;
 	private int activeItemIndex = 0;
 	private LoggedUser loggedUser;
+	private Forms activeFormId;
+	private CokolivContext context = CokolivContext.getContext();
 	
 	public int doStartTag(){
 		try{
@@ -35,12 +39,24 @@ public class WizzardComponent extends TagSupport {
 	
 	public int doEndTag(){
 		try{
-			drawWizzardItems();
+			if(context.getActiveWizzardItem() != EWizzardItems.NONE){
+				if(context.getWizzardAction() != WizzardActionEnum.NONE) {
+					int newActiveItemIndex = getActiveItemIndexByAction(context.getActiveWizzardItem(), context.getWizzardAction());
+					setActiveItem(newActiveItemIndex);
+				} else {
+					setActiveItem(CokolivContext.getContext().getActiveWizzardItem());
+				}
+			}else if(items.size() > 0){
+				setActiveItem(0);
+			}
+//			drawWizzardItems();			
 			return EVAL_PAGE;
 		}catch(Exception ex){
 			throw new Error("Error in WizzardComponent doStartTag.");
 		}	
 	}
+	
+
 	
 	public void addWizzardItem(IWizzardItem item){
 		if(items==null)
@@ -66,6 +82,41 @@ public class WizzardComponent extends TagSupport {
 		}
 	}
 	
+	public int getItemIndex(EWizzardItems item){
+		if(items != null){
+			for(int i=0; i < items.size(); i++){
+				IWizzardItem wizzardItem = items.get(i);
+				if(wizzardItem.getType() == item){
+					return i;
+				}
+			}
+		}
+		
+		return -1;
+	}
+	
+	private int getActiveItemIndexByAction(EWizzardItems oldItem, WizzardActionEnum action){
+		int oldItemIndex = getItemIndex(oldItem);
+		int newItemIndex = 0;
+		
+		if(action == WizzardActionEnum.NEXT) {
+			if(oldItemIndex + 1 < items.size()){
+				newItemIndex = oldItemIndex + 1; 
+			}else{
+				//TODO - zalogovat-sem by se to nemelo nikdy dostat
+				newItemIndex = oldItemIndex;
+			}
+		} else if(action == WizzardActionEnum.PREVIOUS){
+			if(oldItemIndex-1 > 0){
+				newItemIndex = oldItemIndex - 1;
+			} else {
+				//TODO - zalogovat-sem by se to nemelo nikdy dostat
+				newItemIndex = oldItemIndex;
+			}
+		}
+		return newItemIndex;
+	}
+	
 	public void setActiveItem(int itemIndex) {
 		if(itemIndex > -1 && itemIndex < items.size()){
 			activeItemIndex = itemIndex;
@@ -88,6 +139,8 @@ public class WizzardComponent extends TagSupport {
 				out.println("</tr>");
 				out.println("</table>");
 			}
+			context.setActiveWizzardItem(EWizzardItems.NONE);
+			context.setWizzardAction(WizzardActionEnum.NONE);
 		} catch (IOException ioException) {
 			System.out.println("WizzardComponent.drawWizzardItems: Promenna \"out\" nebo jeji pageContext nebyly inicializovany/");
 			ioException.printStackTrace();
@@ -130,5 +183,13 @@ public class WizzardComponent extends TagSupport {
 		out.println("<td class=\""+StyleNames.INACTIVE_WIZZARD_ITEM_TITLE_STYLE+"\">");
 		out.println(item.getType().getItemTitle());
 		out.println("</td>");
+	}
+
+	public Forms getActiveFormId() {
+		return activeFormId;
+	}
+
+	public void setActiveFormId(Forms activeFormId) {
+		this.activeFormId = activeFormId;
 	}
 }

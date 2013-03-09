@@ -2,6 +2,7 @@ package cokoliv.flows;
 
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import cokoliv.enumerate.MessageCodes;
 import cokoliv.flowdata.IFlowData;
 import cokoliv.flowdata.UploadFileData;
 import cokoliv.modules.adm.AdminModule;
@@ -20,13 +21,14 @@ public class UploadFileFlow extends BasicFlow implements IFlow {
 					//TODO - Check if uploading filename does not exists
 					admin.uploadFileFromForm(data.getRequest(), data.getRepository(), data.getMaxMemSize(), data.getMaxFileSize());
 				}else{
-					//TODO - wrong type of form data
+					//wrong type of form data
+					data.setErrorMessage(MessageCodes.HLA023);
 				}
 			} else {
-				//TODO - nemate dostatecna opravneni
+				//nemate dostatecna opravneni
+				data.setErrorMessage(MessageCodes.HLA024);
 			}
 		}
 		
 	}
-
 }

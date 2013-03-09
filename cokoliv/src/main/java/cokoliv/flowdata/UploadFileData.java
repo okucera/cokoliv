@@ -1,21 +1,16 @@
 package cokoliv.flowdata;
 
-import java.util.List;
+import java.io.File;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.commons.fileupload.FileItem;
-
-import cokoliv.databobjects.LoggedUser;
 import cokoliv.enumerate.UploadRepositories;
+import cokoliv.enumerate.WizzardActionEnum;
 
 public class UploadFileData extends FlowData {
 	//REQUIRED ATTRIBUTES
 	private boolean onResultLoadAsStream = false;
-	private int maxFileSize = 50*1024;	// maximum file size to be uploaded.
-	private int maxMemSize = 4*1024;   	// maximum size that will be stored in memory
 	private UploadRepositories repository;
-	private HttpServletRequest request;
+	private WizzardActionEnum wizzardAction;
+	private File[] files;
 	
 	//PARAMETERES TO SET IN FLOW
 	private String filename;
@@ -46,29 +41,22 @@ public class UploadFileData extends FlowData {
 	public void setFileSize(long fileSize) {
 		this.fileSize = fileSize;
 	}
-	public int getMaxFileSize() {
-		return maxFileSize;
-	}
-	public void setMaxFileSize(int maxFileSize) {
-		this.maxFileSize = maxFileSize;
-	}
-	public int getMaxMemSize() {
-		return maxMemSize;
-	}
-	public void setMaxMemSize(int maxMemSize) {
-		this.maxMemSize = maxMemSize;
-	}
 	public UploadRepositories getRepository() {
 		return repository;
 	}
 	public void setRepository(UploadRepositories repository) {
 		this.repository = repository;
 	}
-	public HttpServletRequest getRequest() {
-		return request;
+	public WizzardActionEnum getWizzardAction() {
+		return wizzardAction;
 	}
-	public void setRequest(HttpServletRequest request) {
-		this.request = request;
+	public void setWizzardAction(WizzardActionEnum wizzardAction) {
+		this.wizzardAction = wizzardAction;
 	}
-
+	public File[] getFiles() {
+		return files;
+	}
+	public void setFiles(File[] files) {
+		this.files = files;
+	}
 }

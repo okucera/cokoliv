@@ -5,6 +5,8 @@ import cokoliv.dao.MenuDAO;
 import cokoliv.databobjects.LoggedUser;
 import cokoliv.databobjects.MenuItem;
 import cokoliv.databobjects.NewItem;
+import cokoliv.enumerate.EWizzardItems;
+import cokoliv.enumerate.WizzardActionEnum;
 
 public class CokolivContext {
 	private static CokolivContext cokolivContext = null;
@@ -17,6 +19,11 @@ public class CokolivContext {
 	
 	//Prihlaseny uzivatel
 	private LoggedUser loggedUser;
+	
+	//Aktualni wizzard item
+	private EWizzardItems activeWizzardItem = EWizzardItems.NONE;
+	//Akce provadena nad aktualnim wizzard itemem
+	private WizzardActionEnum wizzardAction = WizzardActionEnum.NONE;
 		
 	private CokolivContext(){		
 		if(menuItems==null){
@@ -55,5 +62,21 @@ public class CokolivContext {
 
 	public void setLoggedUser(LoggedUser loggedUser) {
 		this.loggedUser = loggedUser;
+	}
+	
+	public EWizzardItems getActiveWizzardItem() {
+		return activeWizzardItem;
+	}
+
+	public void setActiveWizzardItem(EWizzardItems activeWizzardItem) {
+		this.activeWizzardItem = activeWizzardItem;
+	}
+
+	public WizzardActionEnum getWizzardAction() {
+		return wizzardAction;
+	}
+
+	public void setWizzardAction(WizzardActionEnum wizzardAction) {
+		this.wizzardAction = wizzardAction;
 	}
 }

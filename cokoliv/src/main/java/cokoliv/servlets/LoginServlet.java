@@ -59,7 +59,6 @@ public class LoginServlet extends BasicAbstractServlet {
 			flowData.setNextFormId(formId);
 			executeFlow(EFlows.FL002, flowData);
 			if(flowData.getErrorMessage()==null){
-				//setLoggedUserSession(flowData.getUser());
 				redirectToForm(flowData.getNextFormId());
 			}else{
 				redirectToError(flowData.getErrorMessage());

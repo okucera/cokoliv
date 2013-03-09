@@ -16,7 +16,10 @@ public enum MessageCodes {
 	HLA019("HLA019"),
 	HLA020("HLA020"),
 	HLA021("HLA021"),
-	HLA022("HLA022");
+	HLA022("HLA022"),
+	HLA023("HLA023"),
+	HLA024("HLA024"),
+	HLA025("HLA025");
 	
 	
 	private String errCode;

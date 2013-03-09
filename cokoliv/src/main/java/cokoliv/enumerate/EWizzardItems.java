@@ -2,6 +2,7 @@ package cokoliv.enumerate;
 
 public enum EWizzardItems {
 
+	NONE("NONE"),
 	ADD_IMAGE("Obrázek"),
 	ADD_TEXT("Texty");
 	

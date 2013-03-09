@@ -41,7 +41,7 @@ public class NewsServlet extends BasicAbstractServlet {
 		this.response = response;
 		
 		String[] newsItems = request.getParameterValues("newsItem");
-		LoggedUser loggedUser = this.getRequestLoggedUser(request);
+		LoggedUser loggedUser = context.getLoggedUser();
 		
 		if(newsItems != null && newsItems.length > 0 && loggedUser != null){
 			DeleteNewsData flowData = new DeleteNewsData();

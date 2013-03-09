@@ -6,8 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cokoliv.enumerate.Forms;
-import cokoliv.support.Constants;
-
 /**
  * Servlet implementation class LogoutServlet
  */
@@ -34,7 +32,6 @@ public class LogoutServlet extends BasicAbstractServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.session = request.getSession();
 		this.response = response;
-		session.removeAttribute(Constants.LOGGED_USER_KEY);
 		redirectToForm(Forms.FRM001);
 	}
 

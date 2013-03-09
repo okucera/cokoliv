@@ -27,8 +27,15 @@ public class Constants {
 	//FormId aktualne nactene stranky
 	public static final String FORM_ID_KEY = "formId";
 	
-	//Klic pro ziskani objektu LoggedUser v HttpSEssion
-	public static final String LOGGED_USER_KEY = "sessionLoggedUser";
+	//WizzardId aktualne nacteneho okna wizzardu
+	public static final String WIZZARD_ACTION_KEY = "wizzardAction";
+	public static final String WIZZARD_ITEM_TYPE_KEY = "wizzardItemType";
+
+	
+	
+	
+	
+	
 	
 	//nazvy formularovych prvku
 	public static final String FORM_TEXTFIELD_USERNAME = "username";

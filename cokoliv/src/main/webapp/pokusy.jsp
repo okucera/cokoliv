@@ -9,7 +9,6 @@
 <body>
 	<script>
 		function fileChangedHandler() {
-			alert('necuum');
 			document.uploadForm.submit();
 		} 
 	</script>

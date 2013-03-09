@@ -1,4 +1,5 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><%@page
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><%@page import="cokoliv.model.NewsModel"%>
+<%@page
 	language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="/WEB-INF/cokoliv_lib.tld" prefix="CokolivTags"%>
@@ -18,14 +19,14 @@
 		<table class="screen">
 			<tr>
 				<td class="logo">
-	  				<CokolivTags:Logo nextFormId="<%=formId %>" loggedUser="<%= user %>"/>
+	  				<CokolivTags:Logo nextFormId="<%=formId %>"/>
 	  			</td>
 	  		</tr>
 	  		<tr>
 	  			<td class="main">
 	  				<CokolivTags:HorizontalMenu activeFormId="<%= formId %>"/>					
 					<CokolivTags:BasicPanel title="Nov!nky" activeFormId="<%= formId %>">
-						<CokolivTags:WizzardComponent>
+						<CokolivTags:WizzardComponent activeFormId="<%= formId %>">
 							<CokolivTags:ImageWizzardItem/>
 							<CokolivTags:NewsTextWizzardItem/>
 						</CokolivTags:WizzardComponent>
