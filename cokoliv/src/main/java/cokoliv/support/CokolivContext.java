@@ -7,6 +7,7 @@ import cokoliv.databobjects.MenuItem;
 import cokoliv.databobjects.NewItem;
 import cokoliv.enumerate.EWizzardItems;
 import cokoliv.enumerate.WizzardActionEnum;
+import cokoliv.flowdata.FlowDataHolder;
 
 public class CokolivContext {
 	private static CokolivContext cokolivContext = null;
@@ -24,6 +25,8 @@ public class CokolivContext {
 	private EWizzardItems activeWizzardItem = EWizzardItems.NONE;
 	//Akce provadena nad aktualnim wizzard itemem
 	private WizzardActionEnum wizzardAction = WizzardActionEnum.NONE;
+	
+	private FlowDataHolder flowDataHolder = null;
 		
 	private CokolivContext(){		
 		if(menuItems==null){
@@ -78,5 +81,13 @@ public class CokolivContext {
 
 	public void setWizzardAction(WizzardActionEnum wizzardAction) {
 		this.wizzardAction = wizzardAction;
+	}
+
+	public FlowDataHolder getFlowDataHolder() {
+		return flowDataHolder;
+	}
+
+	public void setFlowDataHolder(FlowDataHolder flowDataHolder) {
+		this.flowDataHolder = flowDataHolder;
 	}
 }

@@ -1,6 +1,8 @@
 package cokoliv.flows;
 
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import java.util.List;
+
+import org.apache.commons.fileupload.FileItem;
 
 import cokoliv.enumerate.MessageCodes;
 import cokoliv.flowdata.IFlowData;
@@ -17,12 +19,16 @@ public class UploadFileFlow extends BasicFlow implements IFlow {
 			UploadFileData data = (UploadFileData) flowData;
 			
 			if(this.cokoliv.getLoggedUser() != null && UserHelper.isLoggedUserAdminOrSuperuser(this.cokoliv.getLoggedUser())){
-				if(ServletFileUpload.isMultipartContent(data.getRequest())){
-					//TODO - Check if uploading filename does not exists
-					admin.uploadFileFromForm(data.getRequest(), data.getRepository(), data.getMaxMemSize(), data.getMaxFileSize());
-				}else{
-					//wrong type of form data
-					data.setErrorMessage(MessageCodes.HLA023);
+				//Check if uploading filename does not exists
+				List<FileItem> excludedItems = admin.getExistingFilesFromList(data.getFileItems(), data.getRepository());				
+				List<FileItem> uploadedItems = admin.uploadFileFromForm(data.getFileItems(), data.getRepository(), excludedItems);
+				
+				if(uploadedItems != null && uploadedItems.size() > 0) {
+					data.setUploadedItems(uploadedItems);
+				}
+				
+				if(excludedItems != null && excludedItems.size() > 0) {
+					data.setExcludedItems(excludedItems);
 				}
 			} else {
 				//nemate dostatecna opravneni

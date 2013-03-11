@@ -2,6 +2,8 @@ package cokoliv.servlets;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 
@@ -9,6 +11,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import cokoliv.enumerate.UploadRepositories;
 
 /**
  * Servlet implementation class UploadImageServlet
@@ -28,15 +32,28 @@ public class UploadImageServlet extends BasicAbstractServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String reqFilename=request.getParameter("image");
+		String strRepository = request.getParameter("repo");
+		UploadRepositories imgRepo = null;
+
+		if(strRepository!=null){
+			imgRepo = UploadRepositories.valueOf(strRepository);
+		}
+		
 		//TODO - zjistit obecne z contextu cestu k defaultImage
 		String defaultImagePath = "http://localhost:8082/cokoliv/img/defaultImg.jpg";
 		//String sampleDefaultImagePath = pageContext.getRequest().getScheme() + "://" + pageContext.getRequest().getServerName() + ":" + pageContext.getRequest().getServerPort() +"/cokoliv/"+ imgHomeDir +"/"+ defaultImgFilename;
 
 		if(reqFilename==null || reqFilename.equals("null"))
 			reqFilename=defaultImagePath;
+		else
+			reqFilename=imgRepo.getRepositoryPath() + reqFilename;
 		try {
+			/*
 			URL url = new URL(reqFilename);
 			BufferedInputStream bis = new BufferedInputStream(url.openStream());
+			*/
+			BufferedInputStream bis = new BufferedInputStream(new FileInputStream(reqFilename));
+			
 			response.setContentType("image/jpg");
 			BufferedOutputStream bos = new BufferedOutputStream(response.getOutputStream());
 			

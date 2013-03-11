@@ -1,14 +1,11 @@
 package cokoliv.modules.adm;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import cokoliv.dao.DbParamsDAO;
 import cokoliv.dao.UsersDAO;
@@ -17,7 +14,6 @@ import cokoliv.databobjects.User;
 import cokoliv.enumerate.UploadRepositories;
 import cokoliv.exceptions.CokolivApplicationException;
 import cokoliv.flowdata.ChangeUserDetailData;
-import cokoliv.flowdata.UploadFileData;
 import cokoliv.support.Constants;
 
 public class AdminModule implements IAdminModule {
@@ -39,56 +35,69 @@ public class AdminModule implements IAdminModule {
 	 *  - Enum pro dane uloziste
 	 * 
 	 */
-	public UploadFileData uploadFileFromForm(HttpServletRequest request, UploadRepositories repository, int maxMemSize, int maxFileSize) {
-		UploadFileData response = new UploadFileData();
-		
-		DiskFileItemFactory factory = new DiskFileItemFactory();
-		// maximum size that will be stored in memory
-		factory.setSizeThreshold(maxMemSize);
-
-		// Location to save data that is larger than maxMemSize.
-		factory.setRepository(new File(repository.getRepositoryPath()));
-		
-		// Create a new file upload handler
-		ServletFileUpload upload = new ServletFileUpload(factory);
-		
-		// maximum file size to be uploaded.
-		upload.setSizeMax( maxFileSize );
-
+	public List<FileItem> uploadFileFromForm(List<FileItem> fileItems, UploadRepositories repository, List<FileItem> excludedItems) {
+		List<FileItem> response = new ArrayList<FileItem>();
 		try{ 
-			// Parse the request to get file items.
-			List<FileItem> fileItems = upload.parseRequest(request);
-			
 			// Process the uploaded file items
 			Iterator<FileItem> i = fileItems.iterator();
 			
 		      while ( i.hasNext () ) 
 		      {
-		         FileItem fi = (FileItem)i.next();
-		         if ( !fi.isFormField () )	
-		         {
-		            // Get the uploaded file parameters
-		            String fieldName = fi.getFieldName();
-		            response.setFilename(fi.getName());
-		            String contentType = fi.getContentType();
-		            boolean isInMemory = fi.isInMemory();
-		            response.setFileSize(fi.getSize());
-		            // Write the file
-		            File file;
-		            if(response.getFilename().lastIndexOf("\\") >= 0 ){
-		               file = new File(repository.getRepositoryPath() + response.getFilename().substring(response.getFilename().lastIndexOf("\\"))) ;
-		            }else{
-		               file = new File(repository.getRepositoryPath() + response.getFilename().substring(response.getFilename().lastIndexOf("\\")+1)) ;
-		            }
-		            fi.write(file) ;
-		         }
+		    	  FileItem item = (FileItem)i.next();
+		    	  
+		    	  // Write the file only if it is not already exists
+		    	  if(!isExcludedItem(item, excludedItems)){
+		    		  File file;
+		    		  if(item.getName().lastIndexOf("\\") >= 0 ){
+		    			  file = new File(repository.getRepositoryPath() + item.getName().substring(item.getName().lastIndexOf("\\"))) ;
+		    		  }else{
+		    			  file = new File(repository.getRepositoryPath() + item.getName().substring(item.getName().lastIndexOf("\\")+1)) ;
+		    		  }
+		    		  item.write(file) ;
+		    		  response.add(item);
+		    	  }
 		      }
+		      //delete all temporary files from repository
+		      deleteTempFilesInRepository(repository);
 		}catch(Exception ex) {
 		       System.out.println(ex);
 		}
 
 
-		return null;
+		return response;
+	}
+	
+	private void deleteTempFilesInRepository(UploadRepositories repository){
+		File folder = new File(repository.getRepositoryPath());
+		if(folder.isDirectory()){
+			File[] files = folder.listFiles();
+			for(File file:files){
+				if(file.isFile()) {
+					String filename = file.getName();
+					int indexOfDot = filename.lastIndexOf('.')+1;
+					String ext = filename.substring(indexOfDot);
+					if(ext.toLowerCase().equals("tmp")){
+						file.delete();
+					}
+				}
+			}
+		}
+	}
+	
+	private boolean isExcludedItem(FileItem item, List<FileItem> excludedItems){
+		// Process the uploaded file items
+		Iterator<FileItem> i = excludedItems.iterator();
+
+		while ( i.hasNext () ) 
+		{
+			FileItem excludedItem = (FileItem)i.next();
+			// Get the uploaded file parameters
+			String fileName = excludedItem.getName();
+
+			if(fileName.equals(item.getName()))
+				return true;
+		}
+		return false;
 	}
 
 	public User getUserByLogin(String login) throws CokolivApplicationException{
@@ -133,5 +142,32 @@ public class AdminModule implements IAdminModule {
 	public void storeUser(ChangeUserDetailData user) throws CokolivApplicationException {
 		UsersDAO dao = new UsersDAO();
 		dao.storeUser(user);
+	}
+	
+	public List<FileItem> getExistingFilesFromList(List<FileItem> list, UploadRepositories repository) {
+		List<FileItem> existingFileItems = new ArrayList<FileItem>();
+		
+		// Process the uploaded file items
+		Iterator<FileItem> i = list.iterator();
+
+		while ( i.hasNext () ) 
+		{
+			FileItem item = (FileItem)i.next();
+
+			// Make file object
+			File file;
+			if(item.getName().lastIndexOf("\\") >= 0 ){
+				file = new File(repository.getRepositoryPath() + item.getName().substring(item.getName().lastIndexOf("\\"))) ;
+			}else{
+				file = new File(repository.getRepositoryPath() + item.getName().substring(item.getName().lastIndexOf("\\")+1)) ;
+			}
+			
+			//check whether this object exists in specified repository
+			if(file.exists()){
+				existingFileItems.add(item);
+			}
+		}
+
+		return existingFileItems;
 	}
 }

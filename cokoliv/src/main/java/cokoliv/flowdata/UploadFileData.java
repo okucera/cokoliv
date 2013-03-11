@@ -1,6 +1,8 @@
 package cokoliv.flowdata;
 
-import java.io.File;
+import java.util.List;
+
+import org.apache.commons.fileupload.FileItem;
 
 import cokoliv.enumerate.UploadRepositories;
 import cokoliv.enumerate.WizzardActionEnum;
@@ -10,36 +12,17 @@ public class UploadFileData extends FlowData {
 	private boolean onResultLoadAsStream = false;
 	private UploadRepositories repository;
 	private WizzardActionEnum wizzardAction;
-	private File[] files;
+	private List<FileItem> fileItems;
 	
 	//PARAMETERES TO SET IN FLOW
-	private String filename;
-	private String fileType;
-	private long fileSize;
+	private List<FileItem> excludedItems;
+	private List<FileItem> uploadedItems;
 	
 	public boolean isOnResultLoadAsStream() {
 		return onResultLoadAsStream;
 	}
 	public void setOnResultLoadAsStream(boolean onResultLoadAsStream) {
 		this.onResultLoadAsStream = onResultLoadAsStream;
-	}
-	public String getFilename() {
-		return filename;
-	}
-	public void setFilename(String filename) {
-		this.filename = filename;
-	}
-	public String getFileType() {
-		return fileType;
-	}
-	public void setFileType(String fileType) {
-		this.fileType = fileType;
-	}
-	public long getFileSize() {
-		return fileSize;
-	}
-	public void setFileSize(long fileSize) {
-		this.fileSize = fileSize;
 	}
 	public UploadRepositories getRepository() {
 		return repository;
@@ -53,10 +36,22 @@ public class UploadFileData extends FlowData {
 	public void setWizzardAction(WizzardActionEnum wizzardAction) {
 		this.wizzardAction = wizzardAction;
 	}
-	public File[] getFiles() {
-		return files;
+	public List<FileItem> getFileItems() {
+		return fileItems;
 	}
-	public void setFiles(File[] files) {
-		this.files = files;
+	public void setFileItems(List<FileItem> fileItems) {
+		this.fileItems = fileItems;
+	}
+	public List<FileItem> getExcludedItems() {
+		return excludedItems;
+	}
+	public void setExcludedItems(List<FileItem> excludedItems) {
+		this.excludedItems = excludedItems;
+	}
+	public List<FileItem> getUploadedItems() {
+		return uploadedItems;
+	}
+	public void setUploadedItems(List<FileItem> uploadedItems) {
+		this.uploadedItems = uploadedItems;
 	}
 }

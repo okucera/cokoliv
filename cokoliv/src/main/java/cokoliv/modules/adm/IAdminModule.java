@@ -2,8 +2,6 @@ package cokoliv.modules.adm;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.commons.fileupload.FileItem;
 
 import cokoliv.databobjects.LoggedUser;
@@ -11,13 +9,12 @@ import cokoliv.databobjects.User;
 import cokoliv.enumerate.UploadRepositories;
 import cokoliv.exceptions.CokolivApplicationException;
 import cokoliv.flowdata.ChangeUserDetailData;
-import cokoliv.flowdata.UploadFileData;
 
 public interface IAdminModule {
 	//ADM001: Over admin prava uzivatele
 	public boolean checkAdminUserRights(LoggedUser user);
 	//ADM002: Uload souboru
-	public UploadFileData uploadFileFromForm(HttpServletRequest request, UploadRepositories repository, int maxMemSize, int maxFileSize);
+	public List<FileItem> uploadFileFromForm(List<FileItem> items, UploadRepositories repository, List<FileItem> excludedItems);
 	//ADM003: Ziskej seznam oznacenych ppolozek v novinkach
 	
 	//ADM004: Ziskej nasledujici akci
@@ -40,4 +37,6 @@ public interface IAdminModule {
 	public boolean newPasswordsMatch(String newPwd, String retypedNewPwd);
 	//ADM015: Uloz uzivatele do db
 	public void storeUser(ChangeUserDetailData user) throws CokolivApplicationException;
+	//ADM016: Ziskej seznam existujicich souboru
+	public List<FileItem> getExistingFilesFromList(List<FileItem> list, UploadRepositories repository);
 }

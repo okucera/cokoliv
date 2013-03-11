@@ -4,6 +4,8 @@ import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 
 import cokoliv.enumerate.EWizzardItems;
+import cokoliv.flowdata.IFlowData;
+import cokoliv.support.CokolivContext;
 
 public abstract class WizzardItem extends TagSupport implements IWizzardItem {
 
@@ -36,6 +38,10 @@ public abstract class WizzardItem extends TagSupport implements IWizzardItem {
 	
 	public EWizzardItems getType() {
 		return this.itemName;
+	}
+	
+	protected IFlowData getFlowDataFromContext(){
+		return CokolivContext.getContext().getFlowDataHolder().getFlowData();
 	}
 	
 	protected abstract void appendToStartTag();
