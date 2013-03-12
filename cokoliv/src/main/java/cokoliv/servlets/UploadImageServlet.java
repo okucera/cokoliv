@@ -46,7 +46,7 @@ public class UploadImageServlet extends BasicAbstractServlet {
 		if(reqFilename==null || reqFilename.equals("null"))
 			reqFilename=defaultImagePath;
 		else
-			reqFilename=imgRepo.getRepositoryPath() + reqFilename;
+			reqFilename=imgRepo.getRepositoryPath() + "preview" + File.separator + reqFilename;
 		try {
 			/*
 			URL url = new URL(reqFilename);

@@ -67,6 +67,7 @@ public class FileUploadServlet extends BasicAbstractServlet {
 				flowData.setNextFormId(formId);
 				flowData.setFileItems(HttpServletUtils.getNonFormFileItems(multipartItems));
 				flowData.setRepository(UploadRepositories.NEWS_IMAGES_UPLOAD_REPOSITORY);
+				flowData.setMakePreview(true);
 				
 				context.setActiveWizzardItem(wizzardItem);
 				context.setWizzardAction(wizzardAction);

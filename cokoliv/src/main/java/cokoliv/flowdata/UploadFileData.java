@@ -13,6 +13,7 @@ public class UploadFileData extends FlowData {
 	private UploadRepositories repository;
 	private WizzardActionEnum wizzardAction;
 	private List<FileItem> fileItems;
+	private boolean makePreview;
 	
 	//PARAMETERES TO SET IN FLOW
 	private List<FileItem> excludedItems;
@@ -53,5 +54,11 @@ public class UploadFileData extends FlowData {
 	}
 	public void setUploadedItems(List<FileItem> uploadedItems) {
 		this.uploadedItems = uploadedItems;
+	}
+	public boolean isMakePreview() {
+		return makePreview;
+	}
+	public void setMakePreview(boolean makePreview) {
+		this.makePreview = makePreview;
 	}
 }

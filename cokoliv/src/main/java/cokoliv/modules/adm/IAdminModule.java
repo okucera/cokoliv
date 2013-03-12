@@ -14,7 +14,7 @@ public interface IAdminModule {
 	//ADM001: Over admin prava uzivatele
 	public boolean checkAdminUserRights(LoggedUser user);
 	//ADM002: Uload souboru
-	public List<FileItem> uploadFileFromForm(List<FileItem> items, UploadRepositories repository, List<FileItem> excludedItems);
+	public List<FileItem> uploadFilesToRepository(List<FileItem> fileItems, UploadRepositories repository, List<FileItem> excludedItems);
 	//ADM003: Ziskej seznam oznacenych ppolozek v novinkach
 	
 	//ADM004: Ziskej nasledujici akci
@@ -39,4 +39,8 @@ public interface IAdminModule {
 	public void storeUser(ChangeUserDetailData user) throws CokolivApplicationException;
 	//ADM016: Ziskej seznam existujicich souboru
 	public List<FileItem> getExistingFilesFromList(List<FileItem> list, UploadRepositories repository);
+	//ADM017: Vytvor a uloz nahled k obrazku
+	public void makeImagePreviewInRepository(List<FileItem> fileItems, UploadRepositories repository);
+	//ADM018: Vycisti repository od docasnych souboru
+	public void deleteTempFilesInRepository(UploadRepositories repository);
 }
