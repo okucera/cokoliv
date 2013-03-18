@@ -47,6 +47,7 @@ public class FileUploadServlet extends BasicAbstractServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.response = response;
+		this.request = request;
 		
 		if(ServletFileUpload.isMultipartContent(request)){
 			List<FileItem> multipartItems = HttpServletUtils.parseMultipartFormHttpServletRequest(request, UploadRepositories.NEWS_IMAGES_UPLOAD_REPOSITORY);
@@ -73,12 +74,9 @@ public class FileUploadServlet extends BasicAbstractServlet {
 				context.setWizzardAction(wizzardAction);
 				
 				EFlows.FL005.executeFlow(flowData);
-				
-				storeFlowData(flowData);
 
-				
 				if(flowData.getErrorMessage()==null){
-					redirectToForm(flowData.getNextFormId());
+					redirectWithFlowdata(flowData);
 				}else{
 					redirectToError(flowData.getErrorMessage());
 				}

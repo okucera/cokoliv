@@ -130,13 +130,15 @@ public class WizzardComponent extends TagSupport {
 	private void drawWizzardItems(){
 		try {
 			if(this.loggedUser != null) {
-				out.println("<table class=\"wizzardHeader\" align=\"center\">");
-				out.println("<tr>");
+				out.println("<table align=\"center\">");
+				out.println("	<tr>");
+				out.println("		<td>");	
 				createWizzardHeaders();
-				out.println("</tr>");
-				out.println("<tr>");
+				out.println("		</td>");	
+				out.println("	</tr>");
+				out.println("	<tr>");
 				createWizzardContent();
-				out.println("</tr>");
+				out.println("	</tr>");
 				out.println("</table>");
 			}
 			context.setActiveWizzardItem(EWizzardItems.NONE);
@@ -148,10 +150,15 @@ public class WizzardComponent extends TagSupport {
 	}
 	
 	private void createWizzardHeaders() throws IOException{
+		out.println("<table class=\"wizzardHeader\" align=\"right\">");
+		out.println("	<tr>");
+		
 		for(int itemIndex = 0; itemIndex < items.size(); itemIndex++){
 			IWizzardItem item = items.get(itemIndex);
 			createHeader(item, itemIndex);
 		}
+		out.println("	</tr>");
+		out.println("</table>");
 	}
 	
 	private void createHeader(IWizzardItem item, int itemIndex) throws IOException{

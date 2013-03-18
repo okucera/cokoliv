@@ -9,6 +9,7 @@ import cokoliv.components.WizzardComponent;
 import cokoliv.enumerate.EWizzardItems;
 import cokoliv.enumerate.UploadRepositories;
 import cokoliv.flowdata.UploadFileData;
+import cokoliv.support.StyleNames;
 
 public class AddNewsTextWizzardItem extends WizzardItem {
 
@@ -34,19 +35,20 @@ public class AddNewsTextWizzardItem extends WizzardItem {
 	
 	public void drawContent() throws IOException {
 		//load stored image
-		String imgFilename = getImageFilenameFromContext();
-		UploadRepositories imgRepository = getRepositoryFromContext();
+		String imgFilename = getImageFilename();
+		UploadRepositories imgRepository = getRepository();
 		
 		out.println("			<form name=\"inputTextForm\" method=\"post\" action=\"IportNewsServlet\">");
 		out.println("				<table width=\"100%\">");
 		out.println("					<tr>");
 		out.println("						<td class=\"verticalSplitter\" width=\"220\">");
 		//Image
-		out.println("						<img src=\"UploadImageServlet?image="+imgFilename+"&repo="+imgRepository.name()+"\"/>");
-		
+		out.println("							<img src=\"UploadImageServlet?image="+imgFilename+"&repo="+imgRepository.name()+"\" alt=\"Martinka\" />");
+		//drawImageInfoTable();		
 		out.println("						</td>");
-		out.println("						<td>");
+		out.println("						<td valign=\"top\">");
 		//Image info
+		drawForm();
 		out.println("						</td>");
 		out.println("					</tr>");
 		out.println("					<tr>");
@@ -69,26 +71,87 @@ public class AddNewsTextWizzardItem extends WizzardItem {
 		out.println("			</form>");
 	}
 	
-	private String getImageFilenameFromContext() {
-		if(this.getFlowDataFromContext() instanceof UploadFileData) {
-			UploadFileData uploadFileData = (UploadFileData) this.getFlowDataFromContext();
-			List<FileItem> fileItems = uploadFileData.getUploadedItems();
-			
-			if(fileItems != null && fileItems.size() > 0)
-				return ((FileItem)fileItems.get(0)).getName();
-		}
+	private void drawForm() throws IOException {
+		out.println("				<table width=\"100%\">");
+		out.println("					<tr>");
+		out.println("						<td>");
+		out.println("							<input type=TEXT class=\""+StyleNames.TEXT_INPUT_STYLE+"\" name=\"newsTitle\" value=\"Titulek\">");		
+		out.println("						</td>");
+		out.println("					</tr>");
+		out.println("					<tr>");
+		out.println("						<td>");
+		out.println("							<textarea cols=70 rows=10 name=\"newsContent\" class=\""+StyleNames.TEXT_AREA_STYLE+"\">");
+		out.println("Obsah zprávy");
+		out.println("							</textarea>");
+		out.println("						</td>");
+		out.println("					</tr>");
+
+		out.println("					<tr>");
+		out.println("						<td colspan=\"2\">");
+
+		out.println("						</td>");
+		out.println("					</tr>");
+
+		out.println("				</table>");
+
+	}
+	
+	private void drawImageInfoTable() throws IOException{
+		FileItem item = getImageFileItem();
+		
+		String name = item.getName();
+		long size = item.getSize();
+		
+		out.println("				<table width=\"100%\">");
+		out.println("					<tr>");
+		out.println("						<td>");
+		out.println("							Jméno souboru: ");					
+		out.println("						</td>");
+		out.println("						<td>");
+		out.println("							" + name);
+		out.println("						</td>");
+		out.println("					</tr>");
+		out.println("					<tr>");
+		out.println("						<td>");
+		out.println("							Velikost souboru: ");
+		out.println("						</td>");
+		out.println("						<td>");
+		out.println("							" + size / 1000);				
+		out.println("						</td>");
+		out.println("					</tr>");
+		out.println("				</table>");
+
+	}
+	
+	private String getImageFilename(){
+		FileItem item = getImageFileItem();
+		if(item != null)
+			return item.getName();
 		
 		return null;
 	}
+
+	private FileItem getImageFileItem() {
+		if(this.getFlowData() instanceof UploadFileData) {
+			UploadFileData uploadFileData = (UploadFileData) this.getFlowData();
+			List<FileItem> fileItems = uploadFileData.getUploadedItems();
+
+			if(fileItems != null && fileItems.size() > 0)
+				return (FileItem)fileItems.get(0);
+		}		
+		return null;
+	}
 	
-	private UploadRepositories getRepositoryFromContext() {
-		if(this.getFlowDataFromContext() instanceof UploadFileData) {
-			UploadFileData uploadFileData = (UploadFileData) this.getFlowDataFromContext();
+	private UploadRepositories getRepository(){
+		if(this.getFlowData() instanceof UploadFileData) {
+			UploadFileData uploadFileData = (UploadFileData) this.getFlowData();
 			UploadRepositories repository = uploadFileData.getRepository();
 			return repository;
 		}
 		
 		return null;
 	}
+	
+
 
 }

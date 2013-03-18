@@ -104,7 +104,12 @@
   			<name>imageFilename</name>
   			<required>false</required>
   			<rtexprvalue>true</rtexprvalue>
-  		</attribute>  		
+  		</attribute>
+  		<attribute>
+  			<name>flowData</name>
+  			<required>true</required>
+  			<rtexprvalue>true</rtexprvalue>
+  		</attribute>  	   		
   	</tag>  
   	<tag>
   		<name>NewsTextWizzardItem</name>
@@ -113,5 +118,10 @@
   		<info>
   			Tag pro zobrazeni wizzard itemu pro vlozeni textu
   		</info>	
+  		<attribute>
+  			<name>flowData</name>
+  			<required>true</required>
+  			<rtexprvalue>true</rtexprvalue>
+  		</attribute>  	   		
   	</tag>    	
 </taglib>

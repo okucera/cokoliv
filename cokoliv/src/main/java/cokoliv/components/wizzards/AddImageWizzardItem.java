@@ -12,6 +12,7 @@ import cokoliv.components.WizzardComponent;
 import cokoliv.enumerate.EWizzardItems;
 import cokoliv.enumerate.Forms;
 import cokoliv.enumerate.WizzardActionEnum;
+import cokoliv.flowdata.IFlowData;
 import cokoliv.support.Constants;
 import cokoliv.support.PropertyManager;
 import cokoliv.support.StyleNames;

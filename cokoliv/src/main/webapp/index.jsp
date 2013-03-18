@@ -8,6 +8,8 @@
 <%@page import="cokoliv.support.Constants" %>
 <%
 	Forms formId = Forms.FRM001;	
+	Object objData = request.getAttribute(Constants.FLOW_DATA);
+	IFlowData data = objData == null ? null : (IFlowData) objData;
 %>
 <html>
 	<head>
@@ -27,8 +29,8 @@
 	  				<CokolivTags:HorizontalMenu activeFormId="<%= formId %>"/>					
 					<CokolivTags:BasicPanel title="Nov!nky" activeFormId="<%= formId %>">
 						<CokolivTags:WizzardComponent activeFormId="<%= formId %>">
-							<CokolivTags:ImageWizzardItem/>
-							<CokolivTags:NewsTextWizzardItem/>
+							<CokolivTags:ImageWizzardItem flowData="<%= data %>"/>
+							<CokolivTags:NewsTextWizzardItem flowData="<%= data %>"/>
 						</CokolivTags:WizzardComponent>
 						<CokolivTags:News/>
 					</CokolivTags:BasicPanel>				

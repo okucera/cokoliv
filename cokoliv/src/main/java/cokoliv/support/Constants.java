@@ -30,6 +30,9 @@ public class Constants {
 	//WizzardId aktualne nacteneho okna wizzardu
 	public static final String WIZZARD_ACTION_KEY = "wizzardAction";
 	public static final String WIZZARD_ITEM_TYPE_KEY = "wizzardItemType";
+	
+	//Klic pro ulozeni objektu IFlowData do requestu
+	public static final String FLOW_DATA = "flowDataKey";
 
 	
 	

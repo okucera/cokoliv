@@ -5,5 +5,7 @@ public class StyleNames {
 	public static final String INACTIVE_WIZZARD_ITEM_TITLE_STYLE="inactiveWizzardHeaderItem";
 	public static final String WIZZARD_ITEM_CONTENT_STYLE = "wizzardItemContent";
 	public static final String INPUT_FILE_STYLE = "inputFileStyle";
+	public static final String TEXT_INPUT_STYLE = "cTextInput";
+	public static final String TEXT_AREA_STYLE = "cTextArea";
 
 }

@@ -2,6 +2,8 @@ package cokoliv.servlets;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,9 +14,9 @@ import cokoliv.enumerate.EFlows;
 import cokoliv.enumerate.EWizzardItems;
 import cokoliv.enumerate.Forms;
 import cokoliv.enumerate.MessageCodes;
-import cokoliv.flowdata.FlowDataHolder;
 import cokoliv.flowdata.IFlowData;
 import cokoliv.support.CokolivContext;
+import cokoliv.support.Constants;
 import cokoliv.support.StringOperations;
 
 public abstract class BasicAbstractServlet extends HttpServlet{
@@ -25,6 +27,8 @@ public abstract class BasicAbstractServlet extends HttpServlet{
 	private static final long serialVersionUID = -720282034437076223L;
 	protected HttpSession session;
 	protected HttpServletResponse response;
+	protected HttpServletRequest request;
+
 	protected StringOperations strOp = StringOperations.getInstance();
 	protected CokolivContext context = CokolivContext.getContext();
 	
@@ -65,15 +69,22 @@ public abstract class BasicAbstractServlet extends HttpServlet{
 	}
 	
 	/*
+	 * Presmerovani na <code>form</code> s flow data
+	 */
+	protected void redirectWithFlowdata(IFlowData flowdata) throws IOException, ServletException {
+		String url = flowdata.getNextFormId().getUrl();
+		ServletContext sc = getServletContext();
+		RequestDispatcher dispatcher = sc.getRequestDispatcher("/"+url);
+		
+		this.request.setAttribute(Constants.FLOW_DATA, flowdata);
+		dispatcher.forward(request, response);
+	}
+	
+	/*
 	 * Presmerovani na <code>ErrorPage</code>
 	 */
 	protected void redirectToError(MessageCodes messageCode) throws IOException {
 		this.response.sendRedirect("error.jsp?errCode="+messageCode.getErrorCode());
 	}
-	
-	protected void storeFlowData(IFlowData flowData){
-		FlowDataHolder flowDataHolder = FlowDataHolder.getInstance();
-		flowDataHolder.setFlowData(flowData);
-		context.setFlowDataHolder(flowDataHolder);
-	}
+
 }
