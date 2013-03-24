@@ -1,20 +1,12 @@
 package cokoliv.components.wizzards;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import javax.imageio.ImageIO;
 
 import cokoliv.components.WizzardComponent;
 import cokoliv.enumerate.EWizzardItems;
 import cokoliv.enumerate.Forms;
 import cokoliv.enumerate.WizzardActionEnum;
-import cokoliv.flowdata.IFlowData;
 import cokoliv.support.Constants;
-import cokoliv.support.PropertyManager;
 import cokoliv.support.StyleNames;
 
 public class AddImageWizzardItem extends WizzardItem{
@@ -23,7 +15,6 @@ public class AddImageWizzardItem extends WizzardItem{
 	 * 
 	 */
 	private static final long serialVersionUID = 7904878216687345947L;
-	private PropertyManager properties = new PropertyManager();
 	private String imageFilename = null;
 	private Forms activeFormId;
 
@@ -57,7 +48,7 @@ public class AddImageWizzardItem extends WizzardItem{
 		out.println("					<tr>");
 		out.println("						<td class=\"verticalSplitter\" width=\"220\">");
 		//Image
-		out.println("						<img src=\"UploadImageServlet?image=null\"/>");
+		out.println("						<img src=\"GetImageServlet?image=null\"/>");
 		
 		out.println("						</td>");
 		out.println("						<td>");
@@ -68,7 +59,7 @@ public class AddImageWizzardItem extends WizzardItem{
 		out.println("					<tr>");
 		out.println("						<td class=\"verticalSplitter\" width=\"220\">");
 		//Image
-		out.println("							<input type=file size=\"15px\" name=\""+Constants.FILE_INPUT_IMAGE_NAME+"\" class=\""+StyleNames.INPUT_FILE_STYLE+"\"/>");
+		out.println("							<input type=file size=\"15px\" name=\""+Constants.FILE_INPUT_IMAGE_NAME+"\" class=\""+StyleNames.INPUT_FILE_STYLE+"\" onChange=\"servlet: fileChangedHandler()\"/>");
 		out.println("							<input type=HIDDEN name=\""+Constants.FORM_ID_KEY+"\" value=\""+this.activeFormId.name()+"\"/>");		
 		out.println("							<input type=HIDDEN name=\""+Constants.WIZZARD_ITEM_TYPE_KEY+"\" value=\""+this.itemName.name()+"\"/>");		
 		out.println("							<input type=HIDDEN name=\""+Constants.WIZZARD_ACTION_KEY+"\" value=\""+WizzardActionEnum.NEXT.name()+"\"/>");		
@@ -80,8 +71,11 @@ public class AddImageWizzardItem extends WizzardItem{
 
 		out.println("					<tr>");
 		out.println("						<td colspan=\"2\">");
-		//next					
-		out.println("							<input type=SUBMIT value=\"Pokracovat\"/>");
+		//next		
+		out.println("							<div style=\"visibility:hidden\">");			
+		out.println("								<input type=SUBMIT value=\"Pokracovat\"/>");
+		out.println("							</div>");			
+		out.println("								<input type=SUBMIT value=\"Pokračovat bez výběru obrázku\"/>");
 		out.println("						</td>");
 		out.println("					</tr>");
 

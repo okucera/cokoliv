@@ -14,15 +14,15 @@ import javax.servlet.http.HttpServletResponse;
 import cokoliv.enumerate.UploadRepositories;
 
 /**
- * Servlet implementation class UploadImageServlet
+ * Servlet implementation class GetImageServlet
  */
-public class UploadImageServlet extends BasicAbstractServlet {
+public class GetImageServlet extends BasicAbstractServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public UploadImageServlet() {
+    public GetImageServlet() {
         // TODO Auto-generated constructor stub
     }
 
@@ -34,12 +34,14 @@ public class UploadImageServlet extends BasicAbstractServlet {
 		String strRepository = request.getParameter("repo");
 		UploadRepositories imgRepo = null;
 
-		if(strRepository!=null){
+		if(strRepository!=null && reqFilename!=null && !reqFilename.equals("null")){
 			imgRepo = UploadRepositories.valueOf(strRepository);
+		} else {
+			imgRepo = UploadRepositories.DEFAULT_IMAGES_UPLOAD_REPOSITORY;
 		}
 		
 		//TODO - zjistit obecne z contextu cestu k defaultImage
-		String defaultImagePath = "http://localhost:8082/cokoliv/img/defaultImg.jpg";
+		String defaultImagePath = imgRepo.getRepositoryPath() + "defaultImg.jpg";
 		//String sampleDefaultImagePath = pageContext.getRequest().getScheme() + "://" + pageContext.getRequest().getServerName() + ":" + pageContext.getRequest().getServerPort() +"/cokoliv/"+ imgHomeDir +"/"+ defaultImgFilename;
 
 		if(reqFilename==null || reqFilename.equals("null"))

@@ -3,6 +3,7 @@ package cokoliv.enumerate;
 import cokoliv.support.PropertyManager;
 
 public enum UploadRepositories {
+	DEFAULT_IMAGES_UPLOAD_REPOSITORY("DEFAULT_IMAGES_UPLOAD_REPOSITORY", 1000*1024, 4*1024),
 	NEWS_IMAGES_UPLOAD_REPOSITORY("NEWS_IMAGES_UPLOAD_REPOSITORY",1000*1024,4*1024);
 	
 	private String repositoryPath;

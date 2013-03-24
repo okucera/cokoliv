@@ -7,6 +7,7 @@ public interface INewsModule {
 	//NEWS001: Ziskej seznam novinek
 	public NewItem[] getListOfNews() throws CokolivApplicationException;
 	//NEWS002: Uozeni novinky do DB
+	public void addNewNews(NewItem item) throws CokolivApplicationException;
 	//NEWS003: Smazani seznamu novinek	
 	public void deleteNews(NewItem[] items) throws CokolivApplicationException;
 	//NEWS004: Ziskej seznam novinek dle seznamu id-cek

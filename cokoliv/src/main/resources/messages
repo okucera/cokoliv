@@ -16,4 +16,4 @@ HLA021 = Nastala neočekávaná chyba v aplikaci. Dejte mi prosím o této chyb�
 HLA022 = Zadaná hesla se neshodují. Zadej prosím shodná hesla.
 HLA023 = Neplatný formát formData.
 HLA024 = Nemáte dostatečná oprávnění pro provedení akce.
-HLA025 = Chyba během upload souboru - chybí formId.
+HLA025 = Chyba během nacitani formularovych hodnot - kontaktujte prosim autora.

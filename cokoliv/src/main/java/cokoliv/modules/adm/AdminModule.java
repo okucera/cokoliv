@@ -61,12 +61,23 @@ public class AdminModule implements IAdminModule {
 		    		  response.add(item);
 		    	  }
 		      }
+		      
+		      //Add excluded items to response
+		      addExcludedItems(excludedItems, response);
 		}catch(Exception ex) {
 		       System.out.println(ex);
 		}
 
 
 		return response;
+	}
+	
+	private void addExcludedItems(List<FileItem> excludedItems, List<FileItem> response){
+		if(excludedItems.size() > 0){
+			for(FileItem item : excludedItems){
+				response.add(item);
+			}
+		}
 	}
 	
 	private boolean isExcludedItem(FileItem item, List<FileItem> excludedItems){

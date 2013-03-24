@@ -7,8 +7,11 @@ import org.apache.commons.fileupload.FileItem;
 
 import cokoliv.components.WizzardComponent;
 import cokoliv.enumerate.EWizzardItems;
+import cokoliv.enumerate.Forms;
 import cokoliv.enumerate.UploadRepositories;
+import cokoliv.enumerate.WizzardActionEnum;
 import cokoliv.flowdata.UploadFileData;
+import cokoliv.support.Constants;
 import cokoliv.support.StyleNames;
 
 public class AddNewsTextWizzardItem extends WizzardItem {
@@ -17,6 +20,7 @@ public class AddNewsTextWizzardItem extends WizzardItem {
 	 * 
 	 */
 	private static final long serialVersionUID = 3994571760199022961L;
+	private Forms activeFormId;
 
 	@Override
 	protected void appendToStartTag() {
@@ -24,6 +28,7 @@ public class AddNewsTextWizzardItem extends WizzardItem {
 		this.itemName = EWizzardItems.ADD_TEXT;
 		if(this.getParent() instanceof WizzardComponent){
 			((WizzardComponent)this.getParent()).addWizzardItem(this);
+			this.activeFormId = ((WizzardComponent)this.getParent()).getActiveFormId();
 		}
 	}
 
@@ -38,12 +43,12 @@ public class AddNewsTextWizzardItem extends WizzardItem {
 		String imgFilename = getImageFilename();
 		UploadRepositories imgRepository = getRepository();
 		
-		out.println("			<form name=\"inputTextForm\" method=\"post\" action=\"IportNewsServlet\">");
+		out.println("			<form name=\"inputTextForm\" method=\"post\" action=\"ImportNewsServlet\">");
 		out.println("				<table width=\"100%\">");
 		out.println("					<tr>");
 		out.println("						<td class=\"verticalSplitter\" width=\"220\">");
 		//Image
-		out.println("							<img src=\"UploadImageServlet?image="+imgFilename+"&repo="+imgRepository.name()+"\" alt=\"Martinka\" />");
+		out.println("							<img src=\"GetImageServlet?image="+imgFilename+"&repo="+imgRepository.name()+"\"/>");
 		//drawImageInfoTable();		
 		out.println("						</td>");
 		out.println("						<td valign=\"top\">");
@@ -63,7 +68,13 @@ public class AddNewsTextWizzardItem extends WizzardItem {
 		out.println("					<tr>");
 		out.println("						<td colspan=\"2\">");
 		//next					
-		out.println("							<input type=SUBMIT value=\"Pokracovat\"/>");
+		out.println("							<input type=HIDDEN name=\""+Constants.FORM_ID_KEY+"\" value=\""+this.activeFormId.name()+"\"/>");		
+		out.println("							<input type=HIDDEN name=\""+Constants.WIZZARD_ITEM_TYPE_KEY+"\" value=\""+this.itemName.name()+"\"/>");		
+		out.println("							<input type=HIDDEN name=\""+Constants.WIZZARD_ACTION_KEY+"\" value=\""+WizzardActionEnum.FINISH.name()+"\"/>");		
+		out.println("							<input type=HIDDEN name=\""+Constants.HIDDEN_ELEMENT_NEW_IMG_FILENAME+"\" value=\""+imgFilename+"\"/>");		
+		out.println("							<input type=HIDDEN name=\""+Constants.HIDDEN_ELEMENT_UPLOAD_IMAGE_REPOSITORY+"\" value=\""+imgRepository.name()+"\"/>");		
+
+		out.println("							<input type=SUBMIT value=\"Dokončit...\"/>");
 		out.println("						</td>");
 		out.println("					</tr>");
 
@@ -75,12 +86,12 @@ public class AddNewsTextWizzardItem extends WizzardItem {
 		out.println("				<table width=\"100%\">");
 		out.println("					<tr>");
 		out.println("						<td>");
-		out.println("							<input type=TEXT class=\""+StyleNames.TEXT_INPUT_STYLE+"\" name=\"newsTitle\" value=\"Titulek\">");		
+		out.println("							<input type=TEXT class=\""+StyleNames.TEXT_INPUT_STYLE+"\" name=\""+Constants.FORM_NEWS_TITLE+"\" value=\"Titulek\">");		
 		out.println("						</td>");
 		out.println("					</tr>");
 		out.println("					<tr>");
 		out.println("						<td>");
-		out.println("							<textarea cols=70 rows=10 name=\"newsContent\" class=\""+StyleNames.TEXT_AREA_STYLE+"\">");
+		out.println("							<textarea cols=70 rows=10 name=\""+Constants.FORM_NEWS_DESCR+"\" class=\""+StyleNames.TEXT_AREA_STYLE+"\">");
 		out.println("Obsah zprávy");
 		out.println("							</textarea>");
 		out.println("						</td>");

@@ -12,7 +12,7 @@
 			document.uploadForm.submit();
 		} 
 	</script>
-	<img src="UploadImageServlet?image=null"/>
+	<img src="GetImageServlet?image=null"/>
 	<form name="uploadForm" action="FileUploadServlet" method="post" enctype="multipart/form-data">
 		<input type="file" name="newsImageFile" size=50 onChange="servlet: fileChangedHandler()"/>
 	</form>

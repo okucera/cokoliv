@@ -1,13 +1,16 @@
 package cokoliv.databobjects;
 
+import cokoliv.enumerate.UploadRepositories;
+
 
 public class NewItem {
 	private String newsDate = "";
 	private String newsTime = "";
 	private String title = "";
 	private String message = "";
-	private String imgUrl = "";
+	private String imgUrl = ""; // TODO prejmenovat na imgFilename
 	private String strId = "";
+	private UploadRepositories imgRepository;
 	
 	public String getNewsDate() {
 		return newsDate;
@@ -44,6 +47,12 @@ public class NewItem {
 	}
 	public void setStrId(String strId) {
 		this.strId = strId;
+	}
+	public UploadRepositories getImgRepository() {
+		return imgRepository;
+	}
+	public void setImgRepository(UploadRepositories imgRepository) {
+		this.imgRepository = imgRepository;
 	}
 
 }

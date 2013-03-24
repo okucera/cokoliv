@@ -68,8 +68,8 @@ public class HttpServletUtils {
 	      while ( i.hasNext () ) 
 	      {
 	         FileItem item = (FileItem)i.next();
-	         if ( !item.isFormField () )	
-	         {
+	         if (!item.isFormField() && item.getName() != null && !item.getName().equals("") && item.getSize() > 0 )	
+	         {	        	 
 	        	 itemsToReturn.add(item);
 	         }
 	      }

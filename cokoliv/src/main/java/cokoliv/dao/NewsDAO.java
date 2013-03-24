@@ -1,6 +1,7 @@
 package cokoliv.dao;
 
 import cokoliv.databobjects.NewItem;
+import cokoliv.enumerate.UploadRepositories;
 import cokoliv.exceptions.CokolivApplicationException;
 import cokoliv.support.Constants;
 
@@ -20,7 +21,8 @@ public class NewsDAO extends BasicDAO {
 		String time[] = sql.getColumnFromRS(rs, "time");
 		String title[]= sql.getColumnFromRS(rs, "title");
 		String text[] = sql.getColumnFromRS(rs, "text");
-		String imgUrl[] = sql.getColumnFromRS(rs, "img_url");
+		String strRepo[] = sql.getColumnFromRS(rs, "repo");
+		String imgUrl[] = sql.getColumnFromRS(rs, "filename");
 		
 		items = new NewItem[id.length];
 		
@@ -32,6 +34,9 @@ public class NewsDAO extends BasicDAO {
 			items[i].setTitle(title[i]);
 			items[i].setNewsDate(date[i]);
 			items[i].setNewsTime(time[i]);
+			
+			UploadRepositories repository = UploadRepositories.valueOf(strRepo[i]);
+			items[i].setImgRepository(repository);
 		}		
 		return items;
 	}
@@ -40,6 +45,14 @@ public class NewsDAO extends BasicDAO {
 		//Nacteni SQL dotazu	
 		String values = getItemsIdAsString(items);
 		String query = getReplacedQuery(Constants.DEL_NEWS_SQL_KEY, Constants.REPLACE_ARRAY_KEY, values);
+		
+		sql.execute(query);
+	}
+	
+	public void addNews(NewItem item) throws CokolivApplicationException{
+		String[] keys = {Constants.REPLACE_NEW_TITLE_KEY, Constants.REPLACE_NEW_TEXT_KEY, Constants.REPLACE_NEW_REPO_NAME_KEY, Constants.REPLACE_NEW_IMG_FILENAME_KEY};
+		String[] values = {item.getTitle(), item.getMessage(), item.getImgRepository().name(), item.getImgUrl()};
+		String query = getReplacedQuery(Constants.ADD_NEW_ITEM_SQL, keys, values);
 		
 		sql.execute(query);
 	}

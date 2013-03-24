@@ -29,16 +29,22 @@
   	<servlet-class>cokoliv.servlets.NewsServlet</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>UploadImageServlet</servlet-name>
-  	<display-name>UploadImageServlet</display-name>
-  	<description>Servlet pro upload obrazku na server</description>
-  	<servlet-class>cokoliv.servlets.UploadImageServlet</servlet-class>
+  	<servlet-name>GetImageServlet</servlet-name>
+  	<display-name>GetImageServlet</display-name>
+  	<description>Servlet pro ziskani obrazku</description>
+  	<servlet-class>cokoliv.servlets.GetImageServlet</servlet-class>
   </servlet>
     <servlet>
         <servlet-name>FileUploadServlet</servlet-name>
         <display-name>FileUploadServlet</display-name>
         <description>Servlet pro upload souboru</description>
         <servlet-class>cokoliv.servlets.FileUploadServlet</servlet-class>
+    </servlet>
+    <servlet>
+    	<servlet-name>ImportNewsServlet</servlet-name>
+    	<display-name>ImportNewsServlet</display-name>
+    	<description>Servlet pro import novinky do databaze</description>
+    	<servlet-class>cokoliv.servlets.ImportNewsServlet</servlet-class>
     </servlet>
   <servlet-mapping>
   	<servlet-name>LoginServlet</servlet-name>
@@ -57,12 +63,16 @@
   	<url-pattern>/NewsServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>UploadImageServlet</servlet-name>
-  	<url-pattern>/UploadImageServlet</url-pattern>
+  	<servlet-name>GetImageServlet</servlet-name>
+  	<url-pattern>/GetImageServlet</url-pattern>
   </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FileUploadServlet</servlet-name>
         <url-pattern>/FileUploadServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>ImportNewsServlet</servlet-name>
+    	<url-pattern>/ImportNewsServlet</url-pattern>
     </servlet-mapping>  
 
 	<welcome-file-list>

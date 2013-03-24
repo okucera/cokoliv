@@ -21,7 +21,7 @@
 		<table class="screen">
 			<tr>
 				<td class="logo">
-	  				<CokolivTags:Logo nextFormId="<%=formId %>" loggedUser="<%=null %>"/>
+	  				<CokolivTags:Logo nextFormId="<%=formId %>"/>
 	  			</td>
 	  		</tr>
 	  		<tr>

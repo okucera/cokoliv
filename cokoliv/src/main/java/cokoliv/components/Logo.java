@@ -106,12 +106,4 @@ public class Logo extends TagSupport {
 	public void setNextFormId(Forms nextFormId) {
 		this.nextFormId = nextFormId;
 	}
-
-	public LoggedUser getLoggedUser() {
-		return loggedUser;
-	}
-
-	public void setLoggedUser(LoggedUser loggedUser) {
-		this.loggedUser = loggedUser;
-	}
 }

@@ -72,7 +72,7 @@ public class StringOperations {
 		if (!filename.equals("null")) {
 			String file = filename.substring(filename.lastIndexOf(File.separator) + 1, filename.length());
 			String dirs = filename.substring(0, filename.lastIndexOf(File.separator));
-			String retPath = dirs + "" + File.separator + "" + Constants.UPLOAD_THUMB_DIR + File.separator + makeThumbFilename(file);
+			String retPath = dirs + "" + File.separator + "" + Constants.UPLOAD_THUMB_DIR + File.separator + file;//makeThumbFilename(file);
 			return retPath;
 		}
 		return "";

@@ -20,6 +20,10 @@ public class Constants {
 	public static final String REPLACE_USER_NICK_KEY = "%USER_NICK%";
 	public static final String REPLACE_PASSWORD_KEY = "%PASSWORD%";
 	public static final String REPLACE_ARRAY_KEY = "%ARRAY%";
+	public static final String REPLACE_NEW_TITLE_KEY = "%NEW_TITLE%";
+	public static final String REPLACE_NEW_TEXT_KEY = "%NEW_TEXT%";
+	public static final String REPLACE_NEW_REPO_NAME_KEY = "%REPO_NAME%";
+	public static final String REPLACE_NEW_IMG_FILENAME_KEY = "%NEW_IMG_FILENAME%";
 	
 	//MAX pocet neuspesnych prihlaseni do aplikace
 	public static final int MAX_FAIL_LOGIN_COUNT = 3;
@@ -33,6 +37,19 @@ public class Constants {
 	
 	//Klic pro ulozeni objektu IFlowData do requestu
 	public static final String FLOW_DATA = "flowDataKey";
+	
+	//HIDDEN OBJEKTY VE FORMULARICH
+	public static final String HIDDEN_ELEMENT_NEW_IMG_FILENAME="newImgFilename";
+	public static final String HIDDEN_ELEMENT_UPLOAD_IMAGE_REPOSITORY = "img_upload_repo";
+	
+	//OSTATNI NAZVY ELEMENTU VE FORMULARICH
+	public static final String FORM_NEWS_TITLE = "newsTitle";
+	public static final String FORM_NEWS_DESCR = "newsDescription";
+
+	//SQL_DOTAZY
+	public static final String ADD_NEW_ITEM_SQL = "ADD_NEW_ITEM_SQL";
+
+	
 
 	
 	
@@ -91,11 +108,12 @@ public class Constants {
 	public static final String UPLOAD_MP3_HOME = "UPLOAD_MP3_HOME";
 	public static final String UPLOAD_CONCERT_DIR = "UPLOAD_CONCERT_DIR";
 	public static final String UPLOAD_CONCERT_HOME = "UPLOAD_CONCERT_HOME";
-	public static final String UPLOAD_THUMB_DIR = "Thumbs";
+	public static final String UPLOAD_THUMB_DIR = "preview";
 	public static final String MESSAGE_NUMBER_PER_PAGE = "MESSAGE_NUMBER_PER_PAGE";
 		
 	public static final String GET_NEWS_SQL_KEY = "GET_NEWS_SQL";
 	public static final String DEL_NEWS_SQL_KEY = "DEL_NEWS_SQL";
+
 	public static final String GET_MUSIC_MENU_SQL_KEY = "GET_MUSIC_MENU_SQL";
 	public static final String GET_SONG_SQL_KEY = "GET_SONG_SQL";
 	public static final String GET_DEFAULT_PAGE_SQL_KEY = "GET_DEFAULT_PAGE_SQL";
@@ -110,7 +128,6 @@ public class Constants {
 
 
 	public static final String HIDDEN_ACTION_DEL_CONCERT = "del_concert";
-	public static final String HIDDEN_ACTION_UPLOAD_IMAGE_NEWS = "img_upload";
 	public static final String HIDDEN_ACTION_ADD_NEW = "addNew";
 	public static final String HIDDEN_ACTION_ADD_CONCERT = "addConcert";
 	public static final String HIDDEN_ACTION_UPLOAD_IMAGE_CONCERTS = "concert_img_upload";
@@ -124,7 +141,10 @@ public class Constants {
 	public static final String HIDDEN_ELEMENT_SONG_ID="song_id";
 	public static final String HIDDEN_ELEMENT_PERSON_ID="personId";
 	public static final String HIDDEN_ELEMENT_PERSON_IMG_FILENAME="personImgPath";
-	public static final String HIDDEN_ELEMENT_NEW_IMG_FILENAME="newImgPath";
+
+	
+	
+	
 	public static final String HIDDEN_ELEMENT_CONCERT_IMG_FILENAME="concertImgPath";
 	public static final String HIDDEN_ACTION_UPDATE_PERSON = "updatePerson";
 	public static final String HIDDEN_ACTION_UPLOAD_PERSON_IMAGE="uploadPersonsImage";
@@ -146,9 +166,7 @@ public class Constants {
 	public static final String FORM_IMG_PATH = "imgPath";
 	public static final String FORM_CONCERT_IMG_PATH = "concertImgPath";
 	public static final String FORM_MP3_PATH = "mp3path";
-	public static final String FORM_NEWS_TITLE = "newsTitle";
 	public static final String FORM_CONCERT_TITLE = "concertTitle";
-	public static final String FORM_NEWS_DESCR = "newsDescription";
 	public static final String FORM_CONCERT_DESCR = "concertDescription";
 	
 	

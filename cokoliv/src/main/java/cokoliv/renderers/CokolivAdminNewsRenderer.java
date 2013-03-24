@@ -35,7 +35,8 @@ public class CokolivAdminNewsRenderer extends CokolivAbstractItemRenderer {
 	@Override
 	public void renderItem(Object item) throws IOException{
 		NewItem newItem = (NewItem) item;
-		
+		String imgUrl = newItem.getImgRepository().getRepositoryPath() + newItem.getImgUrl();
+
 		StringBuilder stringBuilder = new StringBuilder();
 
 		stringBuilder.append("	<tr>");
@@ -46,10 +47,10 @@ public class CokolivAdminNewsRenderer extends CokolivAbstractItemRenderer {
 		stringBuilder.append("		</td>");
 		stringBuilder.append("		<td class=\"news_img\">");
 		stringBuilder.append("			<a href=\"");
-		stringBuilder.append(newItem.getImgUrl());
+		stringBuilder.append(imgUrl);
 		stringBuilder.append("\">");
 		stringBuilder.append("				<img src=\"");
-		stringBuilder.append(StringOperations.getInstance().convertFilenameToThumbFilename(newItem.getImgUrl()));
+		stringBuilder.append(StringOperations.getInstance().convertFilenameToThumbFilename(imgUrl));
 		stringBuilder.append("\" alt=\"img\" style=\"border:0px;\">");
 		stringBuilder.append("			</a>");
 		stringBuilder.append("		</td>");

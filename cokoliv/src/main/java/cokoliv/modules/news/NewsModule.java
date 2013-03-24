@@ -13,6 +13,12 @@ public class NewsModule implements INewsModule {
 		return items;
 	}
 	
+	//NEWS002: Uozeni novinky do DB
+	public void addNewNews(NewItem item) throws CokolivApplicationException {
+		NewsDAO newsDao = new NewsDAO();
+		newsDao.addNews(item);
+	}
+	
 	//NEWS003: Smazani seznamu novinek	
 	public void deleteNews(NewItem[] items) throws CokolivApplicationException {
 		NewsDAO newsDao = new NewsDAO();
