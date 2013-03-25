@@ -1,5 +1,6 @@
 package cokoliv.renderers;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.jsp.JspWriter;
@@ -35,7 +36,10 @@ public class CokolivAdminNewsRenderer extends CokolivAbstractItemRenderer {
 	@Override
 	public void renderItem(Object item) throws IOException{
 		NewItem newItem = (NewItem) item;
-		String imgUrl = newItem.getImgRepository().getRepositoryPath() + newItem.getImgUrl();
+		
+		String imgUrl = newItem.getImgRepository().getRepositoryPath() + "defaultImg.jpg";
+		if(!newItem.getImgUrl().equals("null"))
+			imgUrl = newItem.getImgRepository().getRepositoryPath() + newItem.getImgUrl();
 
 		StringBuilder stringBuilder = new StringBuilder();
 

@@ -1,5 +1,7 @@
 package cokoliv.enumerate;
 
+import javax.servlet.ServletContext;
+
 import cokoliv.support.PropertyManager;
 
 public enum UploadRepositories {
@@ -9,6 +11,7 @@ public enum UploadRepositories {
 	private String repositoryPath;
 	private int maxSizeInBytes;
 	private int maxMemSize;
+	private ServletContext servletContext;
 	
 	private PropertyManager repositories = new PropertyManager("repositories.properties");
 	
@@ -17,15 +20,30 @@ public enum UploadRepositories {
 		this.maxSizeInBytes = maxSizeInBytes;
 	}
 
+	public String getRealRepositoryPath() {
+		if(servletContext != null){
+			return servletContext.getRealPath(repositoryPath);
+		}
+		return repositoryPath;
+	}
+
 	public String getRepositoryPath() {
 		return repositoryPath;
 	}
-	
+
 	public int getMaxSizeInBytes() {
 		return this.maxSizeInBytes;
 	}
 	
 	public int getMaxMemSize() {
 		return maxMemSize;
+	}
+
+	public void setServletContext(ServletContext servletContext) {
+		this.servletContext = servletContext;
+	}
+	
+	public ServletContext getServletContext() {
+		return this.servletContext;
 	}
 }

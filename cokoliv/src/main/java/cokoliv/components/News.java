@@ -61,5 +61,6 @@ public class News extends CokolivTag {
 		}else{
 			itemRenderer = new CokolivNewsItemRenderer();
 		}
+		itemRenderer.setPageContext(this.pageContext.getServletContext());
 	}
 }

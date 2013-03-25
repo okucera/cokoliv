@@ -30,8 +30,10 @@ public class LogoutServlet extends BasicAbstractServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.session = request.getSession();
+		this.request = request;
 		this.response = response;
+		
+		this.context.setLoggedUser(null);
 		redirectToForm(Forms.FRM001);
 	}
 

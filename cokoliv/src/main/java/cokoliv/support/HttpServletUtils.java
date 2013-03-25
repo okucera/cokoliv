@@ -20,7 +20,7 @@ public class HttpServletUtils {
 		factory.setSizeThreshold(repository.getMaxMemSize());
 
 		// Location to save data that is larger than maxMemSize.
-		factory.setRepository(new File(repository.getRepositoryPath()));
+		factory.setRepository(new File(repository.getRealRepositoryPath()));
 		
 		// Create a new file upload handler
 		ServletFileUpload upload = new ServletFileUpload(factory);

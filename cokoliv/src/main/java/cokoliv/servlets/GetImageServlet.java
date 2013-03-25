@@ -5,6 +5,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URL;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -33,7 +34,12 @@ public class GetImageServlet extends BasicAbstractServlet {
 		String reqFilename=request.getParameter("image");
 		String strRepository = request.getParameter("repo");
 		UploadRepositories imgRepo = null;
-
+		/*
+		request.getContextPath();//=/cokoliv
+		request.getLocalAddr();//127.0.0.1 / localhost
+		request.getLocalPort();//8082
+		*/
+	
 		if(strRepository!=null && reqFilename!=null && !reqFilename.equals("null")){
 			imgRepo = UploadRepositories.valueOf(strRepository);
 		} else {
@@ -41,18 +47,21 @@ public class GetImageServlet extends BasicAbstractServlet {
 		}
 		
 		//TODO - zjistit obecne z contextu cestu k defaultImage
-		String defaultImagePath = imgRepo.getRepositoryPath() + "defaultImg.jpg";
-		//String sampleDefaultImagePath = pageContext.getRequest().getScheme() + "://" + pageContext.getRequest().getServerName() + ":" + pageContext.getRequest().getServerPort() +"/cokoliv/"+ imgHomeDir +"/"+ defaultImgFilename;
+		String defaultImagePath = imgRepo.getRealRepositoryPath() + File.separator + "defaultImg.jpg";
+		
+		//String sampleDefaultImagePath = pageContext.getRequest().getScheme() + "://" + pageContext.getRequest().getServerName() + ":" + pageContext.getRequest().getServerPort() +"/cokoliv/";
 
 		if(reqFilename==null || reqFilename.equals("null"))
 			reqFilename=defaultImagePath;
 		else
-			reqFilename=imgRepo.getRepositoryPath() + "preview" + File.separator + reqFilename;
+			reqFilename=imgRepo.getRealRepositoryPath() + File.separator + "preview" + File.separator + reqFilename;
 		try {
+
+			//reqFilename = this.getServletContext().getRealPath(reqFilename);
 			/*
 			URL url = new URL(reqFilename);
 			BufferedInputStream bis = new BufferedInputStream(url.openStream());
-			*/
+				*/		
 			BufferedInputStream bis = new BufferedInputStream(new FileInputStream(reqFilename));
 			
 			response.setContentType("image/jpg");

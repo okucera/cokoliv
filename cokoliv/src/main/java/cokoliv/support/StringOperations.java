@@ -70,10 +70,18 @@ public class StringOperations {
 	
 	public String convertFilenameToThumbFilename(String filename){
 		if (!filename.equals("null")) {
+			/*
 			String file = filename.substring(filename.lastIndexOf(File.separator) + 1, filename.length());
 			String dirs = filename.substring(0, filename.lastIndexOf(File.separator));
-			String retPath = dirs + "" + File.separator + "" + Constants.UPLOAD_THUMB_DIR + File.separator + file;//makeThumbFilename(file);
+			String retPath = dirs + File.separator + Constants.UPLOAD_THUMB_DIR + File.separator + file;//makeThumbFilename(file);
 			return retPath;
+			*/
+			
+			String file = filename.substring(filename.lastIndexOf("/") + 1, filename.length());
+			String dirs = filename.substring(0, filename.lastIndexOf("/"));
+			String retPath = dirs + "/" + Constants.UPLOAD_THUMB_DIR + "/" + file;//makeThumbFilename(file);
+			return retPath;
+			
 		}
 		return "";
 	}

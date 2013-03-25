@@ -50,7 +50,8 @@ public class FileUploadServlet extends BasicAbstractServlet {
 		this.request = request;
 		
 		if(ServletFileUpload.isMultipartContent(request)){
-			List<FileItem> multipartItems = HttpServletUtils.parseMultipartFormHttpServletRequest(request, UploadRepositories.NEWS_IMAGES_UPLOAD_REPOSITORY);
+			UploadRepositories uploadRepository = UploadRepositories.NEWS_IMAGES_UPLOAD_REPOSITORY;
+			List<FileItem> multipartItems = HttpServletUtils.parseMultipartFormHttpServletRequest(request, uploadRepository);
 			
 			String strFormId = HttpServletUtils.getParameterFromMultipartRequestItems(multipartItems, Constants.FORM_ID_KEY);
 			String strWizzardAction = HttpServletUtils.getParameterFromMultipartRequestItems(multipartItems, Constants.WIZZARD_ACTION_KEY); 
@@ -67,7 +68,7 @@ public class FileUploadServlet extends BasicAbstractServlet {
 				flowData.setOnResultLoadAsStream(true);
 				flowData.setNextFormId(formId);
 				flowData.setFileItems(HttpServletUtils.getNonFormFileItems(multipartItems));
-				flowData.setRepository(UploadRepositories.NEWS_IMAGES_UPLOAD_REPOSITORY);
+				flowData.setRepository(uploadRepository);
 				flowData.setMakePreview(true);
 				
 				context.setActiveWizzardItem(wizzardItem);
@@ -87,6 +88,7 @@ public class FileUploadServlet extends BasicAbstractServlet {
 			redirectToError(MessageCodes.HLA023);
 		}
 	}
+
 	
 
 }

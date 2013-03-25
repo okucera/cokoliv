@@ -51,11 +51,11 @@ public class AdminModule implements IAdminModule {
 		    	  
 		    	  // Write the file only if it is not already exists
 		    	  if(!isExcludedItem(item, excludedItems)){
-		    		  File file;
+		    		  File file;		    		  
 		    		  if(item.getName().lastIndexOf("\\") >= 0 ){
-		    			  file = new File(repository.getRepositoryPath() + item.getName().substring(item.getName().lastIndexOf("\\"))) ;
+		    			  file = new File(repository.getRealRepositoryPath() + File.separator + item.getName().substring(item.getName().lastIndexOf("\\"))) ;
 		    		  }else{
-		    			  file = new File(repository.getRepositoryPath() + item.getName().substring(item.getName().lastIndexOf("\\")+1)) ;
+		    			  file = new File(repository.getRealRepositoryPath() + File.separator + item.getName().substring(item.getName().lastIndexOf("\\")+1)) ;
 		    		  }
 		    		  item.write(file) ;
 		    		  response.add(item);
@@ -153,9 +153,9 @@ public class AdminModule implements IAdminModule {
 			// Make file object
 			File file;
 			if(item.getName().lastIndexOf("\\") >= 0 ){
-				file = new File(repository.getRepositoryPath() + item.getName().substring(item.getName().lastIndexOf("\\"))) ;
+				file = new File(repository.getRealRepositoryPath() + File.separator + item.getName().substring(item.getName().lastIndexOf("\\"))) ;
 			}else{
-				file = new File(repository.getRepositoryPath() + item.getName().substring(item.getName().lastIndexOf("\\")+1)) ;
+				file = new File(repository.getRealRepositoryPath() + File.separator + item.getName().substring(item.getName().lastIndexOf("\\")+1)) ;
 			}
 			
 			//check whether this object exists in specified repository
@@ -176,8 +176,8 @@ public class AdminModule implements IAdminModule {
 		      {
 		    	  FileItem item = (FileItem)i.next();
 		    	  
-		    	  File sourceFile = new File(repository.getRepositoryPath() + item.getName()) ;
-		    	  File targetFile = new File(repository.getRepositoryPath() + "preview" + File.separator + item.getName());
+		    	  File sourceFile = new File(repository.getRealRepositoryPath() + File.separator + item.getName()) ;
+		    	  File targetFile = new File(repository.getRealRepositoryPath() + File.separator + "preview" + File.separator + item.getName());
 		    	  
 		    	  String filename = sourceFile.getName();
 		    	  String extension = filename.substring(filename.lastIndexOf(".")+1);
@@ -199,7 +199,7 @@ public class AdminModule implements IAdminModule {
 	}
 	
 	public void deleteTempFilesInRepository(UploadRepositories repository){
-		File folder = new File(repository.getRepositoryPath());
+		File folder = new File(repository.getRealRepositoryPath());
 		if(folder.isDirectory()){
 			File[] files = folder.listFiles();
 			for(File file:files){

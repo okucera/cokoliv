@@ -41,7 +41,4 @@ public class FlowData implements IFlowData {
 	public void setNextFormId(Forms formId) {
 		this.nextFormId = formId;
 	}
-
-	
-
 }

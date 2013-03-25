@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import cokoliv.enumerate.EFlows;
 import cokoliv.enumerate.Forms;
 import cokoliv.enumerate.MessageCodes;
+import cokoliv.enumerate.UploadRepositories;
 import cokoliv.flowdata.LoginUserFlowData;
 import cokoliv.support.Constants;
 import cokoliv.support.StringOperations;
@@ -59,12 +60,19 @@ public class LoginServlet extends BasicAbstractServlet {
 			flowData.setNextFormId(formId);
 			executeFlow(EFlows.FL002, flowData);
 			if(flowData.getErrorMessage()==null){
+				initializeRepositories();
 				redirectToForm(flowData.getNextFormId());
 			}else{
 				redirectToError(flowData.getErrorMessage());
 			}
 		}else{
 			redirectToError(MessageCodes.HLA020);
+		}
+	}
+	
+	private void initializeRepositories(){
+		for(UploadRepositories repository : UploadRepositories.values()){
+			repository.setServletContext(this.getServletContext());
 		}
 	}
 	
