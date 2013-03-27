@@ -9,7 +9,8 @@ public enum EFlows {
 	FL003("FL003", new ChangeUserDetailFlow()),
 	FL004("FL004", new DeleteSelectedNewsFlow()),
 	FL005("FL005", new UploadFileFlow()),
-	FL006("FL006", new ImportNewsFlow());
+	FL006("FL006", new ImportNewsFlow()),
+	FL007("FL007", new LoadBandMenuFlow());
 	
 	private IFlow flow;
 	

@@ -41,6 +41,20 @@
   	</tag>
   	
   	<tag>
+  		<name>VerticalMenuPanel</name>
+  		<tagclass>cokoliv.components.VerticalMenuPanel</tagclass>
+  		<bodycontent>JSP</bodycontent>
+  		<info>
+  			Tag pro zobrazeni hlavniho panelu s vertikalnim menu
+  		</info>
+  		<attribute>
+  			<name>activeFormId</name>
+  			<required>true</required>
+  			<rtexprvalue>true</rtexprvalue>
+  		</attribute>
+  	</tag>
+  	
+  	<tag>
   		<name>HorizontalMenu</name>
   		<tagclass>cokoliv.components.HorizontalMenu</tagclass>
   		<bodycontent>empty</bodycontent>
@@ -123,5 +137,14 @@
   			<required>true</required>
   			<rtexprvalue>true</rtexprvalue>
   		</attribute>  	   		
-  	</tag>    	
+  	</tag>    
+  	
+  	  	<tag>
+  		<name>VerticalBandMenu</name>
+  		<tagclass>cokoliv.menu.vertical.VerticalBandMenu</tagclass>
+  		<bodycontent>empty</bodycontent>
+  		<info>
+  			Tag pro zobrazeni vertikalniho menu se cleny kapely
+  		</info>	
+  	</tag> 	
 </taglib>

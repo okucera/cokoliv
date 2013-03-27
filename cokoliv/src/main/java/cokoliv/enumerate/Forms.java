@@ -8,7 +8,8 @@ public enum Forms {
 	FRM005("FRM005","down.jsp"), //DOWNLOAD PAGE
 	FRM006("FRM006","vzkazy.jsp"), //GUESTBOOK
 	FRM007("FRM007","newPwd.jsp"), //USERS FIRST LOGIN PAGE
-	FRM008("FRM008","error.jsp"); //ERROR PAGE
+	FRM008("FRM008","error.jsp"), //ERROR PAGE
+	FRM009("FRM009","kapela.jsp");
 	
 	private String formId;
 	private String url;

@@ -10,6 +10,7 @@ public class Constants {
 	public static final String GET_LOGIN_COUNTER_SQL = "GET_LOGIN_COUNTER";
 	public static final String SET_LOGIN_COUNTER_SQL = "SET_LOGIN_COUNTER";
 	public static final String UPDATE_USER_SQL = "UPDATE_USER"; 
+	public static final String GET_PERSON_SQL_KEY = "GET_PERSON_SQL";
 
 	//Pro pouziti prepsani hodnot v hash mapach
 	public static final String REPLACE_USER_ID_KEY = "%USER_ID%";

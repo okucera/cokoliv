@@ -28,5 +28,4 @@ public abstract class CokolivAbstractItemRenderer implements ICokolivItemRendere
 	}
 	
 	protected abstract void renderItem(Object item) throws IOException;
-
 }

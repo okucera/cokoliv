@@ -46,7 +46,11 @@ public class SqlManager {
 		ArrayList<String> list = new ArrayList<String>();
 		try{
 			while(rs.next()){
-				list.add(rs.getObject(colName).toString());
+				if(rs.getObject(colName)!=null){
+					list.add(rs.getObject(colName).toString());
+				}else{
+					list.add("");
+				}
 			}
 			//rs.beforeFirst();
 		}catch(SQLException e){
