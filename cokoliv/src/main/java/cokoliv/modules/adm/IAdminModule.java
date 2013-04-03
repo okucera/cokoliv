@@ -26,7 +26,7 @@ public interface IAdminModule {
 	//ADM008: Ziskej hodnotu citace poctu prihlaseni
 	public void incrementLoginCounter(User user) throws CokolivApplicationException;
 	//ADM009: Vynuluj citace prihlaseni
-	public void clearLoginCounter(int userId) throws CokolivApplicationException;
+	public void clearLoginCounter(String userId) throws CokolivApplicationException;
 	//ADM010: Ziskej informace o prihlasenem uzivateli
 	public LoggedUser getLoggedUserInfo(User user) throws CokolivApplicationException;
 	//ADM012: Ziskej parametr first time login
@@ -43,4 +43,6 @@ public interface IAdminModule {
 	public void makeImagePreviewInRepository(List<FileItem> fileItems, UploadRepositories repository);
 	//ADM018: Vycisti repository od docasnych souboru
 	public void deleteTempFilesInRepository(UploadRepositories repository);
+	//ADM019: Ziskej uzivatele podle user_id
+	public User getUserByUserId(String userId) throws CokolivApplicationException;
 }

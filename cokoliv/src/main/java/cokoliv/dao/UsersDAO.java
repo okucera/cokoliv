@@ -68,8 +68,7 @@ public class UsersDAO extends BasicDAO {
 		String[] roles = sql.getColumnFromRS(rs, "role");
 		String[] descriptions = sql.getColumnFromRS(rs, "description");
 		
-		int userId = Integer.parseInt(userIds[0]);
-		loggedUser.setUserId(userId);
+		loggedUser.setUserId(userIds[0]);
 		loggedUser.setFirstName(firstNames[0]);
 		loggedUser.setLastName(lastNames[0]);
 		loggedUser.setNick(nicks[0]);
@@ -83,6 +82,43 @@ public class UsersDAO extends BasicDAO {
 		loggedUser.setRole(role);
 		
 		return loggedUser;
+	}
+	
+	public User getUserById(String userId) throws CokolivApplicationException {
+		User user = new User();
+		Role role = new Role();
+		
+		String[] replacedKeys = {Constants.REPLACE_USER_ID_KEY};
+		String[] replacedKeyValues = {userId};
+		String query = getReplacedQuery(Constants.GET_USER_BY_ID_SQL_KEY, replacedKeys, replacedKeyValues);
+		rs = sql.executeQuery(query);
+
+		//Vyber dat pro konstrukci objektu prihlaseneho uzivatele
+		String[] userIds = sql.getColumnFromRS(rs, "user_id");
+		String[] firstNames = sql.getColumnFromRS(rs, "first_name");
+		String[] lastNames = sql.getColumnFromRS(rs, "last_name");
+		String[] nicks = sql.getColumnFromRS(rs, "nick");
+		String[] infos = sql.getColumnFromRS(rs, "info");
+		String[] imgUrls = sql.getColumnFromRS(rs, "img_url");
+		String[] roleIds = sql.getColumnFromRS(rs, "role_id");
+		String[] roles = sql.getColumnFromRS(rs, "role");
+		String[] descriptions = sql.getColumnFromRS(rs, "description");
+		
+		user.setUserId(userIds[0]);
+		user.setFirstName(firstNames[0]);
+		user.setLastName(lastNames[0]);
+		user.setNick(nicks[0]);
+		user.setInfo(infos[0]);
+		user.setImgUrl(imgUrls[0]);
+		
+		role.setRoleId(Integer.valueOf(roleIds[0]));
+		role.setRole(roles[0]);
+		role.setRoleDescription(descriptions[0]);
+		
+		user.setRole(role);
+		
+		return user;
+		
 	}
 	
 	public void storeUser(ChangeUserDetailData user) throws CokolivApplicationException {

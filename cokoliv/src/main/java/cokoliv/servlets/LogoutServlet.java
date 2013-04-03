@@ -33,6 +33,10 @@ public class LogoutServlet extends BasicAbstractServlet {
 		this.request = request;
 		this.response = response;
 		
+		request.setCharacterEncoding(PAGE_DEFAULT_ENCODING);
+		response.setCharacterEncoding(PAGE_DEFAULT_ENCODING);
+
+		
 		this.context.setLoggedUser(null);
 		redirectToForm(Forms.FRM001);
 	}

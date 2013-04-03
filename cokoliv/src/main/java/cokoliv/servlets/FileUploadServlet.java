@@ -50,18 +50,20 @@ public class FileUploadServlet extends BasicAbstractServlet {
 		this.request = request;
 		
 		if(ServletFileUpload.isMultipartContent(request)){
-			UploadRepositories uploadRepository = UploadRepositories.NEWS_IMAGES_UPLOAD_REPOSITORY;
-			List<FileItem> multipartItems = HttpServletUtils.parseMultipartFormHttpServletRequest(request, uploadRepository);
+			UploadRepositories parseUploadRepository = UploadRepositories.DEFAULT_IMAGES_UPLOAD_REPOSITORY;
+			List<FileItem> multipartItems = HttpServletUtils.parseMultipartFormHttpServletRequest(request, parseUploadRepository);
 			
 			String strFormId = HttpServletUtils.getParameterFromMultipartRequestItems(multipartItems, Constants.FORM_ID_KEY);
 			String strWizzardAction = HttpServletUtils.getParameterFromMultipartRequestItems(multipartItems, Constants.WIZZARD_ACTION_KEY); 
 			String strWizzardItem = HttpServletUtils.getParameterFromMultipartRequestItems(multipartItems, Constants.WIZZARD_ITEM_TYPE_KEY);
+			String strUploadRepository = HttpServletUtils.getParameterFromMultipartRequestItems(multipartItems, Constants.HIDDEN_ELEMENT_UPLOAD_IMAGE_REPOSITORY);
 			
-			if(!strOp.isNullOrEmpty(strFormId) && !strOp.isNullOrEmpty(strWizzardAction) && !strOp.isNullOrEmpty(strWizzardItem)) {
+			if(!strOp.isNullOrEmpty(strFormId) && !strOp.isNullOrEmpty(strWizzardAction) && !strOp.isNullOrEmpty(strWizzardItem) && !strOp.isNullOrEmpty(strWizzardItem)) {
 				//set forms and wizzards
 				Forms formId = Forms.valueOf(strFormId);
 				WizzardActionEnum wizzardAction = WizzardActionEnum.valueOf(strWizzardAction);
 				EWizzardItems wizzardItem = EWizzardItems.valueOf(strWizzardItem);
+				UploadRepositories uploadRepository = UploadRepositories.valueOf(strUploadRepository);
 				
 				//set flow data - load uploaded image as stream, repository for uploaded data and form from which request comes
 				UploadFileData flowData = new UploadFileData();

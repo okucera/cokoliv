@@ -1,9 +1,10 @@
-package cokoliv.components;
+package cokoliv.components.vpanel.menu;
 
 import java.io.IOException;
 
 import javax.servlet.jsp.JspWriter;
 
+import cokoliv.components.CokolivTag;
 import cokoliv.databobjects.BandMenuItem;
 import cokoliv.databobjects.LoggedUser;
 import cokoliv.enumerate.EFlows;

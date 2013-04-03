@@ -8,7 +8,6 @@ import cokoliv.components.VerticalMenuPanel;
 import cokoliv.databobjects.LoggedUser;
 import cokoliv.enumerate.EFlows;
 import cokoliv.flowdata.LoadBandMenuFlowData;
-import cokoliv.renderers.CokolivAdminBandMenuItemRenderer;
 import cokoliv.renderers.CokolivBandMenuItemRenderer;
 import cokoliv.support.CokolivContext;
 
@@ -41,7 +40,7 @@ public class VerticalBandMenu extends VerticalMenu {
 			itemRenderer = new CokolivBandMenuItemRenderer();
 		}else{
 			//administratorsky pohled
-			itemRenderer = new CokolivAdminBandMenuItemRenderer();
+			itemRenderer = new CokolivBandMenuItemRenderer();//TODO - new CokolivAdminBandMenuItemRenderer();
 		}
 		itemRenderer.renderItems(menuData.getBandMenuItems(), out);
 		

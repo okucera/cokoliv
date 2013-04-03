@@ -28,6 +28,8 @@ public abstract class BasicAbstractServlet extends HttpServlet{
 	protected HttpSession session;
 	protected HttpServletResponse response;
 	protected HttpServletRequest request;
+	
+	protected final String PAGE_DEFAULT_ENCODING="UTF-8";
 
 	protected StringOperations strOp = StringOperations.getInstance();
 	protected CokolivContext context = CokolivContext.getContext();

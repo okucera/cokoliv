@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.jsp.JspWriter;
 
 import cokoliv.databobjects.BandMenuItem;
+import cokoliv.support.Constants;
 
 public class CokolivBandMenuItemRenderer extends CokolivAbstractItemRenderer {
 
@@ -27,7 +28,7 @@ public class CokolivBandMenuItemRenderer extends CokolivAbstractItemRenderer {
 		if(item instanceof BandMenuItem) {
 			BandMenuItem menuItem = (BandMenuItem) item; 
 			out.println("<tr>");
-			out.println("<td><a href=\"#?id="+menuItem.getId()+"\">&nbsp;&nbsp;"+menuItem.getNick()+"</a></td>");
+			out.println("<td><a href=\"GetBandUserServlet?"+Constants.BAND_USER_ID+"="+menuItem.getId()+"\">&nbsp;&nbsp;"+menuItem.getNick()+"</a></td>");
 			out.println("</tr>");
 		}
 	}

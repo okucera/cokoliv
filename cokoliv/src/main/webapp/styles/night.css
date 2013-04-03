@@ -223,7 +223,16 @@ body {
 	width:100%;
 }
 
-.news_img {
+.concert_table {
+	width:100%;
+}
+
+.guestbook_table {
+	width:100%;
+}
+
+
+.item_renderer_img {
 	width:100px;
 	text-align:center;
 	border-top:1px solid white;
@@ -233,7 +242,7 @@ body {
 	border-style:dotted;
 }
 
-.news_text {
+.item_renderer_text {
 	text-align:justify;
 	vertical-align:top;
 	padding: 0 10 0 10;
@@ -242,15 +251,23 @@ body {
 	border-left:0px;
 	border-right:0px;
 	border-style:dotted;
+	color:white;
 }
 
-.title_news {
+.band_text {
+	text-align:justify;
+	vertical-align:top;
+	padding: 0 10 0 10;
+	color:white;
+}
+
+.item_renderer_title {
 	font-size:12pt;
 	font-weight:bold;
 	color:yellow;
 }
 
-.date_news{
+.item_renderer_date{
 	font-size:10px;
 	color:red;
 }
@@ -360,8 +377,17 @@ body {
 	color:white;
 }
 
+.cButton {
+	background-color:black;
+	color:white;
+}
+
 .cTextArea {
 	background-color:black;
 	color:white;
 }
 
+.log-in-table tr td {
+	background-color: black;
+	color: yellow;
+}

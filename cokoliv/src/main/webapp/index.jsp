@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><%@page import="cokoliv.model.NewsModel"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <%@page
 	language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -6,6 +6,7 @@
 <%@page import="cokoliv.enumerate.Forms"%>
 <%@page import="cokoliv.flowdata.*" %>
 <%@page import="cokoliv.support.Constants" %>
+<%@page import="cokoliv.enumerate.UploadRepositories" %>
 <%
 	Forms formId = Forms.FRM001;	
 	Object objData = request.getAttribute(Constants.FLOW_DATA);
@@ -29,7 +30,7 @@
 	  				<CokolivTags:HorizontalMenu activeFormId="<%= formId %>"/>					
 					<CokolivTags:BasicPanel title="Nov!nky" activeFormId="<%= formId %>">
 						<CokolivTags:WizzardComponent activeFormId="<%= formId %>">
-							<CokolivTags:ImageWizzardItem flowData="<%= data %>"/>
+							<CokolivTags:ImageWizzardItem flowData="<%= data %>" repository="<%= UploadRepositories.NEWS_IMAGES_UPLOAD_REPOSITORY %>"/>
 							<CokolivTags:NewsTextWizzardItem flowData="<%= data %>"/>
 						</CokolivTags:WizzardComponent>
 						<CokolivTags:News/>

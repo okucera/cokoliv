@@ -44,7 +44,12 @@ public class LoginServlet extends BasicAbstractServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.session = request.getSession();
+		this.request = request;
 		this.response = response;
+		
+		request.setCharacterEncoding(PAGE_DEFAULT_ENCODING);
+		response.setCharacterEncoding(PAGE_DEFAULT_ENCODING);
+
 
 		String username = request.getParameter(Constants.FORM_TEXTFIELD_USERNAME);
 		String password = request.getParameter(Constants.FORM_TEXTFIELD_PWD);

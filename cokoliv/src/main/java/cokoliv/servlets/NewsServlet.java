@@ -38,8 +38,13 @@ public class NewsServlet extends BasicAbstractServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.session = request.getSession();
-		this.response = response;
 		
+		this.request = request;
+		this.response = response;
+
+		request.setCharacterEncoding(PAGE_DEFAULT_ENCODING);
+		response.setCharacterEncoding(PAGE_DEFAULT_ENCODING);
+
 		String[] newsItems = request.getParameterValues("newsItem");
 		LoggedUser loggedUser = context.getLoggedUser();
 		

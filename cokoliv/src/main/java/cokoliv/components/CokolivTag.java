@@ -9,7 +9,6 @@ import cokoliv.enumerate.EFlows;
 import cokoliv.enumerate.MessageCodes;
 import cokoliv.flowdata.IFlowData;
 import cokoliv.renderers.CokolivAbstractItemRenderer;
-import cokoliv.renderers.ICokolivItemRenderer;
 
 public class CokolivTag extends TagSupport{
 

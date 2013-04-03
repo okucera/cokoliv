@@ -15,8 +15,8 @@ public class DbParamsDAO extends BasicDAO {
 		return false;
 	}
 	
-	public void clearLoginCounter(int userId) throws CokolivApplicationException{
-		setDbParam(Constants.CLEAR_LOGIN_COUNTER_SQL, Constants.REPLACE_USER_ID_KEY, userId+"");
+	public void clearLoginCounter(String userId) throws CokolivApplicationException{
+		setDbParam(Constants.CLEAR_LOGIN_COUNTER_SQL, Constants.REPLACE_USER_ID_KEY, userId);
 	}
 	
 	public void incrementLoginCounter(User user) throws CokolivApplicationException {

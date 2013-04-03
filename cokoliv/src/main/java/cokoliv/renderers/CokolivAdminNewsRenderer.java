@@ -1,6 +1,5 @@
 package cokoliv.renderers;
 
-import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.jsp.JspWriter;
@@ -49,7 +48,7 @@ public class CokolivAdminNewsRenderer extends CokolivAbstractItemRenderer {
 		stringBuilder.append(newItem.getStrId());
 		stringBuilder.append("\">");
 		stringBuilder.append("		</td>");
-		stringBuilder.append("		<td class=\"news_img\">");
+		stringBuilder.append("		<td class=\"item_renderer_img\">");
 		stringBuilder.append("			<a href=\"");
 		stringBuilder.append(imgUrl);
 		stringBuilder.append("\">");
@@ -58,10 +57,10 @@ public class CokolivAdminNewsRenderer extends CokolivAbstractItemRenderer {
 		stringBuilder.append("\" alt=\"img\" style=\"border:0px;\">");
 		stringBuilder.append("			</a>");
 		stringBuilder.append("		</td>");
-		stringBuilder.append("		<td class=\"news_text\">");
-		stringBuilder.append("<div class=\"title_news\">");
+		stringBuilder.append("		<td class=\"item_renderer_text\">");
+		stringBuilder.append("<div class=\"item_renderer_title\">");
 		stringBuilder.append(newItem.getTitle());
-		stringBuilder.append("</div><div class=\"date_news\">");
+		stringBuilder.append("</div><div class=\"item_renderer_date\">");
 		stringBuilder.append(newItem.getNewsDate()+", "+newItem.getNewsTime());
 		stringBuilder.append("</div><br>");
 		stringBuilder.append(newItem.getMessage());

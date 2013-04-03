@@ -3,6 +3,7 @@ package cokoliv.components;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 
+import cokoliv.components.vpanel.content.IVerticalPanelContent;
 import cokoliv.enumerate.Forms;
 import cokoliv.menu.vertical.IVerticalMenu;
 
@@ -13,6 +14,8 @@ public class VerticalMenuPanel extends TagSupport {
 	private static final long serialVersionUID = 6439780318302855328L;
 	protected JspWriter out;
 	protected IVerticalMenu verticalMenu;
+	protected IVerticalPanelContent verticalPanelContent;
+	
 	private Forms activeFormId;
 	
 	public int doStartTag(){
@@ -55,6 +58,8 @@ public class VerticalMenuPanel extends TagSupport {
 			
 			if(verticalMenu!=null) {
 				verticalMenu.renderMenu();
+			} else {
+				out.println("											V panelu chybi menu - prosim kontaktujte administratora.");
 			}
 			
 			out.println("												&nbsp;");
@@ -65,6 +70,11 @@ public class VerticalMenuPanel extends TagSupport {
 			out.println("								</td>");
 			out.println("								<td class=\"complexContent-window\">");
 			//RENDER CONTENT
+			if(verticalPanelContent!=null) {
+				verticalPanelContent.rendnerContent();
+			} else {
+				out.println("											V panelu chybi obsah - prosim kontaktujte administratora.");
+			}
 			out.println("								</td>");
 			out.println("							</tr>");
 			out.println("						</table>");
@@ -159,5 +169,9 @@ public class VerticalMenuPanel extends TagSupport {
 
 	public void setActiveFormId(Forms activeFormId) {
 		this.activeFormId = activeFormId;
+	}
+
+	public void setVerticalPanelContent(IVerticalPanelContent verticalPanelContent) {
+		this.verticalPanelContent = verticalPanelContent;
 	}
 }

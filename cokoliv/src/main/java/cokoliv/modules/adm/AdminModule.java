@@ -111,7 +111,7 @@ public class AdminModule implements IAdminModule {
 		dao.incrementLoginCounter(user);
 	}
 
-	public void clearLoginCounter(int userId) throws CokolivApplicationException {
+	public void clearLoginCounter(String userId) throws CokolivApplicationException {
 		DbParamsDAO dao = new DbParamsDAO();
 		dao.clearLoginCounter(userId);
 	}
@@ -213,5 +213,10 @@ public class AdminModule implements IAdminModule {
 				}
 			}
 		}
+	}
+	
+	public User getUserByUserId(String userId) throws CokolivApplicationException {
+		UsersDAO dao = new UsersDAO();
+		return dao.getUserById(userId);
 	}
 }

@@ -55,6 +55,21 @@
   	</tag>
   	
   	<tag>
+  		<name>BandUserContent</name>
+  		<tagclass>cokoliv.components.vpanel.content.VBandUserContent</tagclass>
+  		<bodycontent>JSP</bodycontent>
+  		<info>
+  			Tag pro zobrazeni hlavniho panelu s vertikalnim menu
+  		</info>
+  		<attribute>
+  			<name>user</name>
+  			<required>true</required>
+  			<rtexprvalue>true</rtexprvalue>
+  		</attribute>
+  	</tag>
+
+
+  	<tag>
   		<name>HorizontalMenu</name>
   		<tagclass>cokoliv.components.HorizontalMenu</tagclass>
   		<bodycontent>empty</bodycontent>
@@ -76,6 +91,29 @@
   			Tag pro zobrazeni novinek
   		</info>	
   	</tag>
+
+  	<tag>
+  		<name>ConcertsList</name>
+  		<tagclass>cokoliv.components.Concerts</tagclass>
+  		<bodycontent>empty</bodycontent>
+  		<info>
+  			Tag pro zobrazeni koncertu
+  		</info>	
+  	</tag>
+  	<tag>
+  		<name>Guestbook</name>
+  		<tagclass>cokoliv.components.Guestbook</tagclass>
+  		<bodycontent>empty</bodycontent>
+  		<info>
+  			Tag pro zobrazeni Guestbooku
+  		</info>	
+  		<attribute>
+  			<name>flowData</name>
+  			<required>true</required>
+  			<rtexprvalue>true</rtexprvalue>
+  		</attribute>  	   		
+  	</tag>
+
   	
   	<tag>
   		<name>ChangeUserDetailPanel</name>
@@ -123,7 +161,12 @@
   			<name>flowData</name>
   			<required>true</required>
   			<rtexprvalue>true</rtexprvalue>
-  		</attribute>  	   		
+  		</attribute>  	
+  		<attribute>
+  			<name>repository</name>
+  			<required>true</required>
+  			<rtexprvalue>true</rtexprvalue>
+  		</attribute>  		   		
   	</tag>  
   	<tag>
   		<name>NewsTextWizzardItem</name>
@@ -131,6 +174,19 @@
   		<bodycontent>empty</bodycontent>
   		<info>
   			Tag pro zobrazeni wizzard itemu pro vlozeni textu
+  		</info>	
+  		<attribute>
+  			<name>flowData</name>
+  			<required>true</required>
+  			<rtexprvalue>true</rtexprvalue>
+  		</attribute>  	   		
+  	</tag>    
+  	<tag>
+  		<name>ConcertTextWizzardItem</name>
+  		<tagclass>cokoliv.components.wizzards.AddConcertTextWizzardItem</tagclass>
+  		<bodycontent>empty</bodycontent>
+  		<info>
+  			Tag pro zobrazeni wizzard itemu pro vlozeni textu pro koncert
   		</info>	
   		<attribute>
   			<name>flowData</name>
@@ -146,5 +202,7 @@
   		<info>
   			Tag pro zobrazeni vertikalniho menu se cleny kapely
   		</info>	
-  	</tag> 	
+  	</tag>
+  	
+  	 	
 </taglib>

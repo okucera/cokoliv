@@ -12,4 +12,7 @@ public class ImportNewsData extends FlowData {
 	public void setNewItem(NewItem newItem) {
 		this.newItem = newItem;
 	}
+	
+
+
 }

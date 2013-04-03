@@ -9,12 +9,33 @@
 <body>
 	<script>
 		function fileChangedHandler() {
-			document.uploadForm.submit();
+			if(document.insertGuestbookItemForm.pokus.value=="rihanna"){
+				alert("Je to tam");
+				document.insertGuestbookItemForm.submit();
+			} else {
+				alert("Neni to tam");
+			}
 		} 
 	</script>
 	<img src="GetImageServlet?image=null"/>
 	<form name="uploadForm" action="FileUploadServlet" method="post" enctype="multipart/form-data">
 		<input type="file" name="newsImageFile" size=50 onChange="servlet: fileChangedHandler()"/>
+	</form>
+	
+	
+		<script>
+		function fileChangedHandler() {
+			if(document.insertGuestbookItemForm.pokus.value=="rihanna"){
+				alert("Je to tam");
+				document.insertGuestbookItemForm.submit();
+			} else {
+				alert("Neni to tam");
+			}
+		} 
+	</script>
+	<form name="insertGuestbookItemForm" action="ServletJakHovado" method="post">
+		<input type=text name="pokus">
+		<input type=button value="posli to tam"  onclick="fileChangedHandler() ">
 	</form>
 </body>
 </html>

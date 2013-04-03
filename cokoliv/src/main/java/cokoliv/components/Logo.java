@@ -10,6 +10,7 @@ import cokoliv.enumerate.Forms;
 import cokoliv.support.CokolivContext;
 import cokoliv.support.Constants;
 import cokoliv.support.KeyManager;
+import cokoliv.support.StyleNames;
 
 public class Logo extends TagSupport {
 	/**
@@ -58,24 +59,24 @@ public class Logo extends TagSupport {
 		out.println("				<table class=\"log-in-table\" align=\"right\">");
 		out.println("					<tr>");
 		out.println("						<td>");
-		out.println("							Username: ");
+		out.println("							Přihlašovací jméno: ");
 		out.println("						</td>");
 		out.println("						<td>");
-		out.println("							<input type=TEXT name=\""+Constants.FORM_TEXTFIELD_USERNAME+"\">");
+		out.println("							<input type=TEXT class=\""+StyleNames.TEXT_INPUT_STYLE+"\" name=\""+Constants.FORM_TEXTFIELD_USERNAME+"\">");
 		out.println("						</td>");
 		out.println("					</tr>");
 		out.println("					<tr>");
 		out.println("						<td>");
-		out.println("							Password: ");
+		out.println("							Heslo: ");
 		out.println("						</td>");
 		out.println("						<td>");
-		out.println("							<input type=PASSWORD name=\""+Constants.FORM_TEXTFIELD_PWD+"\">");
+		out.println("							<input type=PASSWORD class=\""+StyleNames.TEXT_INPUT_STYLE+"\" name=\""+Constants.FORM_TEXTFIELD_PWD+"\">");
 		out.println("							<input type=HIDDEN name=\""+Constants.FORM_ID_KEY+"\" value=\""+this.nextFormId+"\">");		
 		out.println("						</td>");
 		out.println("							</tr>");
 		out.println("					<tr>");
 		out.println("						<td colspan=\"2\" align=\"center\">");
-		out.println("							<input type=SUBMIT value=\""+this.keyManager.getKeyValue("ADMIN_LOGIN_BUTTON_TITLE")+"\">");
+		out.println("							<input type=SUBMIT class=\""+StyleNames.BUTTON_STYLE+"\" value=\""+this.keyManager.getKeyValue("ADMIN_LOGIN_BUTTON_TITLE")+"\">");
 		out.println("						</td>");
 		out.println("					</tr>");
 		out.println("				</table>");

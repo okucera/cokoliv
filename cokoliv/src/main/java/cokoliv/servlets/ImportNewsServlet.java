@@ -14,7 +14,6 @@ import cokoliv.enumerate.UploadRepositories;
 import cokoliv.enumerate.WizzardActionEnum;
 import cokoliv.flowdata.ImportNewsData;
 import cokoliv.support.Constants;
-import cokoliv.support.HttpServletUtils;
 
 /**
  * Servlet implementation class ImportNewsServlet
@@ -43,12 +42,16 @@ public class ImportNewsServlet extends BasicAbstractServlet {
 		this.request = request;
 		this.response = response;
 		
+		request.setCharacterEncoding(PAGE_DEFAULT_ENCODING);
+		response.setCharacterEncoding(PAGE_DEFAULT_ENCODING);
+
+		
 		String title = request.getParameter(Constants.FORM_NEWS_TITLE);
 		String text = request.getParameter(Constants.FORM_NEWS_DESCR);
 		String imgFilename = request.getParameter(Constants.HIDDEN_ELEMENT_NEW_IMG_FILENAME);
 		String strImgRepo = request.getParameter(Constants.HIDDEN_ELEMENT_UPLOAD_IMAGE_REPOSITORY);
 		
-		String formId = request.getParameter(Constants.FORM_ID_KEY);
+		//String formId = request.getParameter(Constants.FORM_ID_KEY);
 		String strWizzardAction = request.getParameter(Constants.WIZZARD_ACTION_KEY); 
 		String strWizzardItem = request.getParameter(Constants.WIZZARD_ITEM_TYPE_KEY);
 
@@ -78,7 +81,8 @@ public class ImportNewsServlet extends BasicAbstractServlet {
 			context.setActiveWizzardItem(wizzardItem);
 			context.setWizzardAction(wizzardAction);
 			
-			EFlows.FL006.executeFlow(flowData);
+			executeFlow(EFlows.FL006, flowData);
+			//EFlows.FL006.executeFlow(flowData);
 			
 			if(flowData.getErrorMessage()==null){
 				redirectToForm(Forms.FRM001);

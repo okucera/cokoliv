@@ -11,6 +11,14 @@ public class Constants {
 	public static final String SET_LOGIN_COUNTER_SQL = "SET_LOGIN_COUNTER";
 	public static final String UPDATE_USER_SQL = "UPDATE_USER"; 
 	public static final String GET_PERSON_SQL_KEY = "GET_PERSON_SQL";
+	public static final String GET_USER_BY_ID_SQL_KEY = "GET_USER_BY_ID_SQL";
+	public static final String ADD_NEW_ITEM_SQL = "ADD_NEW_ITEM_SQL";
+	public static final String ADD_CONCERT_ITEM_SQL = "ADD_CONCERT_ITEM_SQL";
+	public static final String GET_NEWS_SQL_KEY = "GET_NEWS_SQL";
+	public static final String DEL_NEWS_SQL_KEY = "DEL_NEWS_SQL";
+	public static final String GET_CONCERT_SQL_KEY = "GET_CONCERT_SQL";
+	public static final String GET_GUESTBOOK_SQL_KEY = "GET_GUESTBOOK_SQL";
+	public static final String ADD_GUESTBOOK_ITEM_SQL_KEY = "ADD_GUESTBOOK_ITEM_SQL";
 
 	//Pro pouziti prepsani hodnot v hash mapach
 	public static final String REPLACE_USER_ID_KEY = "%USER_ID%";
@@ -22,15 +30,23 @@ public class Constants {
 	public static final String REPLACE_PASSWORD_KEY = "%PASSWORD%";
 	public static final String REPLACE_ARRAY_KEY = "%ARRAY%";
 	public static final String REPLACE_NEW_TITLE_KEY = "%NEW_TITLE%";
+	public static final String REPLACE_CONCERT_TITLE_KEY = "%CONCERT_TITLE%";
 	public static final String REPLACE_NEW_TEXT_KEY = "%NEW_TEXT%";
+	public static final String REPLACE_CONCERT_TEXT_KEY = "%CONCERT_TEXT%";
 	public static final String REPLACE_NEW_REPO_NAME_KEY = "%REPO_NAME%";
+	public static final String REPLACE_CONCERT_REPO_NAME_KEY = "%REPO_NAME%";
 	public static final String REPLACE_NEW_IMG_FILENAME_KEY = "%NEW_IMG_FILENAME%";
+	public static final String REPLACE_CONCERT_IMG_FILENAME_KEY = "%CONCERT_IMG_FILENAME%";
+	public static final String REPLACE_NICK_KEY = "%NICK%";
+	public static final String REPLACE_MSG_KEY = "%MESSAGE%";
+	public static final String REPLACE_IMAGE_KEY = "%IMAGE%";
 	
 	//MAX pocet neuspesnych prihlaseni do aplikace
 	public static final int MAX_FAIL_LOGIN_COUNT = 3;
 	
 	//FormId aktualne nactene stranky
 	public static final String FORM_ID_KEY = "formId";
+	public static final String BAND_USER_ID = "userId";
 	
 	//WizzardId aktualne nacteneho okna wizzardu
 	public static final String WIZZARD_ACTION_KEY = "wizzardAction";
@@ -46,9 +62,9 @@ public class Constants {
 	//OSTATNI NAZVY ELEMENTU VE FORMULARICH
 	public static final String FORM_NEWS_TITLE = "newsTitle";
 	public static final String FORM_NEWS_DESCR = "newsDescription";
+	public static final String FORM_CAPTCHA_TEXT = "captchaText";
 
 	//SQL_DOTAZY
-	public static final String ADD_NEW_ITEM_SQL = "ADD_NEW_ITEM_SQL";
 
 	
 
@@ -68,6 +84,7 @@ public class Constants {
 	public static final String FORM_USER_NEW_PWD_RETYPED = "retypedNewPAssword";
 	public static final String FORM_HIDDEN_ACTION_STRING = "action";
 	public static final String FORM_HIDDEN_ACTION_DEL_NEWS = "del_news";
+	
 
 	
 	//AddImageWizzardItem.java
@@ -112,14 +129,10 @@ public class Constants {
 	public static final String UPLOAD_THUMB_DIR = "preview";
 	public static final String MESSAGE_NUMBER_PER_PAGE = "MESSAGE_NUMBER_PER_PAGE";
 		
-	public static final String GET_NEWS_SQL_KEY = "GET_NEWS_SQL";
-	public static final String DEL_NEWS_SQL_KEY = "DEL_NEWS_SQL";
 
 	public static final String GET_MUSIC_MENU_SQL_KEY = "GET_MUSIC_MENU_SQL";
 	public static final String GET_SONG_SQL_KEY = "GET_SONG_SQL";
 	public static final String GET_DEFAULT_PAGE_SQL_KEY = "GET_DEFAULT_PAGE_SQL";
-	public static final String GET_CONCERT_SQL_KEY = "GET_CONCERT_SQL";
-	public static final String GET_GUESTBOOK_SQL_KEY = "GET_GUESTBOOK_SQL";
 	
 	public static final String FREE_ITEM_CLASS_NAME = "freeItem";
 	public static final String ACTIVE_ITEM_CLASS_NAME = "activeItem";

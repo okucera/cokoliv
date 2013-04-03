@@ -1,4 +1,5 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><%@page import="cokoliv.model.NewsModel"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@page import="cokoliv.databobjects.User"%>
 <%@page
 	language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -8,8 +9,10 @@
 <%@page import="cokoliv.support.Constants" %>
 <%
 	Forms formId = Forms.FRM009;	
-	//Object objData = request.getAttribute(Constants.FLOW_DATA);
-	//IFlowData data = objData == null ? null : (IFlowData) objData;
+	Object objData = request.getAttribute(Constants.FLOW_DATA);
+	IFlowData data = objData == null ? null : (IFlowData) objData;
+	LoadBandUserFlowData bandUserFlowData = data instanceof LoadBandUserFlowData ? (LoadBandUserFlowData) data : null;
+	User user = bandUserFlowData != null ? bandUserFlowData.getUser() : null;
 %>
 <html>
 	<head>
@@ -29,6 +32,7 @@
 	  				<CokolivTags:HorizontalMenu activeFormId="<%= formId %>"/>					
 					<CokolivTags:VerticalMenuPanel activeFormId="<%= formId %>">
 						<CokolivTags:VerticalBandMenu/>
+						<CokolivTags:BandUserContent user="<%= user %>"/>			
 					</CokolivTags:VerticalMenuPanel>				
 	  			</td>
 	  		</tr>

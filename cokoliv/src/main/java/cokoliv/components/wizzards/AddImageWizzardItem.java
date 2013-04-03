@@ -5,6 +5,7 @@ import java.io.IOException;
 import cokoliv.components.WizzardComponent;
 import cokoliv.enumerate.EWizzardItems;
 import cokoliv.enumerate.Forms;
+import cokoliv.enumerate.UploadRepositories;
 import cokoliv.enumerate.WizzardActionEnum;
 import cokoliv.support.Constants;
 import cokoliv.support.StyleNames;
@@ -17,6 +18,7 @@ public class AddImageWizzardItem extends WizzardItem{
 	private static final long serialVersionUID = 7904878216687345947L;
 	private String imageFilename = null;
 	private Forms activeFormId;
+	private UploadRepositories repository;
 
 	@Override
 	protected void appendToStartTag() {
@@ -62,7 +64,9 @@ public class AddImageWizzardItem extends WizzardItem{
 		out.println("							<input type=file size=\"15px\" name=\""+Constants.FILE_INPUT_IMAGE_NAME+"\" class=\""+StyleNames.INPUT_FILE_STYLE+"\" onChange=\"servlet: fileChangedHandler()\"/>");
 		out.println("							<input type=HIDDEN name=\""+Constants.FORM_ID_KEY+"\" value=\""+this.activeFormId.name()+"\"/>");		
 		out.println("							<input type=HIDDEN name=\""+Constants.WIZZARD_ITEM_TYPE_KEY+"\" value=\""+this.itemName.name()+"\"/>");		
-		out.println("							<input type=HIDDEN name=\""+Constants.WIZZARD_ACTION_KEY+"\" value=\""+WizzardActionEnum.NEXT.name()+"\"/>");		
+		out.println("							<input type=HIDDEN name=\""+Constants.WIZZARD_ACTION_KEY+"\" value=\""+WizzardActionEnum.NEXT.name()+"\"/>");	
+		out.println("							<input type=HIDDEN name=\""+Constants.HIDDEN_ELEMENT_UPLOAD_IMAGE_REPOSITORY+"\" value=\""+repository.name()+"\"/>");	
+		
 		out.println("						</td>");
 		out.println("						<td>");
 		//Image info
@@ -112,6 +116,14 @@ public class AddImageWizzardItem extends WizzardItem{
 
 	public void setImageFilename(String imageFilename) {
 		this.imageFilename = imageFilename;
+	}
+
+	public UploadRepositories getRepository() {
+		return repository;
+	}
+
+	public void setRepository(UploadRepositories repository) {
+		this.repository = repository;
 	}
 
 }

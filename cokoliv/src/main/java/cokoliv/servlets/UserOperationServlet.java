@@ -37,8 +37,12 @@ public class UserOperationServlet extends BasicAbstractServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
+		this.request = request;
 		this.response = response;
+		
+		request.setCharacterEncoding(PAGE_DEFAULT_ENCODING);
+		response.setCharacterEncoding(PAGE_DEFAULT_ENCODING);
+
 		this.session = request.getSession();
 
 		String firstName = request.getParameter(Constants.FORM_USER_FIRST_NAME);

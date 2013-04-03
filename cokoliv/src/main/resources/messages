@@ -1,19 +1,19 @@
-HLA001=Seznam novinek není v současné chvíli dostupný. Zastavte se prosím později.
+﻿HLA001=Seznam novinek nen\u00ED v sou\u010Dasn\u00E9 chv\u00EDli dostupn\u00FD. Zastavte se pros\u00EDm pozd\u011Bji.
 
 #Hlasky pro SQL databazi
-HLA010 = Během zavádění databází nastala chyba.
-HLA011 = Chyba během uzavírání spojení s databází.
-HLA012 = Chyba během provádění dotazu.
-HLA013 = Chyba během navazování spojení s databází.
-HLA014 = Zkontrolujte přihlašovací údaje a url databáze.
-HLA015 = Uživatel, pod kterým se pokoušíš přihlásit, neexistuje. Zadej prosím existujícího uživatele.
-HLA016 = Pro přihlašovaného uživatele bylo zadáno nesprávné heslo. Zadej prosím správné heslo.
-HLA017 = Došlo k procesní chybě. Opakuj prosím akci později.
-HLA018 = Účet byl zablokován. Napište si prosím o odblokování účtu.
-HLA019 = Bylo zadáno nesprávné heslo. Zkontrolujte si prosím rozložení klávesnice, aktivní CapsLock mód a akci opakujte.
-HLA020 = Nebyl zadán jeden nebo více povinných parametrů. Vraťte se prosím na předchozí stránku a údaje opravte.
-HLA021 = Nastala neočekávaná chyba v aplikaci. Dejte mi prosím o této chybě vědít ;).
-HLA022 = Zadaná hesla se neshodují. Zadej prosím shodná hesla.
-HLA023 = Neplatný formát formData.
-HLA024 = Nemáte dostatečná oprávnění pro provedení akce.
-HLA025 = Chyba během nacitani formularovych hodnot - kontaktujte prosim autora.
+HLA010 = B\u011Bhem zav\u00E1d\u011Bn\u00ED datab\u00E1z\u00ED nastala chyba.
+HLA011 = Chyba b\u011Bhem uzav\u00EDr\u00E1n\u00ED spojen\u00ED s datab\u00E1z\u00ED.
+HLA012 = Chyba b\u011Bhem prov\u00E1d\u011Bn\u00ED dotazu.
+HLA013 = Chyba b\u011Bhem navazov\u00E1n\u00ED spojen\u00ED s datab\u00E1z\u00ED.
+HLA014 = Zkontrolujte p\u0159ihla\u0161ovac\u00ED udaje a url datab\u00E1ze.
+HLA015 = U\u017Eivatel, pod kter\u00FDm se pokou\u0161\u00ED\u0161 p\u0159ihl\u00E1sit, neexistuje. Zadej pros\u00EDm existuj\u00EDc\u00EDho u\u017Eivatele.
+HLA016 = Pro p\u0159ihla\u0161ovan\u00E9ho u\u017Eivatele bylo zad\u00E1no nespr\u00E1vn\u00E9 heslo. Zadej pros\u00EDm spr\u00E1vn\u00E9 heslo.
+HLA017 = Do\u0161lo k procesn\u00ED chyb\u011B. Opakuj pros\u00EDm akci pozd\u011Bji.
+HLA018 = U\u010Det byl zablokov\u00E1n. Napi\u0161te si pros\u00EDm o odblokov\u00E1n\u00ED\u010Dtu.
+HLA019 = Bylo zad\u00E1no nespr\u00E1vn\u00E9 heslo. Zkontrolujte si pros\u00EDm rozlo\u017Een\u00ED kl\u00E1vesnice, aktivn\u00ED CapsLock mód a akci opakujte.
+HLA020 = Nebyl zad\u00E1n jeden nebo v\u00EDce povinn\u00FDch parametr\u016F. Vratte se pros\u00EDm na p\u0159edchoz\u00ED str\u00E1nku a udaje opravte.
+HLA021 = Nastala neo\u010Dek\u00E1van\u00E1 chyba v aplikaci. Dejte mi pros\u00EDm o t\u00E9to chyb\u011B v\u011Bd\u00EDt ;).
+HLA022 = Zadan\u00E1 hesla se neshoduj\u00ED. Zadej pros\u00EDm shodn\u00E1 hesla.
+HLA023 = Neplatn\u00FD form\u00E1t formData.
+HLA024 = Nem\u00E1te dostate\u010Dn\u00E1 opr\u00E1vn\u011Bn\u00ED pro proveden\u00ED akce.
+HLA025 = Chyba b\u011Bhem nacitani formularovych hodnot - kontaktujte prosim autora.
