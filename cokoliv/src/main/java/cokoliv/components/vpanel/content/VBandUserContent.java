@@ -4,10 +4,8 @@ import java.io.IOException;
 
 import cokoliv.components.CokolivTag;
 import cokoliv.components.VerticalMenuPanel;
-import cokoliv.databobjects.LoggedUser;
 import cokoliv.databobjects.User;
 import cokoliv.enumerate.UploadRepositories;
-import cokoliv.support.CokolivContext;
 import cokoliv.support.StyleNames;
 
 public class VBandUserContent extends CokolivTag implements IVerticalPanelContent {
@@ -17,12 +15,10 @@ public class VBandUserContent extends CokolivTag implements IVerticalPanelConten
 	private static final long serialVersionUID = 6990244867779218440L;
 	
 	private User user;
-	private LoggedUser loggedUser;
 	private UploadRepositories repository = UploadRepositories.BAND_USERS_REPOSITORY;
 	
 	public int doStartTag(){
 		this.out = pageContext.getOut();
-		loggedUser = CokolivContext.getContext().getLoggedUser();
 		if(this.getParent() instanceof VerticalMenuPanel){
 			((VerticalMenuPanel) this.getParent()).setVerticalPanelContent(this);
 		}

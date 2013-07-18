@@ -1,4 +1,4 @@
-package cokoliv.servlets;
+package servlet;
 
 import java.io.IOException;
 import java.util.List;
@@ -48,6 +48,7 @@ public class FileUploadServlet extends BasicAbstractServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.response = response;
 		this.request = request;
+		this.session = request.getSession();
 		
 		if(ServletFileUpload.isMultipartContent(request)){
 			UploadRepositories parseUploadRepository = UploadRepositories.DEFAULT_IMAGES_UPLOAD_REPOSITORY;
@@ -58,8 +59,9 @@ public class FileUploadServlet extends BasicAbstractServlet {
 			String strWizzardItem = HttpServletUtils.getParameterFromMultipartRequestItems(multipartItems, Constants.WIZZARD_ITEM_TYPE_KEY);
 			String strUploadRepository = HttpServletUtils.getParameterFromMultipartRequestItems(multipartItems, Constants.HIDDEN_ELEMENT_UPLOAD_IMAGE_REPOSITORY);
 			
-			if(!strOp.isNullOrEmpty(strFormId) && !strOp.isNullOrEmpty(strWizzardAction) && !strOp.isNullOrEmpty(strWizzardItem) && !strOp.isNullOrEmpty(strWizzardItem)) {
+			if(!strOp.isNullOrEmpty(strFormId) && !strOp.isNullOrEmpty(strWizzardAction) && !strOp.isNullOrEmpty(strWizzardItem) && !strOp.isNullOrEmpty(strUploadRepository)) {
 				//set forms and wizzards
+				logger.logError("FileUploadServlet upload new file: strFormId="+strFormId+", strWizzardAction="+strWizzardAction+", strWizzardItem="+strWizzardItem+", strUploadRepository="+strUploadRepository);
 				Forms formId = Forms.valueOf(strFormId);
 				WizzardActionEnum wizzardAction = WizzardActionEnum.valueOf(strWizzardAction);
 				EWizzardItems wizzardItem = EWizzardItems.valueOf(strWizzardItem);
@@ -72,6 +74,7 @@ public class FileUploadServlet extends BasicAbstractServlet {
 				flowData.setFileItems(HttpServletUtils.getNonFormFileItems(multipartItems));
 				flowData.setRepository(uploadRepository);
 				flowData.setMakePreview(true);
+				flowData.setLoggedUser(getLoggedUser());
 				
 				context.setActiveWizzardItem(wizzardItem);
 				context.setWizzardAction(wizzardAction);
@@ -84,6 +87,7 @@ public class FileUploadServlet extends BasicAbstractServlet {
 					redirectToError(flowData.getErrorMessage());
 				}
 			}else{
+				logger.logError("FileUploadServlet required params are not set: strFormId="+strFormId+", strWizzardAction="+strWizzardAction+", strWizzardItem="+strWizzardItem+", strUploadRepository="+strUploadRepository);
 				redirectToError(MessageCodes.HLA025);
 			}
 		}else{

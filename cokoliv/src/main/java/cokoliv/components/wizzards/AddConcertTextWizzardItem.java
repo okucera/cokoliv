@@ -43,12 +43,12 @@ public class AddConcertTextWizzardItem extends WizzardItem {
 		String imgFilename = getImageFilename();
 		UploadRepositories imgRepository = getRepository();
 		
-		out.println("			<form name=\"inputTextForm\" method=\"post\" action=\"ImportConcertServlet\">");
+		out.println("			<form name=\"inputTextForm\" method=\"post\" action=\"servlet/ImportConcertServlet\">");
 		out.println("				<table width=\"100%\">");
 		out.println("					<tr>");
 		out.println("						<td class=\"verticalSplitter\" width=\"220\">");
 		//Image
-		out.println("							<img src=\"GetImageServlet?image="+imgFilename+"&repo="+imgRepository.name()+"\"/>");
+		out.println("							<img src=\"servlet/GetImageServlet?image="+imgFilename+"&repo="+imgRepository.name()+"\"/>");
 		//drawImageInfoTable();		
 		out.println("						</td>");
 		out.println("						<td valign=\"top\">");

@@ -47,7 +47,7 @@ public class ChangeUserDetailPanel extends CokolivTag{
 	}
 	
 	private void getContent() throws IOException{
-		out.println("<form action=\"UserOperationServlet\" method=\"POST\">");
+		out.println("<form action=\"servlet/UserOperationServlet\" method=\"POST\">");
 		out.println("	<table style=\"color:white\">");
 		out.println("		<tr>");
 		out.println("			<td>");

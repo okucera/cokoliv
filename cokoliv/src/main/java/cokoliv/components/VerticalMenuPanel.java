@@ -156,9 +156,15 @@ public class VerticalMenuPanel extends TagSupport {
 	private void getFoot() throws Exception{
 		out.println("<table width=\"100%\" class=\"outsideCorners\" cellpadding=\"0\" cellspacing=\"0\">");
 		out.println("	<tr>");
-		out.println("		<td class=\"leftDownOutsideCorner\"/>");
-		out.println("		<td class=\"downLine\"/>");
-		out.println("		<td class=\"rightDownOutsideCorner\" align=\"right\"/>");
+		out.println("		<td class=\"leftDownOutsideCorner\">");
+		out.println("					&nbsp;");
+		out.println("		</td>");
+		out.println("		<td class=\"downLine\">");
+		out.println("					&nbsp;");
+		out.println("		</td>");
+		out.println("		<td class=\"rightDownOutsideCorner\" align=\"right\">");
+		out.println("					&nbsp;");
+		out.println("		</td>");
 		out.println("	</tr>");
 		out.println("</table>");
 

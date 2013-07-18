@@ -2,12 +2,10 @@ package cokoliv.components;
 
 import java.io.IOException;
 
-import cokoliv.databobjects.LoggedUser;
 import cokoliv.enumerate.EFlows;
 import cokoliv.flowdata.NewsFlowData;
 import cokoliv.renderers.CokolivAdminNewsRenderer;
 import cokoliv.renderers.CokolivNewsItemRenderer;
-import cokoliv.support.CokolivContext;
 import cokoliv.support.UserHelper;
 
 
@@ -17,12 +15,10 @@ public class News extends CokolivTag {
 	 * 
 	 */
 	private static final long serialVersionUID = 3009044853092614915L;
-	private LoggedUser loggedUser;
 
 	public int doStartTag(){
 		try {
 			this.out = pageContext.getOut();
-			loggedUser = CokolivContext.getContext().getLoggedUser();
 			getContent();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -41,7 +37,7 @@ public class News extends CokolivTag {
 		setItemRendererByUserRights();
 
 		if(flowData.getErrorMessage()==null && this.itemRenderer != null){
-			if(UserHelper.isLoggedUserAdminOrSuperuser(loggedUser)){
+			if(UserHelper.isLoggedUserAdminOrSuperuser(getLoggedUser())){
 				//render form for add new News
 				renderNewItemForm();
 			}
@@ -56,7 +52,7 @@ public class News extends CokolivTag {
 	}
 	
 	private void setItemRendererByUserRights(){
-		if(UserHelper.isLoggedUserAdminOrSuperuser(loggedUser)){
+		if(UserHelper.isLoggedUserAdminOrSuperuser(getLoggedUser())){
 			itemRenderer = new CokolivAdminNewsRenderer();
 		}else{
 			itemRenderer = new CokolivNewsItemRenderer();

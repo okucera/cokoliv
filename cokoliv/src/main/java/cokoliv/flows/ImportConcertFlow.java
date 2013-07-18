@@ -18,7 +18,7 @@ public class ImportConcertFlow extends BasicFlow implements IFlow {
 			ImportConcertData data = (ImportConcertData) flowData;
 			
 			try {
-				if(this.cokoliv.getLoggedUser() != null && UserHelper.isLoggedUserAdminOrSuperuser(this.cokoliv.getLoggedUser())){
+				if(data.getLoggedUser() != null && UserHelper.isLoggedUserAdminOrSuperuser(data.getLoggedUser())){
 					concerts.addNewConcertItem(data.getConcertItem());
 				}
 			}catch(CokolivApplicationException exception){

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.commons.fileupload.FileItem;
 
+import cokoliv.databobjects.LoggedUser;
 import cokoliv.enumerate.UploadRepositories;
 import cokoliv.enumerate.WizzardActionEnum;
 
@@ -14,6 +15,7 @@ public class UploadFileData extends FlowData {
 	private WizzardActionEnum wizzardAction;
 	private List<FileItem> fileItems;
 	private boolean makePreview;
+	private LoggedUser loggedUser;
 	
 	//PARAMETERES TO SET IN FLOW
 	private List<FileItem> excludedItems;
@@ -60,5 +62,11 @@ public class UploadFileData extends FlowData {
 	}
 	public void setMakePreview(boolean makePreview) {
 		this.makePreview = makePreview;
+	}
+	public LoggedUser getLoggedUser() {
+		return loggedUser;
+	}
+	public void setLoggedUser(LoggedUser loggedUser) {
+		this.loggedUser = loggedUser;
 	}
 }

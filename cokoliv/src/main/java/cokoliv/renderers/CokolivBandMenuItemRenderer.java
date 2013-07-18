@@ -28,7 +28,7 @@ public class CokolivBandMenuItemRenderer extends CokolivAbstractItemRenderer {
 		if(item instanceof BandMenuItem) {
 			BandMenuItem menuItem = (BandMenuItem) item; 
 			out.println("<tr>");
-			out.println("<td><a href=\"GetBandUserServlet?"+Constants.BAND_USER_ID+"="+menuItem.getId()+"\">&nbsp;&nbsp;"+menuItem.getNick()+"</a></td>");
+			out.println("<td><a href=\"servlet/GetBandUserServlet?"+Constants.BAND_USER_ID+"="+menuItem.getId()+"\">&nbsp;&nbsp;"+menuItem.getNick()+"</a></td>");
 			out.println("</tr>");
 		}
 	}

@@ -2,6 +2,7 @@
 <!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
   <context-param>
   	<param-name>newsImageUpload</param-name>
   	<param-value>E:\SW\Development\repo\cokoliv\cokoliv\src\main\webapp\img\upload\news\</param-value>
@@ -11,111 +12,115 @@
   	<servlet-name>LoginServlet</servlet-name>
   	<display-name>UserServlet</display-name>
   	<description>Servlet pro login uzivatele</description>
-  	<servlet-class>cokoliv.servlets.LoginServlet</servlet-class>
+  	<servlet-class>servlet.LoginServlet</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>UserOperationServlet</servlet-name>
   	<display-name>UserOperationServlet</display-name>
-  	<servlet-class>cokoliv.servlets.UserOperationServlet</servlet-class>
+  	<servlet-class>servlet.UserOperationServlet</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>LogoutServlet</servlet-name>
   	<display-name>LogoutServlet</display-name>
-  	<servlet-class>cokoliv.servlets.LogoutServlet</servlet-class>
+  	<servlet-class>servlet.LogoutServlet</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>NewsServlet</servlet-name>
   	<display-name>NewsServlet</display-name>
-  	<servlet-class>cokoliv.servlets.NewsServlet</servlet-class>
+  	<servlet-class>servlet.NewsServlet</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>GetImageServlet</servlet-name>
   	<display-name>GetImageServlet</display-name>
   	<description>Servlet pro ziskani obrazku</description>
-  	<servlet-class>cokoliv.servlets.GetImageServlet</servlet-class>
+  	<servlet-class>servlet.GetImageServlet</servlet-class>
   </servlet>
     <servlet>
         <servlet-name>FileUploadServlet</servlet-name>
         <display-name>FileUploadServlet</display-name>
         <description>Servlet pro upload souboru</description>
-        <servlet-class>cokoliv.servlets.FileUploadServlet</servlet-class>
+        <servlet-class>servlet.FileUploadServlet</servlet-class>
     </servlet>
     <servlet>
     	<servlet-name>ImportNewsServlet</servlet-name>
     	<display-name>ImportNewsServlet</display-name>
     	<description>Servlet pro import novinky do databaze</description>
-    	<servlet-class>cokoliv.servlets.ImportNewsServlet</servlet-class>
+    	<servlet-class>servlet.ImportNewsServlet</servlet-class>
     </servlet>
     <servlet>
     	<servlet-name>GetBandUserServlet</servlet-name>
     	<display-name>GetBandUserServlet</display-name>
     	<description>Servlet pro nacteni clena kapely</description>
-    	<servlet-class>cokoliv.servlets.GetBandUserServlet</servlet-class>
+    	<servlet-class>servlet.GetBandUserServlet</servlet-class>
     </servlet>
     <servlet>
     	<servlet-name>InsertGuestbookItemServlet</servlet-name>
     	<display-name>InsertGuestbookItemServlet</display-name>
     	<description>Servlet pro vlozeni prizpevku do diskuse</description>
-    	<servlet-class>cokoliv.servlets.InsertGuestbookItemServlet</servlet-class>
+    	<servlet-class>servlet.InsertGuestbookItemServlet</servlet-class>
     </servlet>
     <servlet>
     	<servlet-name>ImportConcertServlet</servlet-name>
     	<display-name>ImportConcertServlet</display-name>
     	<description>Servlet na import koncertu</description>
-    	<servlet-class>cokoliv.servlets.ImportConcertServlet</servlet-class>
+    	<servlet-class>servlet.ImportConcertServlet</servlet-class>
     </servlet>
     <servlet>
     	<servlet-name>InitializeServlet</servlet-name>
     	<display-name>InitializeServlet</display-name>
     	<description>Servlet co mi pripravi databazi vole...</description>
-    	<servlet-class>cokoliv.servlets.InitializeServlet</servlet-class>
+    	<servlet-class>servlet.InitializeServlet</servlet-class>
     </servlet>
   <servlet-mapping>
   	<servlet-name>LoginServlet</servlet-name>
-  	<url-pattern>/LoginServlet</url-pattern>
+  	<url-pattern>/servlet/LoginServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>UserOperationServlet</servlet-name>
-  	<url-pattern>/UserOperationServlet</url-pattern>
+  	<url-pattern>/servlet/UserOperationServlet</url-pattern>
   </servlet-mapping>
       <servlet-mapping>
   	<servlet-name>LogoutServlet</servlet-name>
-  	<url-pattern>/LogoutServlet</url-pattern>
+  	<url-pattern>/servlet/LogoutServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>NewsServlet</servlet-name>
-  	<url-pattern>/NewsServlet</url-pattern>
+  	<url-pattern>/servlet/NewsServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>GetImageServlet</servlet-name>
-  	<url-pattern>/GetImageServlet</url-pattern>
+  	<url-pattern>/servlet/GetImageServlet</url-pattern>
   </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FileUploadServlet</servlet-name>
-        <url-pattern>/FileUploadServlet</url-pattern>
+        <url-pattern>/servlet/FileUploadServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
     	<servlet-name>ImportNewsServlet</servlet-name>
-    	<url-pattern>/ImportNewsServlet</url-pattern>
+    	<url-pattern>/servlet/ImportNewsServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
     	<servlet-name>GetBandUserServlet</servlet-name>
-    	<url-pattern>/GetBandUserServlet</url-pattern>
+    	<url-pattern>/servlet/GetBandUserServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
     	<servlet-name>InsertGuestbookItemServlet</servlet-name>
-    	<url-pattern>/InsertGuestbookItemServlet</url-pattern>
+    	<url-pattern>/servlet/InsertGuestbookItemServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
     	<servlet-name>ImportConcertServlet</servlet-name>
-    	<url-pattern>/ImportConcertServlet</url-pattern>
+    	<url-pattern>/servlet/ImportConcertServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
     	<servlet-name>InitializeServlet</servlet-name>
-    	<url-pattern>/InitializeServlet</url-pattern>
-    </servlet-mapping>  
+    	<url-pattern>/servlet/InitializeServlet</url-pattern>
+    </servlet-mapping>
+    <session-config>
+    	<session-timeout>20</session-timeout>
+    </session-config>
 
-	<welcome-file-list>
+
+    <welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
 		<welcome-file>index.jsp</welcome-file>

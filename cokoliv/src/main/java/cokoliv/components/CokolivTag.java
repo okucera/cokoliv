@@ -2,13 +2,16 @@ package cokoliv.components;
 
 import java.io.IOException;
 
+import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 
+import cokoliv.databobjects.LoggedUser;
 import cokoliv.enumerate.EFlows;
 import cokoliv.enumerate.MessageCodes;
 import cokoliv.flowdata.IFlowData;
 import cokoliv.renderers.CokolivAbstractItemRenderer;
+import cokoliv.support.UserHelper;
 
 public class CokolivTag extends TagSupport{
 
@@ -26,5 +29,9 @@ public class CokolivTag extends TagSupport{
 	
 	public void renderErrorMsg(MessageCodes msg) throws IOException {
 		out.println(msg.getErrorMessage());
+	}
+	
+	protected LoggedUser getLoggedUser() {
+		return (LoggedUser) pageContext.getSession().getAttribute(UserHelper.LOGGED_USER);
 	}
 }

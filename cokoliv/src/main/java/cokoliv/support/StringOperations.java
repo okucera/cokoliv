@@ -1,11 +1,8 @@
 package cokoliv.support;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 
-import sun.misc.BASE64Encoder;
-import sun.misc.BASE64Decoder;
+import org.apache.commons.codec.binary.Base64;
 
 public class StringOperations {
 	
@@ -32,20 +29,11 @@ public class StringOperations {
 	
 	
 	public String base64EncodedString(String text){
-		BASE64Encoder code = new BASE64Encoder();
-		return code.encode(text.getBytes());
+		return new String(Base64.encodeBase64(text.getBytes()));
 	}
 	
 	public String base64DecodedString(String text){
-		String decoded="";
-		BASE64Decoder base64Decoder = new BASE64Decoder();
-		BASE64Decoder decode = base64Decoder;
-		try{
-			decoded = new String(decode.decodeBuffer(text));
-		}catch(IOException e){
-			e.printStackTrace();
-		}		
-		return decoded.equals("")?null:decoded;
+		return new String(Base64.decodeBase64(text.getBytes()));
 	}
 	
 	public boolean isNullOrEmpty(String str){

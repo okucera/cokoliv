@@ -1,4 +1,4 @@
-package cokoliv.servlets;
+package servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -40,6 +40,7 @@ public class InsertGuestbookItemServlet extends BasicAbstractServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.request = request;
 		this.response = response;
+		this.session = request.getSession();
 
 		request.setCharacterEncoding(PAGE_DEFAULT_ENCODING);
 		response.setCharacterEncoding(PAGE_DEFAULT_ENCODING);

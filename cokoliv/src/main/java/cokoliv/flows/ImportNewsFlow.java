@@ -18,7 +18,7 @@ public class ImportNewsFlow extends BasicFlow implements IFlow {
 			ImportNewsData data = (ImportNewsData) flowData;
 			
 			try {
-				if(this.cokoliv.getLoggedUser() != null && UserHelper.isLoggedUserAdminOrSuperuser(this.cokoliv.getLoggedUser())){
+				if(data.getLoggedUser() != null && UserHelper.isLoggedUserAdminOrSuperuser(data.getLoggedUser())){
 					news.addNewNews(data.getNewItem());
 				}
 			}catch(CokolivApplicationException exception){

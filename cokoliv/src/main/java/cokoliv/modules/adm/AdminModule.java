@@ -15,6 +15,7 @@ import cokoliv.dao.UsersDAO;
 import cokoliv.databobjects.LoggedUser;
 import cokoliv.databobjects.User;
 import cokoliv.enumerate.ImageResizer;
+import cokoliv.enumerate.MessageCodes;
 import cokoliv.enumerate.UploadRepositories;
 import cokoliv.exceptions.CokolivApplicationException;
 import cokoliv.flowdata.ChangeUserDetailData;
@@ -167,7 +168,7 @@ public class AdminModule implements IAdminModule {
 		return existingFileItems;
 	}
 	
-	public void makeImagePreviewInRepository(List<FileItem> fileItems, UploadRepositories repository){
+	public void makeImagePreviewInRepository(List<FileItem> fileItems, UploadRepositories repository) throws CokolivApplicationException{
 		try{ 
 			// Process the uploaded file items
 			Iterator<FileItem> i = fileItems.iterator();
@@ -178,6 +179,8 @@ public class AdminModule implements IAdminModule {
 		    	  
 		    	  File sourceFile = new File(repository.getRealRepositoryPath() + File.separator + item.getName()) ;
 		    	  File targetFile = new File(repository.getRealRepositoryPath() + File.separator + "preview" + File.separator + item.getName());
+		    	  targetFile.createNewFile();
+		    	  targetFile.setWritable(true, false);
 		    	  
 		    	  String filename = sourceFile.getName();
 		    	  String extension = filename.substring(filename.lastIndexOf(".")+1);
@@ -193,9 +196,10 @@ public class AdminModule implements IAdminModule {
 		    	  ImageIO.write(scaledImage, extension, targetFile);
 		      }
 		}catch(Exception ex) {
-		       System.out.println(ex);
+		       MessageCodes message = MessageCodes.HLA026;
+		       message.setCustomMessage(ex.getMessage());
+		       throw new CokolivApplicationException(message, ex.getMessage());
 		}
-
 	}
 	
 	public void deleteTempFilesInRepository(UploadRepositories repository){

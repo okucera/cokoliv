@@ -1,4 +1,4 @@
-package cokoliv.servlets;
+package servlet;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

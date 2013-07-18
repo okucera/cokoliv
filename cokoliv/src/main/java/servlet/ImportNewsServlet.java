@@ -1,4 +1,4 @@
-package cokoliv.servlets;
+package servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -41,6 +41,7 @@ public class ImportNewsServlet extends BasicAbstractServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.request = request;
 		this.response = response;
+		this.session = request.getSession();
 		
 		request.setCharacterEncoding(PAGE_DEFAULT_ENCODING);
 		response.setCharacterEncoding(PAGE_DEFAULT_ENCODING);
@@ -77,6 +78,7 @@ public class ImportNewsServlet extends BasicAbstractServlet {
 			item.setImgRepository(repository);
 			
 			flowData.setNewItem(item);
+			flowData.setLoggedUser(getLoggedUser());
 			
 			context.setActiveWizzardItem(wizzardItem);
 			context.setWizzardAction(wizzardAction);

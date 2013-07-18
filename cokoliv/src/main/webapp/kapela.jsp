@@ -1,5 +1,4 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<%@page import="cokoliv.databobjects.User"%>
 <%@page
 	language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -7,10 +6,14 @@
 <%@page import="cokoliv.enumerate.Forms"%>
 <%@page import="cokoliv.flowdata.*" %>
 <%@page import="cokoliv.support.Constants" %>
+<%@page import="cokoliv.flowdata.manager.FlowDataManager"%>
+<%@page import="cokoliv.databobjects.User"%>
 <%
 	Forms formId = Forms.FRM009;	
-	Object objData = request.getAttribute(Constants.FLOW_DATA);
-	IFlowData data = objData == null ? null : (IFlowData) objData;
+
+	String dataKey = request.getParameter(Constants.FLOW_DATA_KEY);	
+	IFlowData data = (dataKey == null || dataKey.equals("")) ? null : FlowDataManager.getInstance().getFlowDataByKey(dataKey);
+	
 	LoadBandUserFlowData bandUserFlowData = data instanceof LoadBandUserFlowData ? (LoadBandUserFlowData) data : null;
 	User user = bandUserFlowData != null ? bandUserFlowData.getUser() : null;
 %>

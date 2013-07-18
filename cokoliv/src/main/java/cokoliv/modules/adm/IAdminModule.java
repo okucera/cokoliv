@@ -40,7 +40,7 @@ public interface IAdminModule {
 	//ADM016: Ziskej seznam existujicich souboru
 	public List<FileItem> getExistingFilesFromList(List<FileItem> list, UploadRepositories repository);
 	//ADM017: Vytvor a uloz nahled k obrazku
-	public void makeImagePreviewInRepository(List<FileItem> fileItems, UploadRepositories repository);
+	public void makeImagePreviewInRepository(List<FileItem> fileItems, UploadRepositories repository) throws CokolivApplicationException;
 	//ADM018: Vycisti repository od docasnych souboru
 	public void deleteTempFilesInRepository(UploadRepositories repository);
 	//ADM019: Ziskej uzivatele podle user_id

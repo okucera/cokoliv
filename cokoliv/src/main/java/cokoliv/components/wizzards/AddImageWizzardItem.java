@@ -45,12 +45,12 @@ public class AddImageWizzardItem extends WizzardItem{
 		out.println("		document.uploadForm.submit();");
 		out.println("	}");
 		out.println("</script>");
-		out.println("			<form name=\"uploadForm\" enctype=\"multipart/form-data\" method=\"post\" action=\"FileUploadServlet\">");
+		out.println("			<form name=\"uploadForm\" enctype=\"multipart/form-data\" method=\"post\" action=\"servlet/FileUploadServlet\">");
 		out.println("				<table width=\"100%\">");
 		out.println("					<tr>");
 		out.println("						<td class=\"verticalSplitter\" width=\"220\">");
 		//Image
-		out.println("						<img src=\"GetImageServlet?image=null\"/>");
+		out.println("						<img src=\"servlet/GetImageServlet?image=null\"/>");
 		
 		out.println("						</td>");
 		out.println("						<td>");

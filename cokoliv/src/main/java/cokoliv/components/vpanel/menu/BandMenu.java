@@ -5,13 +5,10 @@ import java.io.IOException;
 import javax.servlet.jsp.JspWriter;
 
 import cokoliv.components.CokolivTag;
-import cokoliv.databobjects.BandMenuItem;
-import cokoliv.databobjects.LoggedUser;
 import cokoliv.enumerate.EFlows;
 import cokoliv.flowdata.LoadBandMenuFlowData;
 import cokoliv.renderers.CokolivAdminBandMenuItemRenderer;
 import cokoliv.renderers.CokolivBandMenuItemRenderer;
-import cokoliv.support.CokolivContext;
 
 public class BandMenu extends CokolivTag {
 	
@@ -19,12 +16,10 @@ public class BandMenu extends CokolivTag {
 	 * 
 	 */
 	private static final long serialVersionUID = -258828099386104157L;
-	private LoggedUser loggedUser;
 	private JspWriter out;
 	private LoadBandMenuFlowData menuData;
 	
 	public int doStartTag(){
-		this.loggedUser = CokolivContext.getContext().getLoggedUser();
 		try{
 			loadBandMenu();
 			drawMenuItems();
@@ -36,7 +31,7 @@ public class BandMenu extends CokolivTag {
 	
 	private void drawMenuItems() throws IOException{
 		//Klasicky pohled - standardni uzivatel
-		if(loggedUser==null) {
+		if(getLoggedUser()==null) {
 			itemRenderer = new CokolivBandMenuItemRenderer();
 		}else{
 			//administratorsky pohled

@@ -2,11 +2,9 @@ package cokoliv.components;
 
 import java.io.IOException;
 
-import cokoliv.databobjects.LoggedUser;
 import cokoliv.enumerate.EFlows;
 import cokoliv.flowdata.GetConcertsFlowData;
 import cokoliv.renderers.CokolivConcertsItemRenderer;
-import cokoliv.support.CokolivContext;
 import cokoliv.support.UserHelper;
 
 
@@ -16,12 +14,10 @@ public class Concerts extends CokolivTag {
 	 * 
 	 */
 	private static final long serialVersionUID = 3009044853092614915L;
-	private LoggedUser loggedUser;
 
 	public int doStartTag(){
 		try {
 			this.out = pageContext.getOut();
-			loggedUser = CokolivContext.getContext().getLoggedUser();
 			getContent();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -49,7 +45,7 @@ public class Concerts extends CokolivTag {
 	}
 	
 	private void setItemRendererByUserRights(){
-		if(UserHelper.isLoggedUserAdminOrSuperuser(loggedUser)){
+		if(UserHelper.isLoggedUserAdminOrSuperuser(getLoggedUser())){
 			itemRenderer = new CokolivConcertsItemRenderer(); //TODO - new CokolivAdminConcertsRenderer();
 		}else{
 			itemRenderer = new CokolivConcertsItemRenderer();

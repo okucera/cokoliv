@@ -3,14 +3,12 @@ package cokoliv.components;
 import java.io.IOException;
 
 import cokoliv.databobjects.Captcha;
-import cokoliv.databobjects.LoggedUser;
 import cokoliv.enumerate.EFlows;
 import cokoliv.enumerate.UploadRepositories;
 import cokoliv.flowdata.GuestbookData;
 import cokoliv.flowdata.IFlowData;
 import cokoliv.flowdata.InsertGuestbookItemData;
 import cokoliv.renderers.CokolivGuestbookItemRenderer;
-import cokoliv.support.CokolivContext;
 import cokoliv.support.Constants;
 import cokoliv.support.StyleNames;
 import cokoliv.support.UserHelper;
@@ -22,13 +20,11 @@ public class Guestbook extends CokolivTag {
 	 * 
 	 */
 	private static final long serialVersionUID = 3009044853092614915L;
-	private LoggedUser loggedUser;
 	private IFlowData flowData;
 
 	public int doStartTag(){
 		try {
 			this.out = pageContext.getOut();
-			loggedUser = CokolivContext.getContext().getLoggedUser();
 			getContent();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -49,7 +45,7 @@ public class Guestbook extends CokolivTag {
 		setItemRendererByUserRights();
 
 		if(flowData.getErrorMessage()==null && this.itemRenderer != null){
-			if(UserHelper.isLoggedUserAdminOrSuperuser(loggedUser)){
+			if(UserHelper.isLoggedUserAdminOrSuperuser(getLoggedUser())){
 				//render form for add new News
 				renderNewItemForm();
 			}
@@ -68,7 +64,7 @@ public class Guestbook extends CokolivTag {
 		if(flowData instanceof InsertGuestbookItemData) {
 			data = (InsertGuestbookItemData) flowData;
 		}
-		out.println("			<form name=\"insertGuestbookItemForm\" method=\"post\" action=\"InsertGuestbookItemServlet\">");
+		out.println("			<form name=\"insertGuestbookItemForm\" method=\"post\" action=\"servlet/InsertGuestbookItemServlet\">");
 
 		out.println("<table align=\"center\">");
 		out.println("	<tr>");
@@ -88,7 +84,7 @@ public class Guestbook extends CokolivTag {
 		out.println("				<table align=\"center\" width=\"100%\">");
 		out.println("					<tr>");
 		out.println("						<td valign=\"middle\" align=\"center\">");
-		out.println("							<img src=\"GetImageServlet?image="+Captcha.getInstnace().getCpatchaImg()+"&repo="+UploadRepositories.GUSETBOOK_CAPTCHA_FAKE_REPOSITORY.name()+"\">");
+		out.println("							<img src=\"servlet/GetImageServlet?image="+Captcha.getInstnace().getCpatchaImg()+"&repo="+UploadRepositories.GUSETBOOK_CAPTCHA_FAKE_REPOSITORY.name()+"\">");
 		out.println("						</td>");
 		out.println("						<td valign=\"middle\" align=\"center\" rowspan=\"2\">");
 		out.println("							<input type=submit value=\"Odeslat...\" style=\"width:200px\">");
@@ -101,7 +97,7 @@ public class Guestbook extends CokolivTag {
 		out.println("					</tr>");
 		if(data!=null && data.isCaptchaWrong()){
 			out.println("					<tr>");
-			out.println("						<td valign=\"middle\" align=\"center\">");
+			out.println("						<td valign=\"middle\" align=\"center\" style=\"color:red\">");
 			out.println("							Kontrolní obrázek nebyl správně přepsán. Opište prosím správně kontrolní obrázek.");
 			out.println("						</td>");
 			out.println("					</tr>");
@@ -120,7 +116,7 @@ public class Guestbook extends CokolivTag {
 	}
 	
 	private void setItemRendererByUserRights(){
-		if(UserHelper.isLoggedUserAdminOrSuperuser(loggedUser)){
+		if(UserHelper.isLoggedUserAdminOrSuperuser(getLoggedUser())){
 			itemRenderer = new CokolivGuestbookItemRenderer();//TODO - new CokolivAdminGuestbookItemRenderer();
 		}else{
 			itemRenderer = new CokolivGuestbookItemRenderer();

@@ -5,11 +5,9 @@ import java.io.IOException;
 import javax.servlet.jsp.JspWriter;
 
 import cokoliv.components.VerticalMenuPanel;
-import cokoliv.databobjects.LoggedUser;
 import cokoliv.enumerate.EFlows;
 import cokoliv.flowdata.LoadBandMenuFlowData;
 import cokoliv.renderers.CokolivBandMenuItemRenderer;
-import cokoliv.support.CokolivContext;
 
 public class VerticalBandMenu extends VerticalMenu {
 	
@@ -17,11 +15,9 @@ public class VerticalBandMenu extends VerticalMenu {
 	 * 
 	 */
 	private static final long serialVersionUID = -258828099386104157L;
-	private LoggedUser loggedUser;
 	private LoadBandMenuFlowData menuData;
 	
 	public int doStartTag(){
-		this.loggedUser = CokolivContext.getContext().getLoggedUser();
 		out = pageContext.getOut();
 		try{
 			loadBandMenu();
@@ -35,8 +31,10 @@ public class VerticalBandMenu extends VerticalMenu {
 	}
 	
 	public void renderMenu() throws IOException {
+		//nadpis
+		createTitle();
 		//Klasicky pohled - standardni uzivatel
-		if(loggedUser==null) {
+		if(getLoggedUser()==null) {
 			itemRenderer = new CokolivBandMenuItemRenderer();
 		}else{
 			//administratorsky pohled
@@ -44,6 +42,16 @@ public class VerticalBandMenu extends VerticalMenu {
 		}
 		itemRenderer.renderItems(menuData.getBandMenuItems(), out);
 		
+	}
+	
+	private void createTitle() throws IOException{
+		out.println("<table border=\"0\" width=\"100%\">");
+		out.println("<tr>");
+		out.println("<td align=\"center\">");
+		out.println("<img src=\"img/night/kapela-title.png\">");
+		out.println("</td>");
+		out.println("</tr>");
+		out.println("</table>");
 	}
 	
 	private void loadBandMenu() {

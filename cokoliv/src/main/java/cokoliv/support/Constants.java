@@ -63,6 +63,7 @@ public class Constants {
 	public static final String FORM_NEWS_TITLE = "newsTitle";
 	public static final String FORM_NEWS_DESCR = "newsDescription";
 	public static final String FORM_CAPTCHA_TEXT = "captchaText";
+	public static final String FLOW_DATA_KEY = "fduid";
 
 	//SQL_DOTAZY
 

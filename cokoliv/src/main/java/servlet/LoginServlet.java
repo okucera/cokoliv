@@ -1,4 +1,4 @@
-package cokoliv.servlets;
+package servlet;
 
 import java.io.IOException;
 
@@ -14,16 +14,13 @@ import cokoliv.enumerate.UploadRepositories;
 import cokoliv.flowdata.LoginUserFlowData;
 import cokoliv.support.Constants;
 import cokoliv.support.StringOperations;
+import cokoliv.support.UserHelper;
 
 /**
  * Servlet implementation class LoginServlet
  */
 public class LoginServlet extends BasicAbstractServlet {
 	private static final long serialVersionUID = 1L;
-	
-	
-
-
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -66,6 +63,7 @@ public class LoginServlet extends BasicAbstractServlet {
 			executeFlow(EFlows.FL002, flowData);
 			if(flowData.getErrorMessage()==null){
 				initializeRepositories();
+				storeToSession(UserHelper.LOGGED_USER, flowData.getLoggedUser());
 				redirectToForm(flowData.getNextFormId());
 			}else{
 				redirectToError(flowData.getErrorMessage());

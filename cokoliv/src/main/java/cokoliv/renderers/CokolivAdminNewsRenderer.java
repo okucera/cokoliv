@@ -13,7 +13,7 @@ public class CokolivAdminNewsRenderer extends CokolivAbstractItemRenderer {
 	@Override
 	public void renderItems(Object[] items, JspWriter out) throws IOException {
 		this.out = out;
-		out.println("<form action=\"NewsServlet\" method=\"POST\">");
+		out.println("<form action=\"servlet/NewsServlet\" method=\"POST\">");
 		out.println("	<table class=\"news_table\">");
 		
 		for(Object item:items){

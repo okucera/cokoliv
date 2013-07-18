@@ -8,7 +8,7 @@
 <%@page import="cokoliv.support.*" %>
 <%
 	Forms formId = Forms.FRM002;
-	LoggedUser user = CokolivContext.getContext().getLoggedUser();	
+	LoggedUser user = session.getAttribute(UserHelper.LOGGED_USER) == null ? null : (LoggedUser) session.getAttribute(UserHelper.LOGGED_USER);	
 	String msgCode = request.getParameter("msg");
 %>
 <html>

@@ -1,4 +1,4 @@
-package cokoliv.servlets;
+package servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -32,6 +32,7 @@ public class GetBandUserServlet extends BasicAbstractServlet {
 		// TODO Auto-generated method stub
 		this.request = request;
 		this.response = response;
+		this.session = request.getSession();
 		
 		request.setCharacterEncoding(PAGE_DEFAULT_ENCODING);
 		response.setCharacterEncoding(PAGE_DEFAULT_ENCODING);

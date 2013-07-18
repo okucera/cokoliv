@@ -3,16 +3,13 @@ package cokoliv.components;
 import java.io.IOException;
 
 import javax.servlet.jsp.JspWriter;
-import javax.servlet.jsp.tagext.TagSupport;
 
-import cokoliv.databobjects.LoggedUser;
 import cokoliv.enumerate.Forms;
-import cokoliv.support.CokolivContext;
 import cokoliv.support.Constants;
 import cokoliv.support.KeyManager;
 import cokoliv.support.StyleNames;
 
-public class Logo extends TagSupport {
+public class Logo extends CokolivTag {
 	/**
 	 * 
 	 */
@@ -21,16 +18,14 @@ public class Logo extends TagSupport {
 	private KeyManager keyManager = new KeyManager();
 	private JspWriter out;
 	private Forms nextFormId;
-	private LoggedUser loggedUser;
 	
 	public int doStartTag(){
-		this.loggedUser = CokolivContext.getContext().getLoggedUser();
 		try{
 			out = pageContext.getOut();
 			out.println("<table class=\"screen-width-max-limit\" align=\"right\">");
 			out.println("	<tr>");
 			out.println("		<td>");
-			if(loggedUser==null){
+			if(getLoggedUser()==null){
 				loginComponent();
 			}else{
 				loggedUserComponent();
@@ -55,7 +50,7 @@ public class Logo extends TagSupport {
 	}
 	
 	private void loginComponent() throws IOException{
-		out.println("			<form action=\"LoginServlet\" method=\"POST\">");
+		out.println("			<form action=\"servlet/LoginServlet\" method=\"POST\">");
 		out.println("				<table class=\"log-in-table\" align=\"right\">");
 		out.println("					<tr>");
 		out.println("						<td>");
@@ -84,11 +79,11 @@ public class Logo extends TagSupport {
 	}
 	
 	private void loggedUserComponent() throws IOException{
-		out.println("			<form action=\"LogoutServlet\" method=\"POST\">");
+		out.println("			<form action=\"servlet/LogoutServlet\" method=\"POST\">");
 		out.println("				<table class=\"log-in-table\" align=\"right\">");
 		out.println("					<tr>");
 		out.println("						<td>");
-		out.println("							Byl jsi přihlášen jako "+this.loggedUser.getNick());
+		out.println("							Byl jsi přihlášen jako "+getLoggedUser().getNick());
 		out.println("						</td>");
 		out.println("					</tr>");
 		out.println("					<tr>");

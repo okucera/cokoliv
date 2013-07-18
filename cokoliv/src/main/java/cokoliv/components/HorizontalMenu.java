@@ -35,12 +35,14 @@ public class HorizontalMenu extends TagSupport{
 		out.println("<table class=\"outsideCorners\" cellpadding=\"0\" cellspacing=\"0\">");
 		out.println("	<tr>");
 		out.println("		<td class=\"leftUpOutsideCorner\">");
-		out.println("		</td>			");
+		out.println("			&nbsp;");
+		out.println("		</td>");
 		out.println("		<td class=\"upLine\" valign=\"bottom\">");
 		getMenu("myActualUrl");
 		out.println("		</td>			");
 		out.println("		<td class=\"rightUpOutsideCorner\">");
-		out.println("		</td>			");
+		out.println("			&nbsp;");
+		out.println("		</td>");
 		out.println("	</tr>		");
 		out.println("</table>");					
 	}

@@ -19,7 +19,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	</head>
 	<body>
-		<form action="InitializeServlet" method="post">
+		<form action="servlet/InitializeServlet" method="post">
 			<table border="0" align="center">
 				<input type=password name="init_start_db">
 				<input type=submit value="Připravit databázi"/>

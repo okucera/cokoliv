@@ -19,11 +19,12 @@ public enum MessageCodes {
 	HLA022("HLA022"),
 	HLA023("HLA023"),
 	HLA024("HLA024"),
-	HLA025("HLA025");
-	
+	HLA025("HLA025"),
+	HLA026("HLA026");
 	
 	private String errCode;
 	private String msg;
+	private String customMessage;
 	private Messages errorProperties = new Messages();
 
 	
@@ -39,6 +40,14 @@ public enum MessageCodes {
 	
 	public String getErrorMessage(){
 		return this.msg;
+	}
+
+	public String getCustomMessage() {
+		return customMessage;
+	}
+
+	public void setCustomMessage(String customMessage) {
+		this.customMessage = customMessage;
 	}
 	
 

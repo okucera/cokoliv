@@ -1,4 +1,4 @@
-package cokoliv.servlets;
+package servlet;
 
 import java.io.IOException;
 
@@ -37,16 +37,15 @@ public class NewsServlet extends BasicAbstractServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.session = request.getSession();
-		
 		this.request = request;
 		this.response = response;
+		this.session = request.getSession();
 
 		request.setCharacterEncoding(PAGE_DEFAULT_ENCODING);
 		response.setCharacterEncoding(PAGE_DEFAULT_ENCODING);
 
 		String[] newsItems = request.getParameterValues("newsItem");
-		LoggedUser loggedUser = context.getLoggedUser();
+		LoggedUser loggedUser = getLoggedUser();
 		
 		if(newsItems != null && newsItems.length > 0 && loggedUser != null){
 			DeleteNewsData flowData = new DeleteNewsData();

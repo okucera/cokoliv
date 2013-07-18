@@ -7,10 +7,11 @@
 <%@page import="cokoliv.flowdata.*" %>
 <%@page import="cokoliv.support.Constants" %>
 <%@page import="cokoliv.enumerate.UploadRepositories" %>
+<%@page import="cokoliv.flowdata.manager.FlowDataManager"%>
 <%
 	Forms formId = Forms.FRM003;	
-	Object objData = request.getAttribute(Constants.FLOW_DATA);
-	IFlowData data = objData == null ? null : (IFlowData) objData;
+	String dataKey = request.getParameter(Constants.FLOW_DATA_KEY);	
+	IFlowData data = (dataKey == null || dataKey.equals("")) ? null : FlowDataManager.getInstance().getFlowDataByKey(dataKey);
 %>
 <html>
 	<head>

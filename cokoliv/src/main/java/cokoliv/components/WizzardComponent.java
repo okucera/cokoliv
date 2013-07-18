@@ -4,17 +4,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.jsp.JspWriter;
-import javax.servlet.jsp.tagext.TagSupport;
 
 import cokoliv.components.wizzards.IWizzardItem;
-import cokoliv.databobjects.LoggedUser;
 import cokoliv.enumerate.EWizzardItems;
 import cokoliv.enumerate.Forms;
 import cokoliv.enumerate.WizzardActionEnum;
 import cokoliv.support.CokolivContext;
 import cokoliv.support.StyleNames;
 
-public class WizzardComponent extends TagSupport {
+public class WizzardComponent extends CokolivTag {
 	/**
 	 * 
 	 */
@@ -22,13 +20,11 @@ public class WizzardComponent extends TagSupport {
 	protected JspWriter out;
 	private ArrayList<IWizzardItem> items;
 	private int activeItemIndex = 0;
-	private LoggedUser loggedUser;
 	private Forms activeFormId;
 	private CokolivContext context = CokolivContext.getContext();
 	
 	public int doStartTag(){
 		try{
-			this.loggedUser = CokolivContext.getContext().getLoggedUser();
 			out = pageContext.getOut();
 			clearWizzardItems();
 			return EVAL_BODY_INCLUDE;
@@ -129,7 +125,7 @@ public class WizzardComponent extends TagSupport {
 	
 	private void drawWizzardItems(){
 		try {
-			if(this.loggedUser != null) {
+			if(getLoggedUser() != null) {
 				out.println("<table align=\"center\">");
 				out.println("	<tr>");
 				out.println("		<td>");	

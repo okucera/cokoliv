@@ -1,4 +1,4 @@
-package cokoliv.servlets;
+package servlet;
 
 import java.io.IOException;
 
@@ -39,12 +39,22 @@ public class UserOperationServlet extends BasicAbstractServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.request = request;
 		this.response = response;
+		this.session = request.getSession();
 		
 		request.setCharacterEncoding(PAGE_DEFAULT_ENCODING);
 		response.setCharacterEncoding(PAGE_DEFAULT_ENCODING);
 
 		this.session = request.getSession();
 
+		//test
+		String logfile = request.getParameter("logfile");
+		if(!strOp.isNullOrEmpty(logfile)){
+			ServletLogger logger = new ServletLogger(logfile);
+			logger.logInfo("Yeap, I'm here...");
+			response.sendRedirect("../logTest.html");
+			return;
+		}
+		
 		String firstName = request.getParameter(Constants.FORM_USER_FIRST_NAME);
 		String lastName = request.getParameter(Constants.FORM_USER_LAST_NAME);
 		String nick = request.getParameter(Constants.FORM_USER_NICK);
@@ -57,7 +67,7 @@ public class UserOperationServlet extends BasicAbstractServlet {
 			//Object loggedUserObj = this.session.getAttribute(Constants.LOGGED_USER_KEY);
 			String newPwd64 = strOp.base64EncodedString(newPwd);
 			String retypedNewPwd64 = strOp.base64EncodedString(retypedNewPwd);
-			LoggedUser loggedUser = context.getLoggedUser();
+			LoggedUser loggedUser = getLoggedUser();
 			
 			if(loggedUser!=null){
 				loggedUser.setFirstName(firstName);
