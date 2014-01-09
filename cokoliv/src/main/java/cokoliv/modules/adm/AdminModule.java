@@ -2,9 +2,13 @@ package cokoliv.modules.adm;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
 
@@ -19,9 +23,12 @@ import cokoliv.enumerate.MessageCodes;
 import cokoliv.enumerate.UploadRepositories;
 import cokoliv.exceptions.CokolivApplicationException;
 import cokoliv.flowdata.ChangeUserDetailData;
+import cokoliv.modules.adm.ftp.FTPModule;
+import cokoliv.modules.adm.ftp.IFTPModule;
 import cokoliv.support.Constants;
 
 public class AdminModule implements IAdminModule {
+	IFTPModule ftpModule = new FTPModule();
 	/**
 	 * ADM001: Ziskej prava uzivatele
 	 * Pri loginu nacte prava uzivatele
@@ -42,25 +49,47 @@ public class AdminModule implements IAdminModule {
 	 */
 	public List<FileItem> uploadFilesToRepository(List<FileItem> fileItems, UploadRepositories repository, List<FileItem> excludedItems) {
 		List<FileItem> response = new ArrayList<FileItem>();
+		Map<String, FileInputStream> filesToStore = new HashMap<String, FileInputStream>();
 		try{ 
 			// Process the uploaded file items
 			Iterator<FileItem> i = fileItems.iterator();
 			
 		      while ( i.hasNext () ) 
 		      {
-		    	  FileItem item = (FileItem)i.next();
+		    	  FileItem item = i.next();
 		    	  
 		    	  // Write the file only if it is not already exists
 		    	  if(!isExcludedItem(item, excludedItems)){
-		    		  File file;		    		  
+		    		  String filename;
+		    		  /*
 		    		  if(item.getName().lastIndexOf("\\") >= 0 ){
 		    			  file = new File(repository.getRealRepositoryPath() + File.separator + item.getName().substring(item.getName().lastIndexOf("\\"))) ;
 		    		  }else{
 		    			  file = new File(repository.getRealRepositoryPath() + File.separator + item.getName().substring(item.getName().lastIndexOf("\\")+1)) ;
 		    		  }
-		    		  item.write(file) ;
+		    		  */
+		    		  if(item.getName().lastIndexOf("\\") >= 0 ){
+		    			  filename = item.getName().substring(item.getName().lastIndexOf("\\"));
+		    		  }else{
+		    			  filename = item.getName().substring(item.getName().lastIndexOf("\\")+1);
+		    		  }
+
+		    		  InputStream inputStream = item.getInputStream();
+		    		  FileInputStream fis = null;
+		    		  
+		    		  if(inputStream != null && inputStream instanceof FileInputStream && 
+		    		     filename!=null && filename.length() > 0) {
+		    			  
+		    			  fis = (FileInputStream) inputStream;
+		    			  filesToStore.put(filename, fis);
+		    		  }
+		    		  
 		    		  response.add(item);
 		    	  }
+		      }
+		      
+		      if(filesToStore.keySet().size() > 0) {
+		    	  ftpModule.uploadFiles(filesToStore, repository);
 		      }
 		      
 		      //Add excluded items to response
@@ -179,7 +208,6 @@ public class AdminModule implements IAdminModule {
 		    	  
 		    	  File sourceFile = new File(repository.getRealRepositoryPath() + File.separator + item.getName()) ;
 		    	  File targetFile = new File(repository.getRealRepositoryPath() + File.separator + "preview" + File.separator + item.getName());
-		    	  targetFile.createNewFile();
 		    	  targetFile.setWritable(true, false);
 		    	  
 		    	  String filename = sourceFile.getName();
