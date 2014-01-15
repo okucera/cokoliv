@@ -54,7 +54,7 @@ public class CokolivAdminNewsRenderer extends CokolivAbstractItemRenderer {
 		stringBuilder.append("\">");
 		stringBuilder.append("				<img src=\"");
 		stringBuilder.append(StringOperations.getInstance().convertFilenameToThumbFilename(imgUrl));
-		stringBuilder.append("\" alt=\"img\" style=\"border:0px;\">");
+		stringBuilder.append("\" alt=\"img\" width=\"150px\" style=\"border:0px;\">");
 		stringBuilder.append("			</a>");
 		stringBuilder.append("		</td>");
 		stringBuilder.append("		<td class=\"item_renderer_text\">");

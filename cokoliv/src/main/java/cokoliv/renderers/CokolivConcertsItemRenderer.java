@@ -40,7 +40,7 @@ public class CokolivConcertsItemRenderer extends CokolivAbstractItemRenderer {
 			stringBuilder.append("\">");
 			stringBuilder.append("				<img src=\"");
 			stringBuilder.append(StringOperations.getInstance().convertFilenameToThumbFilename(imgUrl));
-			stringBuilder.append("\" alt=\"img\" style=\"border:0px;\">");
+			stringBuilder.append("\" alt=\"img\" width=\"150px\" style=\"border:0px;\">");
 			stringBuilder.append("			</a>");
 			stringBuilder.append("		</td>");
 			stringBuilder.append("		<td class=\""+StyleNames.ITEM_RENDERER_TEXT_STYLE+"\">");

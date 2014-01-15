@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.commons.fileupload.FileItem;
 
 import cokoliv.enumerate.MessageCodes;
-import cokoliv.exceptions.CokolivApplicationException;
 import cokoliv.flowdata.IFlowData;
 import cokoliv.flowdata.UploadFileData;
 import cokoliv.modules.adm.AdminModule;
@@ -28,6 +27,7 @@ public class UploadFileFlow extends BasicFlow implements IFlow {
 				List<FileItem> uploadedItems = admin.uploadFilesToRepository(data.getFileItems(), data.getRepository(), excludedItems);
 				
 				//If making preview is enabled then make preview for uploaded files only (not for excluded files)
+				/*
 				if(data.isMakePreview()){
 					try {
 						admin.makeImagePreviewInRepository(uploadedItems, data.getRepository());
@@ -35,6 +35,7 @@ public class UploadFileFlow extends BasicFlow implements IFlow {
 						data.setErrorMessage(cokoliv.getEnumMessageCode());
 					}
 				}
+				*/
 				
 				if(uploadedItems != null && uploadedItems.size() > 0) {
 					data.setUploadedItems(uploadedItems);

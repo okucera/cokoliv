@@ -53,7 +53,7 @@ public class GetImageServlet extends BasicAbstractServlet {
 		if(reqFilename==null || reqFilename.equals("null"))
 			reqFilename=defaultImagePath;
 		else
-			reqFilename=imgRepo.getRealRepositoryPath() + File.separator + "preview" + File.separator + reqFilename;
+			reqFilename=imgRepo.getRealRepositoryPath() + File.separator + reqFilename;
 		try {
 
 			//reqFilename = this.getServletContext().getRealPath(reqFilename);

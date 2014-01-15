@@ -48,7 +48,7 @@ public class AddNewsTextWizzardItem extends WizzardItem {
 		out.println("					<tr>");
 		out.println("						<td class=\"verticalSplitter\" width=\"220\">");
 		//Image
-		out.println("							<img src=\"servlet/GetImageServlet?image="+imgFilename+"&repo="+imgRepository.name()+"\"/>");
+		out.println("							<img src=\"servlet/GetImageServlet?image="+imgFilename+"&repo="+imgRepository.name()+"\" width=\"150px\"/>");
 		//drawImageInfoTable();		
 		out.println("						</td>");
 		out.println("						<td valign=\"top\">");

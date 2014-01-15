@@ -67,7 +67,7 @@ public class StringOperations {
 			
 			String file = filename.substring(filename.lastIndexOf("/") + 1, filename.length());
 			String dirs = filename.substring(0, filename.lastIndexOf("/"));
-			String retPath = dirs + "/" + Constants.UPLOAD_THUMB_DIR + "/" + file;//makeThumbFilename(file);
+			String retPath = dirs + "/" + file;//makeThumbFilename(file);
 			return retPath;
 			
 		}
